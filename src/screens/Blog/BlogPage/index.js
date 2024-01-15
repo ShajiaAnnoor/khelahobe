@@ -13,26 +13,26 @@ export default function BlogPage({ navigation}) {
             
         >
             <Ionicons 
-            name='arrow-back-circle-sharp'
-            size={32}
-            color='white'
-            style={{ 
-                position: 'absolute',
-                top: 40,
-                left: 20,
-                zIndex: 1,
-            }}
+               name='arrow-back-circle-sharp'
+               size={32}
+               color='white'
+               style={{ 
+                  position: 'absolute',
+                  top: 40,
+                  left: 20,
+                  zIndex: 1,
+               }}
                   
                     
             />
         </TouchableOpacity>
-         <StatusBar />
+      <StatusBar />
          
             
-        <Image 
+      <Image 
             style={styles.image}
             source={{  uri: 'https://picsum.photos/700' }}
-        />
+      />
             
          
          <Text
