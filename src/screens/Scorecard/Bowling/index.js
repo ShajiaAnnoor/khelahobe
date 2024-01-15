@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
    // backgroundColor: "#37C2D0",
-   backgroundColor:'red',
+   backgroundColor:'green',
     //borderTopEndRadius: 5,
     //borderTopStartRadius: 5,
    // height: 50,
