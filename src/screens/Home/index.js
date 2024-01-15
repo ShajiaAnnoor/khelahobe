@@ -3,8 +3,8 @@ import { Text} from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import LiveScore from './Home';
 
-
 const Tab = createMaterialTopTabNavigator();
+
 function MyTabs() { 
     return ( 
         <Tab.Navigator 
