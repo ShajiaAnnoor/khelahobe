@@ -106,7 +106,7 @@ export default function App({
         //stickyHeaderIndices={[0]}
         renderItem={({item, index})=> {
           return (
-            <View style={{...styles.eachTableRowView, backgroundColor: index % 2 == 1 ? "yellow" : "#F0FBFC"}}>
+            <View style={{...styles.eachTableRowView, backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC"}}>
                 <View style={styles.rowItemName}>
                     <Text style={{...styles.rowItemNameText, fontWeight:"bold",}}>{item.Name}</Text>
                 </View>
