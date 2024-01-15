@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { Divider } from "react-native-elements";
 
 import LiveScoreInfo from '../LivescoreInfo';
@@ -7,6 +7,16 @@ import LiveScoreInfo from '../LivescoreInfo';
 const flag = 1;
 
 const ShortscoreList = ({ navigation, livescores }) => { 
+    return (
+        <View style={styles.container}>
+            <FlatList
+                data={livescores}
+                renderItem={({ item }) => <LiveScoreInfo slug={item.slug[0]} flag={flag} />}
+                keyExtractor={item => item.slug[0]}
+            />
+        </View>
+    )
+    /*
     return (
         <View style={styles.container}>
         {
@@ -20,7 +30,7 @@ const ShortscoreList = ({ navigation, livescores }) => {
             )   
         }
         </View>
-  );
+  );*/
 };
 
 export const styles = StyleSheet.create({
