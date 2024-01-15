@@ -47,10 +47,7 @@ const Home = () => {
 			dispatch(
 				fetchLiveScores()
 			);
-		},
-		[
-			dispatch
-		]
+		},[]
 	);
 	
 	/*
@@ -88,11 +85,8 @@ const Home = () => {
 					fetchLiveScoresRecentFinished(0, 10)
 				);
 			}
-		},
-		[
-			dispatch,
-			livescores.length
-		]
+		},[]
+//		[livescores.length]
 	);
 	
     return (
