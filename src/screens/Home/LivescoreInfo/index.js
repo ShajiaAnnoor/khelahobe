@@ -167,6 +167,8 @@ const LiveScoreInfo = ({
 	const dispatch = useDispatch();
 	const isEmpty = obj => !Object.keys(obj).reduce((prev, cur) => prev || obj.hasOwnProperty(cur), false);
 
+  //TO-DO: Want to check why innings data is being fetched here. 
+  
 	useEffect(
 		() => {
 			dispatch(
@@ -181,56 +183,50 @@ const LiveScoreInfo = ({
 				() => dispatch(
 					fetchMatchWithInnings(slug)
 				),
-				10000
+				1000000
 			);
 
 			return () => clearInterval(interval);
 		},
 		[
-			data.matchState,
-			dispatch,
-			slug,
-			flag
+//			data.matchState
 		]
 	);
 
-        useEffect(
-            () => {
-                if (
-                    flag === 0
-                    ||
-                    (
-                        data.matchStatus
-                        &&
-                        data.matchStatus === 'স্টাম্পস'
-                    )
-                    ||
-                    (
-                        data.matchStatus
-                        &&
-                        data.matchStatus === 'সরাসরি কাভারেজ নেই'
-                    )
-                ) {
-                    const interval = setInterval(
-                        () => {
-                            dispatch(
-                                fetchMatchWithInningses(slug)
-                            );
-                        },
-                        60000 * 5
-                    );
+    useEffect(
+      () => {
+        if (
+          flag === 0
+          ||
+          (
+              data.matchStatus
+              &&
+              data.matchStatus === 'স্টাম্পস'
+          )
+          ||
+          (
+              data.matchStatus
+              &&
+              data.matchStatus === 'সরাসরি কাভারেজ নেই'
+          )
+        ) {
+            const interval = setInterval(
+              () => {
+                  dispatch(
+                      fetchMatchWithInningses(slug)
+                  );
+              },
+              6000000
+            );
 
-                    return () => clearInterval(interval);
-                }
-            },
-            [
-                data.matchState,
-                data.matchStatus,
-                dispatch,
-                slug,
-                flag
-            ]
-        );
+            return () => clearInterval(interval);
+        }
+      },
+      [
+//          data.matchState,
+//          data.matchStatus,
+      ]
+    );
 	
 	if (!data || isEmpty(data)) {
 		return (<Fragment></Fragment>);
