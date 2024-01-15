@@ -14,7 +14,6 @@
     "@eva-design/eva": "^2.0.0",
     "@expo/config-plugins": "~7.2.2",
     "@expo/prebuild-config": "~6.2.4",
-    "@expo/vector-icons": "^13.0.0",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-firebase/app": "12.9.3",
     "@react-native-firebase/messaging": "^12.9.1",
