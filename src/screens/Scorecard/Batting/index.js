@@ -110,7 +110,7 @@ export default function App({
     <View style={styles.container}>
       <FlatList 
         data={batting}
-        style={{width:"100%",flex:1,flexDirection:'column',backgroundColor:'Red'}}
+        style={{width:"100%",flex:1,flexDirection:'column',backgroundColor:'green'}}
         keyExtractor={(item, index) => index+""}
         ListHeaderComponent={tableHeader}
         renderItem={({item, index})=> {
@@ -175,13 +175,19 @@ export default function App({
           f, index
         ) => {
           let invalidOver = (f.over === 'None' && true) || false;
-          let name = (!invalidOver && `(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+          let name = ""
+          name = (index > 0 && !invalidOver && `,(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+          if( index == 0 ) {
+            name = (!invalidOver && `(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+          } else {
+            name = (!invalidOver && `,(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+          }
           return (
             <Text
               style={styles.fallOfWicketValueText}
               key={index}
             >
-              {index > 0 ? ', ' : ''}{f.wicket}-{dfs(f.run)} {name}
+            {index > 0 ? ',' : ''}{f.wicket}-{dfs(f.run)} {name}
             </Text>
           )
         }
@@ -191,7 +197,7 @@ export default function App({
   </View>
 </View>
 
-<View style={{...styles.eachTableRowView, backgroundColor:'gray'}}>
+<View style={{...styles.eachTableRowView, backgroundColor:'#FFFF'}}>
   <View style={styles.titleForExtra}>
     <Text style={{...styles.titleForExtraText, fontWeight:"bold"}}>অতিরিক্ত</Text>
   </View>
@@ -200,7 +206,7 @@ export default function App({
   </View>
 </View>
 
-<View style={{...styles.eachTableRowView, backgroundColor:'pink',}}>
+<View style={{...styles.eachTableRowView, backgroundColor:'#FFFF',}}>
   <View style={styles.titleForRun}>
     <Text style={{...styles.titleForRunText, fontWeight:"bold"}}>মোট রান</Text>
   </View>
@@ -209,7 +215,7 @@ export default function App({
   </View>
 </View> 
 
- <View style={{...styles.eachTableRowView, backgroundColor:'gray'}}>
+ <View style={{...styles.eachTableRowView, backgroundColor:'#FFFF'}}>
   <View style={styles.yetToBatTitle}>
     <Text style={{...styles.yetToBatTitleText, fontWeight:"bold"}}>এখনো ব্যাট করেন নি:</Text>
   </View>
@@ -381,7 +387,7 @@ const styles = StyleSheet.create({
     margin:2,
     justifyContent:'space-evenly',
     //alignSelf:"flex-end",
-    backgroundColor:'pink',
+    backgroundColor:'#FFFF',
 
     //height:120,
     width:"100%",
@@ -404,14 +410,15 @@ const styles = StyleSheet.create({
 
   
   fallOfWicketValue:{
-    backgroundColor:'green',
+    backgroundColor:'#FFFF',
     height:"90%",
     margin:2,
     padding:2,
     //paddingBottom:9,
+    flexDirection:"row",
     justifyContent:'flex-start',
     //alignContent:"center",
-    flexWrap:"nowrap", 
+    flexWrap:"wrap", 
     flex:9,
    // flexBasis:'0%',
   },
@@ -433,7 +440,7 @@ const styles = StyleSheet.create({
 
   fallOfWicketTitle: {
    // width:50,
-    backgroundColor:'red',
+    backgroundColor:'green',
     height:'10%',
     margin:1,
     padding:1,
