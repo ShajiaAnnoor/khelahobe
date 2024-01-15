@@ -60,99 +60,96 @@ const App = ({ eva: { style } }) => {
     const isLoggedIn = true ; 
 //    const locale = useSelector((state) => state.settings.localeValue);
     return (
-                <NavigationContainer >
-                    <Stack.Navigator
-                        initialRouteName={'Tabs'}
-                        
-                    >
-                        {isLoggedIn ? (
-                            <Fragment>
-                                <Stack.Screen 
-                                    name="Tabs" 
-                                    component={AllTabs} 
-                                    options={{
-                                        headerTintColor: 'green',
-                                        headerStyle: { backgroundColor: 'green' },
-                                        //headerTitle:()=>( <Text>Khelahobe</Text>)
-                                        headerLeft: props => (
-                                            <View style={{flexDirection:'row',padding:2,justifyContent:'space-between'}}>
-                                                <LogoTitle {...props} />
-
-                                        
-                                                <Text 
-                                                    style={
-                                                        {padding:2,
-                                                        paddingLeft:5,
-                                                        alignSelf:"center",
-                                                        fontSize:22,
-                                                        color:'white',
-                                                    }}
-                                                >
-                                                    খেলা হবে!
-                                                </Text> 
-                                            </View>
-                                        ),
-                                        /*headerRight: () => (
-                                            <Fragment>
-                                            <Button
-                                              onPress={() => alert('This is a button!')}
-                                              title="Info"
-                                              color="#00cc00"
-                                            />
-                                            <Text>Khelahobe</Text>
-                                            </Fragment>
-                                        ),*/
-                                       
-                                      }}
-                                />
-                                <Stack.Screen 
-                                    name="ScorecardScreen" 
-                                    component={ScorecardScreen} 
-                                />
-                                <Stack.Screen 
-                                    name="BlogList" 
-                                    component={BlogList} 
-                                />
-                                <Stack.Screen 
-                                    name="BlogPage" 
-                                    component={BlogPage} 
-                                />
-                            </Fragment>
-                        ) : (
-                            <Fragment>
-                                {/*}
-                                <Stack.Screen 
-                                    name="Tab" 
-                                    component={TabStack} 
-                                />
-                                <Stack.Screen 
-                                    name="ScorecardScreen" 
-                                    component={ScorecardScreen} 
-                                />
-                                <Stack.Screen 
-                                    name="SeriesScreen" 
-                                    component={SeriesScreen} 
-                                />
-                                <Stack.Screen 
-                                    name="Livescore" 
-                                    component={LivescoreScreen} 
-                                />
-                                <Stack.Screen 
-                                    name="Ranking" 
-                                    component={RankingScreen} 
-                                />
-                                <Stack.Screen 
-                                    name="Blog" 
-                                    component={BlogScreen} 
-                                />
-                                <Stack.Screen 
-                                    name="News" 
-                                    component={NewsScreen} 
-                        /> */}
-                            </Fragment>
-                        )}
-                    </Stack.Navigator>
-                </NavigationContainer>
+        <NavigationContainer >
+            <Stack.Navigator
+                initialRouteName={'Tabs'}
+            >
+                {isLoggedIn ? (
+                    <Fragment>
+                        <Stack.Screen 
+                            name="Tabs" 
+                            component={AllTabs} 
+                            options={{
+                                headerTintColor: 'green',
+                                headerStyle: { backgroundColor: 'green' },
+                                //headerTitle:()=>( <Text>Khelahobe</Text>)
+                                headerLeft: props => (
+                                    <View style={{flexDirection:'row',padding:2,justifyContent:'space-between'}}>
+                                        <LogoTitle {...props} />
+                                        <Text 
+                                            style={
+                                                {padding:2,
+                                                paddingLeft:5,
+                                                alignSelf:"center",
+                                                fontSize:22,
+                                                color:'white',
+                                            }}
+                                        >
+                                            খেলা হবে!
+                                        </Text> 
+                                    </View>
+                                ),
+                                /*headerRight: () => (
+                                    <Fragment>
+                                    <Button
+                                        onPress={() => alert('This is a button!')}
+                                        title="Info"
+                                        color="#00cc00"
+                                    />
+                                    <Text>Khelahobe</Text>
+                                    </Fragment>
+                                ),*/
+                                
+                                }}
+                        />
+                        <Stack.Screen 
+                            name="ScorecardScreen" 
+                            component={ScorecardScreen} 
+                        />
+                        <Stack.Screen 
+                            name="BlogList" 
+                            component={BlogList} 
+                        />
+                        <Stack.Screen 
+                            name="BlogPage" 
+                            component={BlogPage} 
+                        />
+                    </Fragment>
+                ) : (
+                    <Fragment>
+                        {/*}
+                        <Stack.Screen 
+                            name="Tab" 
+                            component={TabStack} 
+                        />
+                        <Stack.Screen 
+                            name="ScorecardScreen" 
+                            component={ScorecardScreen} 
+                        />
+                        <Stack.Screen 
+                            name="SeriesScreen" 
+                            component={SeriesScreen} 
+                        />
+                        <Stack.Screen 
+                            name="Livescore" 
+                            component={LivescoreScreen} 
+                        />
+                        <Stack.Screen 
+                            name="Ranking" 
+                            component={RankingScreen} 
+                        />
+                        <Stack.Screen 
+                            name="Blog" 
+                            component={BlogScreen} 
+                        />
+                        <Stack.Screen 
+                            name="News" 
+                            component={NewsScreen} 
+                /> */}
+                    </Fragment>
+                )}
+            </Stack.Navigator>
+        </NavigationContainer>
          
     );
 };
