@@ -38,7 +38,7 @@ const Home = () => {
 		state => getBDMatch(state)
 	) || '';
 	*/
-    livescores = (livescores && livescores.length < 5 && livescores.concat(livescoresRecentFinished)) || livescores;
+    //livescores = (livescores && livescores.length < 5 && livescores.concat(livescoresRecentFinished)) || livescores;
 
     const dispatch = useDispatch();
 
