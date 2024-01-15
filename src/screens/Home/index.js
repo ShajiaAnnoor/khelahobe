@@ -19,11 +19,11 @@ function MyTabs() {
              //borderTopWidth: 6.5, 
                 borderColor: '#efc96c', 
             }, 
-            tabBarActiveTintColor: '#F57056', 
+            tabBarActiveTintColor: 'green', 
             tabBarInactiveTintColor: '#A29B92',
                 
             tabBarIndicatorStyle: { 
-                backgroundColor: '#F57056', 
+                backgroundColor: 'green', 
                 borderTopRightRadius: 999, 
                 borderTopLeftRadius: 999, 
             },
