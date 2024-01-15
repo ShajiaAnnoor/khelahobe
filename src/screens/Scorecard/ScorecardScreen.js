@@ -34,7 +34,6 @@ const ScorecardComponent = ({ navigation,route }) => {
 	);
 
   console.log("teams are hererere ------>>>>>>")
-  console.log(shortScoreCard.teams);
 
   return (
     <SafeAreaView style={styles.container}>
