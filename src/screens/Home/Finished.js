@@ -66,7 +66,7 @@ const Finished = () => {
 	useEffect(
 		() => {
 				dispatch(
-					fetchLiveScoresRecentFinished(0, 10)
+					fetchLiveScoresRecentFinished(0, 3)
 				);
 			}
 		,[]
