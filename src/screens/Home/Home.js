@@ -6,9 +6,6 @@ import {
 	useDispatch,
 	useSelector
 } from 'react-redux';
-import { 
-	ScrollView,
-} from "react-native";
 
 import { styles } from "./Home.style";
 import { 
@@ -93,10 +90,8 @@ const Home = () => {
 		<Fragment>
 			{/*this will show one scorecard
 			<View style={styles.pageContainer}>*/}
-			<ScrollView style={styles.scrollView}>
-				<ShortscoreList livescores={livescores.slice(0,12)}/>
+			<ShortscoreList livescores={livescores.slice(0,12)}/>
 				{/*<BDMatch bdMatch={bdMatch} />*/}
-			</ScrollView>
 		
 		</Fragment>
     );
