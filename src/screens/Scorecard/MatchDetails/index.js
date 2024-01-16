@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import _ from "lodash"
+import uuid from 'react-native-uuid';
 
 export default function App({
 	days,
@@ -68,7 +69,7 @@ export default function App({
     },
     {
         Name:"ম্যাচ দিন",
-        Value:"১ নভেম্বর, ২০২১"
+        Value:""
     },
     {
         Name:"ডেব্যু",
@@ -101,7 +102,7 @@ export default function App({
       <FlatList 
         data={details}
         style={{width:"100%",flex:1,flexDirection:'column'}}
-        keyExtractor={(item, index) => index+""}
+        keyExtractor={(item, index) => uuid.v4()}
         ListHeaderComponent={tableHeader}
         //stickyHeaderIndices={[0]}
         renderItem={({item, index})=> {
