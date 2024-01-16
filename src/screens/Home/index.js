@@ -3,6 +3,7 @@ import { Text} from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import LiveScore from './Live';
 import FinishedScore from "./Finished";
+import UpcomingScore from "./Upcoming";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -49,7 +50,7 @@ function MyTabs() {
             />
             <Tab.Screen 
                 name="Upcoming" 
-                component={LiveScore} 
+                component={UpcomingScore} 
                 options={{ tabBarLabel: "আসন্ন" }} 
             />
             <Tab.Screen 
