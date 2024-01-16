@@ -22,10 +22,10 @@ export default function Tabs() {
     return (
         <Tab.Navigator
             initialRouteName="Home"
-            tabBarOptions={{
-                activeTintColor: 'green',
+            screenOptions={{
+                headerShown:false, 
+                tabBarActiveTintColor: 'green'
             }}
-            screenOptions={{headerShown:false}}
             options={{
                 headerTintColor: 'blue',
                 headerStyle: { backgroundColor: 'tomato' },
