@@ -34,9 +34,19 @@ const fetchBDMatch = () => axiosGet(apiUrls.FETCH_BD_MATCH, {}).then(
     //why is error null here? 
 );
 
+const fetchUpcoming = () => axiosGet(apiUrls.FETCH_UPCOMING, {}).then(
+    response => response, //different from other, check out the reducer for better understanding
+    err => {
+        return Promise.reject(() => ({
+            message: err,
+        }));
+    }
+);
+
 export const endPoints = {
     FETCH_LIVESCORES: fetchLiveScores,
     FETCH_LIVESCORES_TEST: fetchLiveScoresTest,
     FETCH_LIVESCORES_RECENT_FINISHED: fetchLiveScoresRecentFinished,
     FETCH_BD_MATCH: fetchBDMatch,
+    FETCH_UPCOMING: fetchUpcoming,
 }
