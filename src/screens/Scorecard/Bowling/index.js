@@ -11,7 +11,7 @@ import {
   TouchableOpacity, 
   TouchableWithoutFeedback,
 } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import uuid from 'react-native-uuid';
 import _ from "lodash";
 import { dfs } from '../../../API/utils';
 
@@ -128,7 +128,7 @@ export default function App({
       <FlatList 
         data={bowling}
         style={{width:"100%",height:"100%",flex:1,flexDirection:'column'}}
-        keyExtractor={(item, index) => index+""}
+        keyExtractor={(item, index) => uuid.v4()}
         ListHeaderComponent={tableHeader}
         renderItem={({item, index})=> {
           return (
