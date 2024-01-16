@@ -1,14 +1,17 @@
 
-import React, { useState, useCallback} from "react";
+import React, { useState, useCallback, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import YoutubePlayer from "react-native-youtube-iframe";
+import { fetchHighlights } from "../../../../redux/complex-actions/highlights";
+import { getHighlights } from "../../../../redux/reducers/index";
+
 const Data =([
   {
-    ID:"8wb3hiF20bQ"
+    ID:"8wb3hiF20bQ",
   },
   {
-    ID:"yKq8FixQk2Q",
-   
+    ID:"yKq8FixQk2Q",   
   },
   {
     ID:"XDVXA4Nuzw4",
@@ -21,12 +24,28 @@ const Data =([
   },
   {
     ID:"pHgf1dJD45c"
-  },
-
-  
+  },  
 ])
 
 export default function App() {
+
+  const dispatch = useDispatch();
+  
+  useEffect(
+    () => {
+            dispatch(
+                fetchHighlights(0, 5)
+            );
+        
+      },
+  []
+)
+
+  const highlights = useSelector(
+    state => getHighlights(state)
+  )
+  ||
+  [];
 
   const [playing, setPlaying] = useState(false);
 
@@ -36,10 +55,11 @@ export default function App() {
       Alert.alert("video has finished playing!");    
     }  
   }, []);
+
   return (
     <View style={styles.container}>
       <FlatList 
-        data={Data}
+        data={highlights}
         style={{width:"100%",flex:1,flexDirection:'column'}}
         keyExtractor={(item, index) => index+""}
         renderItem={({item, index})=> {
@@ -48,15 +68,14 @@ export default function App() {
               <YoutubePlayer        
                 height={200}        
                 play={playing}        
-                videoId={item.ID}        
+                videoId={item.youtube_id}        
                 onChangeState={onStateChange}      
               />  
-              <Text style={styles.headline}>Headline</Text>    
+              <Text style={styles.headline}>{item.description.substring(0,100)}</Text>    
             </View> 
           )
         }}
-      />
-      
+      />  
     </View>
   );
 }
@@ -72,7 +91,6 @@ const styles = StyleSheet.create({
     padding:10,
     
   },
-
   headline: {
     fontSize:20,
     fontWeight:'bold',
@@ -80,6 +98,4 @@ const styles = StyleSheet.create({
     marginTop:0,
     marginBottom:30,
   }
-  
-
 });
