@@ -3,8 +3,9 @@ let backendUrl = "https://khelahobe.co/";
  
 export default apiUrls = {
     FETCH_PLAYER_TABLE_DATA: (d) => backendUrl + `api/playerrecordslug/${d}`,
-    FETCH_LIVESCORES: backendUrl + 'api/recentrunning/limitedmatch',
+     FETCH_LIVESCORES: backendUrl + 'api/recentrunning/limitedmatch',
     FETCH_LIVESCORES_TEST: backendUrl + 'api/recentrunning/testmatch',
+    FETCH_UPCOMING: backendUrl + 'api/matchlive/upcoming',
     FETCH_LIVESCORES_RECENT_FINISHED: (skip, limit) => backendUrl + `api/recentended/${skip}/${limit}`,
 
     FETCH_TEAM_RANKING: (sex, type) => backendUrl + `api/teamrank/${sex}/${type}`,
