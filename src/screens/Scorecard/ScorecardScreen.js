@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import { 
   useSelector, 
-  useDispatch 
 } from 'react-redux';
-import { withStyles } from '@ui-kitten/components';
 import { SafeAreaView, View } from 'react-native';
 import Batting from "./Batting";
 import Bowling from "./Bowling";
@@ -17,7 +15,7 @@ import { getMatchDetails } from '../../../redux/reducers';
 import { getMatch} from '../../../redux/reducers';
 import { dfs } from '../../API/utils';
 
-const ScorecardComponent = ({ navigation,route }) => {
+const ScorecardComponent = ({ route }) => {
 
   const {slug} = route.params;
 
