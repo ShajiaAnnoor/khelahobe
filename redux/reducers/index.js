@@ -7,7 +7,7 @@ import blogs, * as fromBlogs from './blog';
 //import counter, * as fromCounter from './counter';
 //import countries, * as fromCountries from './country';
 //import hallOfFame, * as fromHallOfFame from './halloffame';
-//import highlights, * as fromHighlights from './highlights';
+import highlights, * as fromHighlights from './highlights';
 import livescore, * as fromLiveScores from "./livescore" ;
 //import news, * as fromNews from './news'; 
 //import newsRequest, * as fromNewsRequest from './newsrequest';
@@ -26,7 +26,7 @@ export default combineReducers({
 //    counter,
 //    countries,
 //    hallOfFame,
-//    highlights,
+    highlights,
     livescore,
 //    news,
 //    newsRequest,
