@@ -215,4 +215,4 @@ export const getTeamsScore = (state, slug) => fromScoreboard.getTeamsScore(state
 
 export const getInningsIds = (state, slug) => fromScoreboard.getInningsIds(state.scoreboard, slug);
 
-export const getUpcoming = state => fromLiveScores.getUpcoming(state.livescores);
+export const getUpcoming = state => fromLiveScores.getUpcoming(state.livescore);
