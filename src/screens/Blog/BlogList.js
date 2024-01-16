@@ -9,7 +9,6 @@ import {
   View,
   Image 
 } from 'react-native';
-import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 
 import {
 	useDispatch,
@@ -18,40 +17,16 @@ import {
 
 import { fetchBlogs } from '../../../redux/complex-actions/blog';
 import { getBlogs } from '../../../redux/reducers';
-
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Headline',
-    paragraph: 'Both Android and iOS allow you to display formatted text by annotating ranges of a string with specific formatting like bold or colored text (NSAttributedString on iOS, SpannableString on Android). In practice, this is very tedious. For React Native, we decided to use web paradigm for this where you can nest text to achieve the same effect1.'
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Headline',
-    paragraph: 'Both Android and iOS allow you to display formatted text by annotating ranges of a string with specific formatting like bold or colored text (NSAttributedString on iOS, SpannableString on Android). In practice, this is very tedious. For React Native, we decided to use web paradigm for this where you can nest text to achieve the same effect2.'
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Headline',
-    paragraph: 'Both Android and iOS allow you to display formatted text by annotating ranges of a string with specific formatting like bold or colored text (NSAttributedString on iOS, SpannableString on Android). In practice, this is very tedious. For React Native, we decided to use web paradigm for this where you can nest text to achieve the same effect3.'
-  },
-];
-
-
  
 const Item = ({item, onPress, backgroundColor, textColor}) => {
-  const jopu = JSON.parse(item.intro);
   const body = JSON.parse(item.content);
-  const res = documentToPlainTextString(item.intro);
-  console.log(res);
-  console.log(jopu);
+
   return (
     <TouchableOpacity>
       <View style={styles.ItemContainer}>
         <Image style={styles.image} source={{ uri:item.images[0] }}/>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.paragraph}>{body.blocks[1].text}</Text>
-        {/*<Text style={styles.paragraph}>{jopu.blocks[0].text}</Text>*/}
       </View>
     </TouchableOpacity>
   );
@@ -64,7 +39,7 @@ const App = () => {
     useEffect(
       () => {
               dispatch(
-                  fetchBlogs(0, 3)
+                  fetchBlogs(0, 5)
               );
           
         },
@@ -94,11 +69,6 @@ const blogs = useSelector(
     );
   };
 
- // const navigation=useNavigation();
-
-//  console.log(blogs);
-  console.log("BAbim>>>>>>>>>>>>>>>>>>>>>>>>>BAbim")
-
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -118,7 +88,6 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight || 0,
     paddingBottom:20,
     padding:10
-    
   },
 
   ItemContainer: {
@@ -146,8 +115,6 @@ const styles = StyleSheet.create({
     fontWeight:'normal',
     fontFamily: "'Roboto Slab', serif",
   },
-  
-  
 });
 
 export default App;
