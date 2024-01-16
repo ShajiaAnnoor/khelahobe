@@ -32,14 +32,6 @@ const Upcoming = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(
-		() => {
-			dispatch(
-				fetchLiveScores()
-			);
-		},[]
-	);
-		
     return (
 		<Fragment>
 			<ShortscoreList livescores={upcoming}/>
