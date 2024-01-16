@@ -1,12 +1,11 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import { Divider } from "react-native-elements";
 
 import LiveScoreInfo from '../LivescoreInfo';
 
 const flag = 1;
 
-const ShortscoreList = ({ navigation, livescores }) => { 
+const ShortscoreList = ({ livescores }) => { 
     return (
         <View style={styles.container}>
             <FlatList
@@ -16,21 +15,6 @@ const ShortscoreList = ({ navigation, livescores }) => {
             />
         </View>
     )
-    /*
-    return (
-        <View style={styles.container}>
-        {
-			livescores.map( 
-			    (l, index) => (
-                        l.slug[0]&&<LiveScoreInfo
-						    slug={l.slug[0]}
-						    flag={flag}
-					    />                    
-                )
-            )   
-        }
-        </View>
-  );*/
 };
 
 export const styles = StyleSheet.create({
