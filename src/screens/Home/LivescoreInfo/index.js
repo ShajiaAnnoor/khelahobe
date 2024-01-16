@@ -12,10 +12,6 @@ import {
   Text, 
   View,
 } from "react-native";
-import { 
-  NavigationContainer 
-} from '@react-navigation/native';
-
 import 
     { useNavigation
 } from '@react-navigation/native';
@@ -29,6 +25,7 @@ import { fetchMatchWithInnings } from "../../../../redux/complex-actions/scorebo
 import { dfs } from "../../../API/utils";
 //import ScorecardScreen from "../../Scorecard/ScorecardScreen";
 import ScoreCardScreen from "../../Scorecard/ScorecardScreen";
+
 const months = {
   'January': 'জানুয়ারি',
   'February': 'ফেব্রুয়ারি',
@@ -155,7 +152,7 @@ const LiveScoreInfo = ({
 		state => getMatch(state, slug) || ''
 	);
 
-  console.log(slug);
+//  console.log(slug);
 	const shortScoreCard = useSelector(
 		state => getShortScore(state, slug)
 	);
