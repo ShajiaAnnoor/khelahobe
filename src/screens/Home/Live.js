@@ -21,7 +21,7 @@ import {
 } from '../../../redux/complex-actions/livescore';
 import ShortscoreList from "./ShortscoreList";
 
-const Home = () => {
+const Live = () => {
 	let livescores = useSelector(
 		state => getLiveScoresHome(state)
 	) || [];
@@ -97,4 +97,4 @@ const Home = () => {
     );
 }
 
-export default Home
+export default Live;
