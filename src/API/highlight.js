@@ -1,6 +1,10 @@
 import { axiosGet, axiosPost } from "./axios";
 import apiUrls from "./apiurls";
 
+const processHighlights = ({
+    all_videos
+}) => all_videos;
+
 const fetchHighlights = ({
     skip, limit
 }) => axiosGet(apiUrls.FETCH_HIGHLIGHTS, {}, skip, limit).then(
