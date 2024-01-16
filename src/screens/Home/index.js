@@ -1,9 +1,14 @@
 import * as React from 'react';
+import { lazy } from 'react';
 import { Text} from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+//const LiveScore = lazy(() => import('./Live.js'));
+const FinishedScore = lazy(() => import('./Finished.js'));
+const UpcomingScore = lazy(() => import('./Upcoming.js'));
+
 import LiveScore from './Live';
-import FinishedScore from "./Finished";
-import UpcomingScore from "./Upcoming";
+//import FinishedScore from "./Finished";
+//import UpcomingScore from "./Upcoming";
 
 const Tab = createMaterialTopTabNavigator();
 
