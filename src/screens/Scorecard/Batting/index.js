@@ -9,6 +9,7 @@ import {
   FlatList, 
 } from 'react-native';
 import _ from "lodash";
+import uuid from 'react-native-uuid';
 import { dfs } from '../../../API/utils';
 
 export default function App({
@@ -111,7 +112,7 @@ export default function App({
       <FlatList 
         data={batting}
         style={{width:"100%",flex:1,flexDirection:'column',backgroundColor:'green'}}
-        keyExtractor={(item, index) => index+""}
+        keyExtractor={(item, index) => uuid.v4()}
         ListHeaderComponent={tableHeader}
         renderItem={({item, index})=> {
           return (
@@ -185,7 +186,7 @@ export default function App({
           return (
             <Text
               style={styles.fallOfWicketValueText}
-              key={index}
+              key={uuid.v4()}
             >
             {index > 0 ? ',' : ''}{f.wicket}-{dfs(f.run)} {name}
             </Text>
@@ -227,7 +228,7 @@ export default function App({
 								(
 									d, index
 								) => (
-									<Text key={index}>
+									<Text key={uuid.v4()}>
 										{index > 0 ? ', ' : ''}{d}
 									</Text>
 								)
@@ -281,33 +282,34 @@ const styles = StyleSheet.create({
     //width:50,
     alignItems:"center",
    // backgroundColor:'green',
-    height:35,
-    margin:4,
-    padding:4,
+    //height:55,
+    //margin:4,
+    marginLeft:8,
+    padding:2,
     justifyContent:'space-evenly',
     flexWrap:"wrap", 
-    flex:3,
+    flex:8,
   },
 
   columnRowDetailText: {
    //height:"100%",
    fontWeight: 'bold',
    textAlign:"left",
-   fontSize:8,
+   fontSize:10,
    //backgroundColor:'white',
-   justifyContent:'center',
+  // justifyContent:'flex-start',
    flexWrap:'wrap',
    padding:2,
-   alignItems:"center",
+   //alignItems:"center",
   },
 
   columnRowDetail: {
     //backgroundColor:'green',
-    height:35,
-    margin:4,
-    padding:4,
+    //height:35,
+    //margin:4,
+    padding:2,
     justifyContent:'flex-start',
-    alignItems:'center',
+    alignItems:'flex-start',
     //flexWrap:"nowrap", 
     flex:6,
   },
@@ -318,8 +320,8 @@ const styles = StyleSheet.create({
     height:35,
     //marginLeft:2,
     //marginRight:2,
-    margin:3,
-    padding:4,
+    //margin:3,
+    padding:2,
     justifyContent:'center',
     //flexWrap:"wrap",
     alignItems:"center",
@@ -331,7 +333,7 @@ const styles = StyleSheet.create({
     //height:"100%",
     fontWeight: 'bold',
     textAlign:'center',
-    fontSize:8,
+    fontSize:10,
    // backgroundColor:'pink',
    // justifyContent:'center',
   
@@ -354,7 +356,7 @@ const styles = StyleSheet.create({
     //backgroundColor: "yellow",
     flex:1,
     flexWrap:'wrap',
-    height:"10%",
+    //height:"10%",
     width:"100%",
   },
 
@@ -564,9 +566,9 @@ const styles = StyleSheet.create({
 yetToBatTitle:{
     // width:50,
     //backgroundColor:'green',
-    height:35,
-    margin:2,
-    padding:2,
+    //height:35,
+    //margin:2,
+    padding:1,
     justifyContent:'space-between',
     flexWrap:"wrap", 
     flex:5,
@@ -575,22 +577,22 @@ yetToBatTitle:{
 
   yetToBatTitleText:{
      width:"98%",
-    height:"100%",
+    //height:"100%",
     fontWeight: 'bold',
     textAlign:"right",
     fontSize:10,
     //backgroundColor:'white',
     justifyContent:'center',
     flexWrap:'wrap',  
-    margin:2,
-    padding:4, 
+    //margin:2,
+    //padding:4, 
   },
 
   yetToBatValue: {
   //backgroundColor:'green',
-    height:35,
-    margin:2,
-    padding:2,
+    //height:35,
+    //margin:2,
+    //padding:2,
     justifyContent:'flex-start',
     flexWrap:"nowrap", 
     flex:8,
