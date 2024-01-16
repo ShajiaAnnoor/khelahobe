@@ -3,7 +3,7 @@ import {
 } from 'redux';
 import {
     actions
-} from '../actions/Highlights';
+} from '../action-types/highlight';
 
 const highlights = (state = [], action) => {
     switch (action.type) {
