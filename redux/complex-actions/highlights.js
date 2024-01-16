@@ -4,7 +4,7 @@ import {
 } from '../reducers';
 import {
     endPoints
-} from '../../Api';
+} from '../../src/API/highlight';
 import { actions } from "../action-types/highlight";
 
 export const fetchHighlights = (skip, limit) => ({
