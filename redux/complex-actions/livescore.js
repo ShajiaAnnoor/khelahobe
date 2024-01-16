@@ -52,3 +52,15 @@ export const fetchLiveScoresRecentFinished = (skip, limit) => ({
         },
     },
 });
+
+export const fetchUpcoming = () => ({
+    RSAA: {
+        types: [
+            actions.REQUEST_FETCH_UPCOMING,
+            actions.SUCCESS_FETCH_UPCOMING,
+            actions.FAILURE_FETCH_UPCOMING,
+        ],
+        method: endPoints.FETCH_UPCOMING,
+        race: () => false,
+    },
+});
