@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import uuid from 'react-native-uuid';
 import _ from "lodash"
 
 export default function App({teams}) {
@@ -123,7 +124,7 @@ export default function App({teams}) {
       <FlatList 
         data={teams[0]}
         style={{flexDirection:'column',flex:2, width:"50%"}}
-        keyExtractor={(item, index) => index+""}
+        keyExtractor={(item, index) => uuid.v4()}
         ListHeaderComponent={tableHeader(teams[0].name, "right",0,5)}
         //stickyHeaderIndices={[0]}
         renderItem={({item, index})=> {
@@ -140,7 +141,7 @@ export default function App({teams}) {
     <FlatList 
         data={teams[1]}
         style={{flexDirection:'column',flex:3,width:"50%"}}
-        keyExtractor={(item, index) => index+""}
+        keyExtractor={(item, index) => uuid.v4()}
         ListHeaderComponent={tableHeader(teams[1].name, "left",5,0)}
         //stickyHeaderIndices={[0]}
         renderItem={({item, index})=> {
