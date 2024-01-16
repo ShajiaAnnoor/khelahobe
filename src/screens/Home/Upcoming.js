@@ -8,18 +8,28 @@ import {
 } from 'react-redux';
 
 import { 
-    getLiveScoresHome, 
+    getUpcoming, 
 } from '../../../redux/reducers';
 import { 
-    fetchLiveScores, 
+    fetchUpcoming, 
 } from '../../../redux/complex-actions/livescore';
 import ShortscoreList from "./ShortscoreList";
 
 const Upcoming = () => {
-	let livescores = useSelector(
-		state => getLiveScoresHome(state)
-	) || [];
-   
+	let upcoming = useSelector(
+		state => getUpcoming(state)
+	)
+		||
+		[];
+
+    useEffect(
+        () => {
+            dispatch(
+                fetchUpcoming()
+            );
+        },[]
+    );
+
     const dispatch = useDispatch();
 
     useEffect(
@@ -32,7 +42,7 @@ const Upcoming = () => {
 		
     return (
 		<Fragment>
-			<ShortscoreList livescores={livescores.slice(0,12)}/>
+			<ShortscoreList livescores={upcoming}/>
 		</Fragment>
     );
 }
