@@ -2,13 +2,10 @@ import * as React from 'react';
 import { lazy } from 'react';
 import { Text} from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-//const LiveScore = lazy(() => import('./Live.js'));
-const FinishedScore = lazy(() => import('./Finished.js'));
-const UpcomingScore = lazy(() => import('./Upcoming.js'));
 
 import LiveScore from './Live';
-//import FinishedScore from "./Finished";
-//import UpcomingScore from "./Upcoming";
+const FinishedScore = lazy(() => import('./Finished.js'));
+const UpcomingScore = lazy(() => import('./Upcoming.js'));
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -22,8 +19,6 @@ function MyTabs() {
             tabBarStyle: 
             { 
                 backgroundColor: '#FFFFFF', 
-             // borderBottomWidth: 1.5, 
-             //borderTopWidth: 6.5, 
                 borderColor: '#efc96c', 
             }, 
             tabBarActiveTintColor: 'green', 
@@ -46,8 +41,7 @@ function MyTabs() {
                 </Text> 
             ), 
             tabBarScrollEnabled: true })} 
-        > 
-                
+        >                 
             <Tab.Screen 
                 name="LiveScore" 
                 component={LiveScore} 
