@@ -63,7 +63,13 @@ const App = ({ eva: { style } }) => {
                                 headerStyle: { backgroundColor: 'green' },
                                 //headerTitle:()=>( <Text>Khelahobe</Text>)
                                 headerLeft: props => (
-                                    <View style={{flexDirection:'row',padding:2,justifyContent:'space-between'}}>
+                                    <View style={
+                                        {
+                                            flexDirection:'row',
+                                            padding:2,
+                                            justifyContent:'space-between',
+                                        }
+                                    }>
                                         <LogoTitle {...props} />
                                         <Text 
                                             style={
@@ -78,18 +84,8 @@ const App = ({ eva: { style } }) => {
                                         </Text> 
                                     </View>
                                 ),
-                                /*headerRight: () => (
-                                    <Fragment>
-                                    <Button
-                                        onPress={() => alert('This is a button!')}
-                                        title="Info"
-                                        color="#00cc00"
-                                    />
-                                    <Text>Khelahobe</Text>
-                                    </Fragment>
-                                ),*/
                                 
-                                }}
+                            }}
                         />
                         <Stack.Screen 
                             name="ScorecardScreen" 
