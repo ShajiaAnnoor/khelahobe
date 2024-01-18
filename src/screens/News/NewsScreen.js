@@ -8,10 +8,9 @@ import { styles } from "./News.style";
 const NewsScreenComponent = ({ navigation }) => {
 
     return (
-        <SafeAreaView style={style.container}>
+        <SafeAreaView style={styles.container}>
         </SafeAreaView>
   );
 };
 
-const NewsScreen = withStyles(NewsScreenComponent, styles);
 export default NewsScreen;
