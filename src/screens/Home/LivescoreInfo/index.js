@@ -57,7 +57,7 @@ function getTime(start_time, day) {
   let today = new Date();
   let [days, month, year] = day[0].split(" ");
   let todayOrNotToday = (today.getDate()) === days ? ('আজ ' + days) : days;
-  let ffff = new Date(start_time);
+  let start_time_of_match = new Date(start_time);
   let h = '', test = '', st = '';
   let blabla = day[0].split(" ");
 
@@ -77,63 +77,63 @@ function getTime(start_time, day) {
 
   if (
       (
-          ffff.getHours() >= 0 && ffff.getHours() < 3
+        start_time_of_match.getHours() >= 0 && start_time_of_match.getHours() < 3
       )
       ||
       (
-          ffff.getHours() >= 20 && ffff.getHours() <= 24
+        start_time_of_match.getHours() >= 20 && start_time_of_match.getHours() <= 24
       )
   ) {
       h = 'রাত';
   }
-  else if (ffff.getHours() === 0) {
+  else if (start_time_of_match.getHours() === 0) {
       h = 'রাত';
   }
-  else if (ffff.getHours() < 7 && ffff.getHours() > 3) {
+  else if (start_time_of_match.getHours() < 7 && start_time_of_match.getHours() >= 3) {
       h = 'ভোর';
   }
-  else if (ffff.getHours() > 7 && ffff.getHours() < 11) {
+  else if (start_time_of_match.getHours() >= 7 && start_time_of_match.getHours() < 11) {
       h = 'সকাল';
   }
-  else if (ffff.getHours() >= 11 && ffff.getHours() <= 12) {
+  else if (start_time_of_match.getHours() >= 11 && start_time_of_match.getHours() < 12) {
       h = 'বেলা';
   }
-  else if (ffff.getHours() >= 12 && ffff.getHours() <= 15) {
+  else if (start_time_of_match.getHours() >= 12 && start_time_of_match.getHours() < 15) {
       h = 'দুপুর';
   }
-  else if (ffff.getHours() > 15 && ffff.getHours() < 18) {
+  else if (start_time_of_match.getHours() >= 15 && start_time_of_match.getHours() < 18) {
       h = 'বিকাল';
   }
-  else if (ffff.getHours() >= 18 && ffff.getHours() <= 20) {
+  else if (start_time_of_match.getHours() >= 18 && start_time_of_match.getHours() < 20) {
       h = 'সন্ধ্যা';
   }
 
   h += ' ' + (
       dfs(
-          ffff.getHours() > 12
+        start_time_of_match.getHours() > 12
               ?
               (
-                  ffff.getHours() - 12
+                start_time_of_match.getHours() - 12
               )
               :
               (
                   (
-                      ffff.getHours() === 0
+                    start_time_of_match.getHours() === 0
                       &&
                       '12'
                   )
                   ||
-                  ffff.getHours()
+                  start_time_of_match.getHours()
               )
       )
   ) + '.' + dfs(
       (
-          ffff.getMinutes() > 0
+        start_time_of_match.getMinutes() > 0
               ?
-              ffff.getMinutes()
+              start_time_of_match.getMinutes()
               :
               (
-                  '0' + ffff.getMinutes()
+                  '0' + start_time_of_match.getMinutes()
               )
       )
   ) + 'টায়';
