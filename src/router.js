@@ -1,23 +1,13 @@
 import React, { 
-    useEffect, 
     Fragment 
 } from 'react';
-import { 
-    useSelector, 
-    useDispatch 
-} from 'react-redux';
 import { 
     NavigationContainer 
 } from '@react-navigation/native';
 import { 
-    SafeAreaView, 
-    KeyboardAvoidingView, 
-    Platform,
     Image,
     Text,
     View,
-    Button,
-
 } from 'react-native';
 //import messaging from '@react-native-firebase/messaging';
 import PropTypes from 'prop-types';
@@ -25,6 +15,7 @@ import
     { createNativeStackNavigator 
 } from '@react-navigation/native-stack';
 import { withStyles } from '@ui-kitten/components';
+
 import AllTabs from "./Tabs";
 import ScorecardScreen from "./screens/Scorecard/ScorecardScreen";
 import NewsScreen from "./screens/News/NewsScreen";
@@ -56,9 +47,7 @@ const defaultProps = {
 
 const App = ({ eva: { style } }) => {
 
-//    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const isLoggedIn = true ; 
-//    const locale = useSelector((state) => state.settings.localeValue);
     return (
         <NavigationContainer >
             <Stack.Navigator
@@ -164,4 +153,3 @@ App.propTypes = propTypes;
 App.defaultProps = defaultProps;
 
 export default withStyles(App, styles);
-//export default App;
