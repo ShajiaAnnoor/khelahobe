@@ -1,6 +1,7 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
+import { styles } from "./style";
 import LiveScoreInfo from '../LivescoreInfo';
 
 const flag = 1;
@@ -16,14 +17,5 @@ const ShortscoreList = ({ livescores }) => {
         </View>
     )
 };
-
-export const styles = StyleSheet.create({
-    container: {
-        flex: 10,
-        backgroundColor: '#F7F7F7',
-        marginTop:10,
-        marginBottom:5,
-      },
-});
 
 export default ShortscoreList;
