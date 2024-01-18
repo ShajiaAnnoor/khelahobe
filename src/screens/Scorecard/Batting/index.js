@@ -31,55 +31,6 @@ export default function App({
     "ছক্কা",
     "স্ট্রাইক রেট",
   ]);
-  /*
-  const [ batting, setBatting ] = useState([
-    {
-      Name: "পাথুম নিশঙ্কা",
-      Detail:"কট ওয়ার্নার",
-      Run: 70,
-      Ball:90,
-      Four:10,
-      Six:1,
-      StrikeRate:177.78,
-    },
-    {
-        Name: "পাথুম থুম নিশঙ্কা",
-        Detail:"কট ডেভিড ওয়ার্নার বোল্ড প্যাট কামিন্স",
-        Run: 107,
-        Ball:90,
-        Four:12,
-        Six:2,
-        StrikeRate:127.78,
-    },
-    {
-        Name: "পাথুম নিশঙ্কা",
-        Detail: "বোল্ড প্যাট কামিন্স",
-        Run: 7,
-        Ball:9,
-        Four:1,
-        Six:0,
-        StrikeRate:77.78,
-    },
-    {
-        Name: "পাথুম নিশঙ্কা",
-        Detail: "বোল্ড প্যাট কামিন্স",
-        Run: 7,
-        Ball:9,
-        Four:1,
-        Six:0,
-        StrikeRate:77.78,
-    },
-    {
-        Name: "পাথুম নিশঙ্কা",
-        Detail: "বোল্ড প্যাট কামিন্স",
-        Run: 7,
-        Ball:9,
-        Four:1,
-        Six:0,
-        StrikeRate:77.78,
-    },
-  ])
-  */
 
   const tableHeader = () => (
     <View style={styles.tableHeader}>
@@ -194,7 +145,6 @@ export default function App({
         }
       )
 	  }
-   {/* <Text style={styles.fallOfWicketValueText}> ১-১২ (ক্রেগ স্পিয়ারম্যান, None ওভার), ২-১০৮ (স্টিফেন ফ্লেমিং, None ওভার), ৩-১৪১ (রজার টোজ, None ওভার), ৪-১৯৬ (ক্রিস কেয়ার্নস, None ওভার), ৫-২০৪ (নাথান অ্যাসলে, None ওভার), ৬-২১২ (ক্রিস হ্যারিস, None ওভার)</Text>*/}
   </View>
 </View>
 
@@ -247,10 +197,8 @@ export default function App({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-   // backgroundColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
-    //paddingTop:80,
     flexDirection:"column",
   },
 
@@ -268,22 +216,15 @@ const styles = StyleSheet.create({
   },
   
   columnRowNameText: {
-    //width:"98%",
-    //height:"100%",
     fontWeight: 'bold',
     textAlign:"left",
     fontSize:10,
-    //backgroundColor:'white',
     justifyContent:'center',
     flexWrap:'wrap',        
   },
 
   columnRowName: {
-    //width:50,
     alignItems:"center",
-   // backgroundColor:'green',
-    //height:55,
-    //margin:4,
     marginLeft:8,
     padding:2,
     justifyContent:'space-evenly',
@@ -292,142 +233,81 @@ const styles = StyleSheet.create({
   },
 
   columnRowDetailText: {
-   //height:"100%",
    fontWeight: 'bold',
    textAlign:"left",
    fontSize:10,
-   //backgroundColor:'white',
-  // justifyContent:'flex-start',
    flexWrap:'wrap',
    padding:2,
-   //alignItems:"center",
   },
 
   columnRowDetail: {
-    //backgroundColor:'green',
-    //height:35,
-    //margin:4,
     padding:2,
     justifyContent:'flex-start',
     alignItems:'flex-start',
-    //flexWrap:"nowrap", 
     flex:6,
   },
 
   columnRowNumberItems: {
-    //alignItems:"center",
-    //backgroundColor:'yellow',
     height:35,
-    //marginLeft:2,
-    //marginRight:2,
-    //margin:3,
     padding:2,
     justifyContent:'center',
-    //flexWrap:"wrap",
     alignItems:"center",
     flex:3,
   },
 
   columnRowNumberItemsText: {
-   // width:"98%",
-    //height:"100%",
     fontWeight: 'bold',
     textAlign:'center',
-    fontSize:10,
-   // backgroundColor:'pink',
-   // justifyContent:'center',
-  
+    fontSize:10,  
     flexWrap:'wrap',
     padding:4,
-   // marginLeft:5,
     flex:2,
   },
 
   eachTableRowView:{
-  /*flex:1,
-    flexDirection:'row',
-    justifyContent: 'space-between',
-    flexWrap:'wrap',
-    height:"20%",
-  width:"100%",*/
   flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    //backgroundColor: "yellow",
     flex:1,
     flexWrap:'wrap',
-    //height:"10%",
     width:"100%",
   },
 
-  //////////////////////////////////
-
   inningsContainer: {
     flex:2,
-   // top:1,
-    //left:1,
     position:'relative',
-    //backgroundColor: 'gray',
     flexDirection:'column',
     alignItems: 'center',
-     justifyContent:'center',
-    //paddingTop:15,
+    justifyContent:'center',
     margin:2,
     padding:4,
     width:'100%',
     flexGrow:0,
-    //flexShrink: 8,
     flexBasis:"35%",
   },
   
  fallOfWicketRowView:{
-    //flex:2,
     flexDirection:'column',
-    //borderBottomEndRadius:20,
-    //borderBottomStartRadius:20,
     padding:2,
     margin:2,
     justifyContent:'space-evenly',
-    //alignSelf:"flex-end",
     backgroundColor:'#FFFF',
-
-    //height:120,
     width:"100%",
   },
-
-  /*eachTableRowView:{
-    //flex:2,
-    flexDirection:'row',
-    //borderBottomEndRadius:20,
-    //borderBottomStartRadius:20,
-    padding:1,
-    margin:2,
-    justifyContent:'space-evenly',
-    //alignItems:"flex-start",
-    backgroundColor:'powderblue',
-
-    height:"13%",
-    width:"100%",
-  },*/
-
   
   fallOfWicketValue:{
     backgroundColor:'#FFFF',
     height:"90%",
     margin:2,
     padding:2,
-    //paddingBottom:9,
     flexDirection:"row",
     justifyContent:'flex-start',
-    //alignContent:"center",
     flexWrap:"wrap", 
     flex:9,
-   // flexBasis:'0%',
   },
   
 
   fallOfWicketValueText:{
-   //height:'95%',
    fontWeight: 'bold',
    textAlign:"left",
    fontSize:10,
@@ -441,19 +321,15 @@ const styles = StyleSheet.create({
   },
 
   fallOfWicketTitle: {
-   // width:50,
     backgroundColor:'green',
     height:'10%',
     margin:1,
     padding:1,
-    //justifyContent:'space-between',
     flexWrap:"nowrap", 
     flex:3,
   },
 
   fallOfWicketTitleText: {
-    //width:"98%",
-    //height:"90%",
     fontWeight: 'bold',
     textAlign:"left",
     fontSize:10,
@@ -465,9 +341,7 @@ const styles = StyleSheet.create({
     padding:1,      
   },
 
-
   valueForExtra:{
-    //backgroundColor:'green',
     height:35,
     margin:2,
     padding:2,
@@ -476,23 +350,19 @@ const styles = StyleSheet.create({
     flex:8,
   },
   
-
   valueForExtraText:{
     height:"100%",
-   fontWeight: 'bold',
-   textAlign:"right",
-   fontSize:10,
-   //backgroundColor:'white',
-   justifyContent:'center',
-   flexWrap:'wrap',
-   padding:4,
-   margin:2,
-   alignItems:"center",
+    fontWeight: 'bold',
+    textAlign:"right",
+    fontSize:10,
+    justifyContent:'center',
+    flexWrap:'wrap',
+    padding:4,
+    margin:2,
+    alignItems:"center",
   },
 
   titleForExtra: {
-   // width:50,
-    //backgroundColor:'green',
     height:35,
     margin:2,
     padding:2,
@@ -502,20 +372,15 @@ const styles = StyleSheet.create({
   },
 
   titleForExtraText: {
-    //width:"98%",
-    //height:"100%",
     fontWeight: 'bold',
     textAlign:"left",
     fontSize:10,
-    //backgroundColor:'white',
     justifyContent:'center',
     flexWrap:'wrap',  
-    //margin:2,
     padding:4,      
   },
 
   valueForRun:{
-    //backgroundColor:'green',
     height:35,
     margin:2,
     padding:2,
@@ -524,13 +389,11 @@ const styles = StyleSheet.create({
     flex:8,
   },
   
-
   valueForRunText:{
     height:"100%",
    fontWeight: 'bold',
    textAlign:"right",
    fontSize:10,
-   //backgroundColor:'white',
    justifyContent:'center',
    flexWrap:'wrap',
    padding:4,
@@ -539,8 +402,6 @@ const styles = StyleSheet.create({
   },
 
   titleForRun: {
-   // width:50,
-    //backgroundColor:'green',
     height:35,
     margin:2,
     padding:2,
@@ -555,44 +416,29 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign:"left",
     fontSize:10,
-   // backgroundColor:'red',
     justifyContent:'center',
     flexWrap:'wrap',  
     margin:2,
     padding:4,      
   },
 
-
-yetToBatTitle:{
-    // width:50,
-    //backgroundColor:'green',
-    //height:35,
-    //margin:2,
+  yetToBatTitle:{
     padding:1,
     justifyContent:'space-between',
     flexWrap:"wrap", 
     flex:5,
   },
   
-
   yetToBatTitleText:{
      width:"98%",
-    //height:"100%",
     fontWeight: 'bold',
     textAlign:"right",
     fontSize:10,
-    //backgroundColor:'white',
     justifyContent:'center',
     flexWrap:'wrap',  
-    //margin:2,
-    //padding:4, 
   },
 
   yetToBatValue: {
-  //backgroundColor:'green',
-    //height:35,
-    //margin:2,
-    //padding:2,
     justifyContent:'flex-start',
     flexWrap:"nowrap", 
     flex:8,
@@ -603,7 +449,6 @@ yetToBatTitle:{
    fontWeight: 'bold',
    textAlign:"left",
    fontSize:10,
-   //backgroundColor:'white',
    justifyContent:'center',
    flexWrap:'wrap',
    padding:4,
