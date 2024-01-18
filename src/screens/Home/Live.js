@@ -7,7 +7,6 @@ import {
 	useSelector
 } from 'react-redux';
 
-import { styles } from "./Home.style";
 import { 
     getLiveScoresHome, 
     getLiveScoresRecentFinished,
@@ -83,16 +82,11 @@ const Live = () => {
 				);
 			}
 		},[]
-//		[livescores.length]
 	);
 	
     return (
 		<Fragment>
-			{/*this will show one scorecard
-			<View style={styles.pageContainer}>*/}
-			<ShortscoreList livescores={livescores.slice(0,12)}/>
-				{/*<BDMatch bdMatch={bdMatch} />*/}
-		
+			<ShortscoreList livescores={livescores.slice(0,12)}/>		
 		</Fragment>
     );
 }
