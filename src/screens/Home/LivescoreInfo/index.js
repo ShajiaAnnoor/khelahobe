@@ -52,12 +52,51 @@ const months = {
   'December,': 'ডিসেম্বর,',
 };
 
+function giveBelaOfTheDay(start_time_of_match_hours) {
+  let h = "";
+  if (
+    (
+      start_time_of_match_hours >= 0 && start_time_of_match_hours < 3
+    )
+    ||
+    (
+      start_time_of_match_hours >= 20 && start_time_of_match_hours <= 24
+    )
+  ) {
+      h = 'রাত';
+  }
+  else if (start_time_of_match_hours === 0) {
+      h = 'রাত';
+  }
+  else if (start_time_of_match_hours < 7 && start_time_of_match_hours >= 3) {
+      h = 'ভোর';
+  }
+  else if (start_time_of_match_hours >= 7 && start_time_of_match_hours < 11) {
+      h = 'সকাল';
+  }
+  else if (start_time_of_match_hours >= 11 && start_time_of_match_hours < 12) {
+      h = 'বেলা';
+  }
+  else if (start_time_of_match_hours>= 12 && start_time_of_match_hours< 15) {
+      h = 'দুপুর';
+  }
+  else if (start_time_of_match_hours>= 15 && start_time_of_match_hours< 18) {
+      h = 'বিকাল';
+  }
+  else if (start_time_of_match_hours>= 18 && start_time_of_match_hours< 20) {
+      h = 'সন্ধ্যা';
+  }
+
+  return h ; 
+}
+
 function getTime(start_time, day) {
 
   let today = new Date();
   let [days, month, year] = day[0].split(" ");
   let todayOrNotToday = (today.getDate()) === days ? ('আজ ' + days) : days;
   let start_time_of_match = new Date(start_time);
+  let start_time_of_match_hours = start_time_of_match.getHours();
   let h = '', test = '', st = '';
   let blabla = day[0].split(" ");
 
@@ -75,50 +114,18 @@ function getTime(start_time, day) {
 
   }
 
-  if (
-      (
-        start_time_of_match.getHours() >= 0 && start_time_of_match.getHours() < 3
-      )
-      ||
-      (
-        start_time_of_match.getHours() >= 20 && start_time_of_match.getHours() <= 24
-      )
-  ) {
-      h = 'রাত';
-  }
-  else if (start_time_of_match.getHours() === 0) {
-      h = 'রাত';
-  }
-  else if (start_time_of_match.getHours() < 7 && start_time_of_match.getHours() >= 3) {
-      h = 'ভোর';
-  }
-  else if (start_time_of_match.getHours() >= 7 && start_time_of_match.getHours() < 11) {
-      h = 'সকাল';
-  }
-  else if (start_time_of_match.getHours() >= 11 && start_time_of_match.getHours() < 12) {
-      h = 'বেলা';
-  }
-  else if (start_time_of_match.getHours() >= 12 && start_time_of_match.getHours() < 15) {
-      h = 'দুপুর';
-  }
-  else if (start_time_of_match.getHours() >= 15 && start_time_of_match.getHours() < 18) {
-      h = 'বিকাল';
-  }
-  else if (start_time_of_match.getHours() >= 18 && start_time_of_match.getHours() < 20) {
-      h = 'সন্ধ্যা';
-  }
-
+  h = giveBelaOfTheDay(start_time_of_match_hours);
   h += ' ' + (
       dfs(
-        start_time_of_match.getHours() > 12
+        start_time_of_match_hours> 12
               ?
               (
-                start_time_of_match.getHours() - 12
+                start_time_of_match_hours- 12
               )
               :
               (
                   (
-                    start_time_of_match.getHours() === 0
+                    start_time_of_match_hours=== 0
                       &&
                       '12'
                   )
@@ -143,6 +150,7 @@ function getTime(start_time, day) {
   st = (test !== '' && `${test}, ${h}`) || (`${todayOrNotToday} ${months[month]} ${year}, ${h}`);
   return st;
 }
+
 const LiveScoreInfo = ({
     slug, flag
 }) => {
@@ -151,7 +159,6 @@ const LiveScoreInfo = ({
 		state => getMatch(state, slug) || ''
 	);
 
-//  console.log(slug);
 	const shortScoreCard = useSelector(
 		state => getShortScore(state, slug)
 	);
@@ -311,146 +318,141 @@ const LiveScoreInfo = ({
 	if ( out1 !== '১০' ) { out1 = `/${out1}`}
   else { out1 = "" };
 
-  //const Stack = createNativeStackNavigator();
-  const navigation=useNavigation()
+  const navigation=useNavigation();
+  
     return (
-		  <View style={styles.listItem}>
-        <View style={ styles.itemContainer}>
-          <View style={styles.dateAndStatusContainer}>
+		<View style={styles.listItem}>
+        	<View style={styles.itemContainer}>
+          		<View style={styles.dateAndStatusContainer}>        
+					<Text style={styles.statusText}> 
+						{data.matchStatus} 
+					</Text>
+
+					<Text style={styles.dateTimeText} >  
+						{st}
+					</Text>
             
-            <Text style={styles.statusText}> 
-              {data.matchStatus} 
-            </Text>
+					<Text style={styles.dateTimeText} >  
+						`${data.series}, ${data.stadium}`
+					</Text>
+          		</View>
 
-            <Text style={styles.dateTimeText} >  
-              {st}
-            </Text>
-            
-            <Text style={styles.dateTimeText} >  
-            `${data.series}, ${data.stadium}`
-            </Text>
+				<View style={styles.manOfTheMatchContainer}>					
+					<Text style={styles.manOfTheMatchText}>
+						ম্যাচ সেরা খেলোয়াড়
+					</Text>
+					<Text style={styles.manOfTheMatchNameText} > 
+						{data.manOfTheMatch.name} 
+					</Text>
+				</View>
+        	</View> 
 
-          </View>
+        	<View style={{ width:'100%',flexDirection:'column'}}>
+          		<View style={ styles.teamScoreItemContainer}>
+            		<View style={styles.countryNameStyle}>
+              			<Text style={styles.countryNameTextStyle}> 
+                			{team1} 
+              			</Text> 
+            		</View>
 
-          <View style={styles.manOfTheMatchContainer}>
-            
-            <Text style={styles.manOfTheMatchText}>
-              ম্যাচ সেরা খেলোয়াড়
-            </Text>
+	            <View style={styles.scoreContainer}>
+    	        	<Text style={styles.scoreTextStyle}> 
+						{(data.matchType !== "TEST" && teamscore[0] && teamscore[0].total) ||''}
+						{
+							(
+								(over !== "০")
+							?
+								(
+								`${out} (${over} ওভার)`
+								)
+								:
+								null
+							
+							)
+						}
+						{(data.matchType === "TEST" && teamscore[test1] && teamscore[test1].total) || ''}
+						{
+							(
+								((teamscore[test1] && dfs(teamscore[test1].over) !== "০")
+								?
+								(
+									`${(teamscore[test1] && teamscore[test1].out) || '০' } (${dfs(teamscore[test1].over)} ওভার)`
+								)
+								:
+									null
 
-            <Text style={styles.manOfTheMatchNameText} > 
-              {data.manOfTheMatch.name} 
-            </Text>
+								)
+							)
+						}
+						{(data.matchType === "TEST" && teamscore[test3] && "এবং " + teamscore[test3].total) || ''}
+						{
+							(
+								((teamscore[test3] && dfs(teamscore[test3].over) !== "০")
+								?
+									(
+									`${(teamscore[test3] && teamscore[test3].out) || '০' } (${dfs(teamscore[test3].over)} ওভার)`
+									)
+									:
+									null
 
-          </View>
-        </View> 
+								)
+							)
+						}
+              		</Text>
+            	</View>
+        	</View>
 
-        <View style={{ width:'100%',flexDirection:'column'}}>
-          <View style={ styles.teamScoreItemContainer}>
-            <View style={styles.countryNameStyle}>
-              <Text style={styles.countryNameTextStyle}> 
-                {team1} 
-              </Text> 
-            </View>
-
-            <View style={styles.scoreContainer}>
-              <Text style={styles.scoreTextStyle}> 
-                {(data.matchType !== "TEST" && teamscore[0] && teamscore[0].total) ||''}
-                {
-                  (
-                    (over !== "০")
-                  ?
-                    (
-                      `${out} (${over} ওভার)`
-                    )
-                    :
-                      null
-                
-                  )
-                }
-                {(data.matchType === "TEST" && teamscore[test1] && teamscore[test1].total) || ''}
-                  {
-                    (
-                      ((teamscore[test1] && dfs(teamscore[test1].over) !== "০")
-                    ?
-                      (
-                        `${(teamscore[test1] && teamscore[test1].out) || '০' } (${dfs(teamscore[test1].over)} ওভার)`
-                      )
-                      :
-                        null
-
-                    )
-                  )
-                }
-                {(data.matchType === "TEST" && teamscore[test3] && "এবং " + teamscore[test3].total) || ''}
-                  {
-                    (
-                      ((teamscore[test3] && dfs(teamscore[test3].over) !== "০")
-                      ?
-                        (
-                          `${(teamscore[test3] && teamscore[test3].out) || '০' } (${dfs(teamscore[test3].over)} ওভার)`
-                        )
-                        :
-                          null
-
-                      )
-                    )
-                }
-              </Text>
-            </View>
-          </View>
-
-          <View style={ styles.teamScoreItemContainer}> 
-            <View style={styles.countryNameStyle}>
-              <Text style={styles.countryNameTextStyle} > 
-                {team2} 
-              </Text>
-            </View>
+        	<View style={ styles.teamScoreItemContainer}> 
+            	<View style={styles.countryNameStyle}>
+            		<Text style={styles.countryNameTextStyle} > 
+                		{team2} 
+            		</Text>
+            	</View>
                
-            <View style={styles.scoreContainer}>
-              <Text style={styles.scoreTextStyle}> 
-                {(data.matchType !== "TEST" && teamscore[1] && teamscore[1].total) ||''}
-                  {
-                    (
-                      (over1 !== "০")
-                      ?
-                      (
-                        `${out1} (${over1} ওভার)`
-                      )
-                      :
-                        null              
-                    )
-                  }
-                {(data.matchType === "TEST" && teamscore[test2] && teamscore[test2].total) || ''}
-                  {
-                    (
-                      ((teamscore[test2] && dfs(teamscore[test2].over) !== "০")
-                    ?
-                      (
-                        `${(teamscore[test2] && teamscore[test2].out) || '০' } (${dfs(teamscore[test2].over)} ওভার)`
-                      )
-                      :
-                        null
+            	<View style={styles.scoreContainer}>
+            		<Text style={styles.scoreTextStyle}> 
+						{(data.matchType !== "TEST" && teamscore[1] && teamscore[1].total) ||''}
+						{
+							(
+								(over1 !== "০")
+								?
+								(
+									`${out1} (${over1} ওভার)`
+								)
+								:
+									null              
+							)
+						}
+						{(data.matchType === "TEST" && teamscore[test2] && teamscore[test2].total) || ''}
+						{
+							(
+								((teamscore[test2] && dfs(teamscore[test2].over) !== "০")
+								?
+								(
+									`${(teamscore[test2] && teamscore[test2].out) || '০' } (${dfs(teamscore[test2].over)} ওভার)`
+								)
+								:
+									null
 
-                    )
-                  )
-                }
-                {(data.matchType === "TEST" && teamscore[test4] && "এবং " + teamscore[test4].total) || ''}
-                  {
-                    (
-                      ((teamscore[test4] && dfs(teamscore[test4].over) !== "০")
-                      ?
-                        (
-                          `${(teamscore[test4] && teamscore[test4].out) || '০' } (${dfs(teamscore[test4].over)} ওভার)`
-                        )
-                        :
-                          null
-                      )
-                    )
-                }
-               </Text>
-            </View>
-          </View>
+								)
+						)
+						}
+						{(data.matchType === "TEST" && teamscore[test4] && "এবং " + teamscore[test4].total) || ''}
+						{
+							(
+								((teamscore[test4] && dfs(teamscore[test4].over) !== "০")
+								?
+									(
+									`${(teamscore[test4] && teamscore[test4].out) || '০' } (${dfs(teamscore[test4].over)} ওভার)`
+									)
+									:
+									null
+								)
+							)
+						}
+    	        	</Text>
+            	</View>
+        	</View>
         </View>
 
         <View style={styles.summaryContainer}>
@@ -475,27 +477,26 @@ const LiveScoreInfo = ({
         </View>
 
         <View style={{paddingLeft:1,padding:2,flex:2}}>
-          <Pressable 
-            style ={{
-              height: 40,
-              width:100,
-              borderRadius:10,
-              backgroundColor:"green",
-              padding:10,
-              marginTop :1,
-              marginBottom:5,
-              elevation: 10,
-            }}
-            onPress={()=>navigation.navigate('ScorecardScreen',{slug:slug})}
-          >
-            <Text style={styles.buttonTextStyle}>
-              ম্যাচ বিস্তারিত
-            </Text>
-          </Pressable>
+			<Pressable 
+				style ={{
+					height: 40,
+					width:100,
+					borderRadius:10,
+					backgroundColor:"green",
+					padding:10,
+					marginTop :1,
+					marginBottom:5,
+					elevation: 10,
+				}}
+				onPress={()=>navigation.navigate('ScorecardScreen',{slug:slug})}
+			>
+				<Text style={styles.buttonTextStyle}>
+					ম্যাচ বিস্তারিত
+				</Text>
+			</Pressable>
         </View>
-      </View>
-    )
-}
+    </View>
+)}
 
 export const styles = StyleSheet.create({
     pageContainer: {
