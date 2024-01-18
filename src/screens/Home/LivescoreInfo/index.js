@@ -24,7 +24,6 @@ import {
 import { fetchMatchWithInnings } from "../../../../redux/complex-actions/scoreboard";
 import { dfs } from "../../../API/utils";
 //import ScorecardScreen from "../../Scorecard/ScorecardScreen";
-import ScoreCardScreen from "../../Scorecard/ScorecardScreen";
 
 const months = {
   'January': 'জানুয়ারি',
