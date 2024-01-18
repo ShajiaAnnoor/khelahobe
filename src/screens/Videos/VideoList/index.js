@@ -3,29 +3,9 @@ import React, { useState, useCallback, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import YoutubePlayer from "react-native-youtube-iframe";
+
 import { fetchHighlights } from "../../../../redux/complex-actions/highlights";
 import { getHighlights } from "../../../../redux/reducers/index";
-
-const Data =([
-  {
-    ID:"8wb3hiF20bQ",
-  },
-  {
-    ID:"yKq8FixQk2Q",   
-  },
-  {
-    ID:"XDVXA4Nuzw4",
-  },
-  {
-    ID:"u9Tce2NEMag",
-  },
-  {
-    ID:"GmIr5fqbLd0"
-  },
-  {
-    ID:"pHgf1dJD45c"
-  },  
-])
 
 export default function App() {
 
@@ -83,7 +63,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop:15,
