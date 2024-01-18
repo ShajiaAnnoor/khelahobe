@@ -1,4 +1,4 @@
-package com.khelahobe
+package co.aubichol.khelahobe
 
 import android.app.Application
 import com.facebook.react.PackageList
