@@ -1,112 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import uuid from 'react-native-uuid';
 import _ from "lodash"
 
 export default function App({teams}) {
-   const [ teamName, setTeamName ] = useState([
-     {
-       Name:"ইংল্যান্ড",
-     },
-     {
-       Name:"শ্রী লঙ্কা",
-     },
-   ])
-  const [ team1, setTeam1 ] = useState([
-    
-    {
-      Name: "পাথুম নিশঙ্কা",
-    },
-    {
-        Name:"কুশল পেরেরা",
-    },
-
-    {
-        Name:"চরিত অসালঙ্কা",
-    },
-   
-    {
-        Name:"অভিষ্কা ফার্নান্দো",
-    },
-
-    {
-        Name:"ভানুকা রাজাপক্ষ",
-    },
-
-    {
-        Name:"দাসুন শানকা (অধিনায়ক)",
-    },
-
-    {
-        Name:"ওয়ানিন্দু হাসারাঙ্গা ডি সিলভা",
-    },
-
-    {
-        Name:"চামিকা করুণারত্নে",
-    },
-
-    {
-        Name:"দুষ্মন্ত চামিরা",
-    },
-
-    {
-        Name:"মহীশ ঠিকশানা",
-    },
-
-    {
-        Name:"লাহিরু কুমারা",
-    },
-
-  ])
-
-  const [ team2, setTeam2 ] = useState([
-    {
-      Name: "জেসন রয়",
-    },
-    {
-        Name:"জস বাটলার",
-    },
-
-    {
-        Name:"ডেভিড মালান",
-    },
-   
-    {
-        Name:"জনি বেয়ারস",
-    },
-
-    {
-        Name:"এওইন মর্গ্যান (অধিনায়ক)",
-    },
-
-    {
-        Name:"মঈন আলি",
-    },
-
-    {
-        Name:"লিয়াম লিভিংস্টোন",
-    },
-
-    {
-        Name:"ক্রিস ওকস",
-    },
-
-    {
-        Name:"ক্রিস জর্ডান",
-    },
-
-    {
-        Name:"আদিল রশিদ",
-    },
-
-    {
-        Name:"টিমাল মিলস",
-    },
-
-  ])
-
+  
   const tableHeader = (teamname, alignDir,paddingL,paddingR) => {
     console.log(alignDir)
     return (
