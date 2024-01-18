@@ -1,18 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { 
   useState, 
-  useEffect,
 } from 'react';
 import { 
   StyleSheet, 
   Text, 
   View, 
   FlatList, 
-  TouchableOpacity, 
-  TouchableWithoutFeedback,
 } from 'react-native';
 import uuid from 'react-native-uuid';
 import _ from "lodash";
+
 import { dfs } from '../../../API/utils';
 
 export default function App({
@@ -31,60 +29,7 @@ export default function App({
   
   const [ direction, setDirection ] = useState(null)
   const [ selectedColumn, setSelectedColumn ] = useState(null)
-  /*
-  const [ pets, setPets ] = useState([
-    {
-      BowlerName: "মিচেল স্টার্ক",
-      Over:4.0,
-      Meiden:0,
-      Run:27,
-      Wicket:2,
-      Wide:1,
-      NoBall:0,
-      Economy:6.75,
-    },
-    {
-      BowlerName: "প্যাট প্যাট কামিন্স প্যাট ",
-      Over:4.0,
-      Meiden:0,
-      Run:37,
-      Wicket:2,
-      Wide:2,
-      NoBall:1,
-      Economy:8.5,
-    },
-    {
-      BowlerName: "প্যাট কামিন্স",
-      Over:4.0,
-      Meiden:0,
-      Run:37,
-      Wicket:2,
-      Wide:2,
-      NoBall:1,
-      Economy:8.5,
-    },
-    {
-      BowlerName:"গ্লেন ম্যাক্সওয়েল",
-      Over:1.0,
-      Meiden:0,
-      Run:16,
-      Wicket:0,
-      Wide:1,
-      NoBall:0,
-      Economy:16,
-    },
-    {
-      BowlerName: "মার্কাস স্টোইনিস",
-      Over:1.0,
-      Meiden:0,
-      Run:16,
-      Wicket:0,
-      Wide:1,
-      NoBall:0,
-      Economy:16,
-    },    
-  ])
-  */
+
   const sortTable = (column) => {
     const newDirection = direction === "desc" ? "asc" : "desc" 
     const sortedData = _.orderBy(pets, [column],[newDirection])
@@ -204,12 +149,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-   // backgroundColor: "#37C2D0",
-   backgroundColor:'green',
-    //borderTopEndRadius: 5,
-    //borderTopStartRadius: 5,
-   // height: 50,
-
+    backgroundColor:'green',
     flex:1,
     flexWrap:'wrap',
     height:"10%",
@@ -253,68 +193,31 @@ const styles = StyleSheet.create({
     justifyContent:'space-evenly', 
     flexWrap:"nowrap", 
     flex:3,
-    //flexShrink:1,
   },
 
   columnRowNameText: {
-    //width:"100%",
-    //height:"100%",
     fontWeight: 'bold',
     textAlign:"left",
     fontSize:8,
     justifyContent:'center',
     flexWrap:'wrap',
-    //alignContent:'center',
-    //flexDirection:'column',   
-
-  
   },
   
-  /*columnRowNumberItems: {
-    alignItems:"center",
-    padding:1,
-    justifyContent:'center', 
-    flexWrap:"nowrap",
-    flex:3, 
-  },
-
-  columnRowNumberItemsText: {
-    width:"100%",
-    height:"100%",
-    fontWeight:'bold',
-    textAlign:"center",
-    fontSize:10,
-    justifyContent:'center',
-    flexWrap:'nowrap',
-    padding:1,
-  },*/
-
   columnRowNumberItems: {
-    //alignItems:"center",
-    //backgroundColor:'yellow',
     height:35,
-    //marginLeft:2,
-    //marginRight:2,
     margin:3,
     padding:4,
     justifyContent:'center',
-    //flexWrap:"wrap",
     alignItems:"center",
     flex:3,
   },
 
   columnRowNumberItemsText: {
-   // width:"98%",
-    //height:"100%",
     fontWeight: 'bold',
     textAlign:'center',
-    fontSize:8,
-   // backgroundColor:'pink',
-   // justifyContent:'center',
-  
+    fontSize:8,  
     flexWrap:'wrap',
     padding:4,
-   // marginLeft:5,
     flex:2,
   },
 
@@ -324,8 +227,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexWrap:'nowrap',
     height:"10%",
-    width:"100%",
-
-    
+    width:"100%", 
   },
 });
