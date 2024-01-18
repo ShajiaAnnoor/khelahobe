@@ -1,4 +1,4 @@
-package com.khelahobe
+package co.aubichol.khelahobe
 
 import android.os.Bundle
 import com.zoontek.rnbootsplash.RNBootSplash
