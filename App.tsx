@@ -1,15 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React, {useEffect} from 'react';
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
 import BootSplash from "react-native-bootsplash";
 import { store, persistor } from "./redux/store";
+
 import MyApp from "./src/router";
 
 function App(): React.JSX.Element {
