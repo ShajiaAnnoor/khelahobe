@@ -31,8 +31,6 @@ const ScorecardComponent = ({ route }) => {
 		state => getMatch(state, slug)
 	);
 
-  console.log("teams are hererere ------>>>>>>")
-
   return (
     <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>{
