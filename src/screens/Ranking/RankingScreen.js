@@ -15,5 +15,4 @@ const RankingScreenComponent = ({ eva: { style }, navigation }) => {
   );
 };
 
-//const RankingScreen = withStyles(RankingScreenComponent, styles);
 export default RankingScreenComponent;
