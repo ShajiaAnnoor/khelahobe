@@ -1,5 +1,4 @@
 import React, {
-	Fragment,
 	useEffect,
 } from 'react';
 import {
@@ -18,9 +17,7 @@ import ShortscoreList from "./ShortscoreList";
 const Upcoming = () => {
 	let upcoming = useSelector(
 		state => getUpcoming(state)
-	)
-		||
-		[];
+	) || [];
 
     useEffect(
         () => {
@@ -33,9 +30,7 @@ const Upcoming = () => {
     const dispatch = useDispatch();
 
     return (
-		<Fragment>
-			<ShortscoreList livescores={upcoming}/>
-		</Fragment>
+		<ShortscoreList livescores={upcoming}/>
     );
 }
 
