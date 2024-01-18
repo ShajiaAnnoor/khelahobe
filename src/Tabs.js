@@ -6,12 +6,9 @@ import Home from "./screens/Home";
 //import Details from "./screens/ScoreDetails";
 //import MatchDetails from "./screens/MatchDetails";
 //import Squad from "./screens/Squad";
-import Livescore from "./screens/Livescore/LivescoreScreen";
-import ScorecardScreen from "./screens/Scorecard/ScorecardScreen";
-import RankingScreen from "./screens/Ranking/RankingScreen";
+//import RankingScreen from "./screens/Ranking/RankingScreen";
 import BlogList from "./screens/Blog/BlogList";
 import Videos from "./screens/Videos/VideoList/index";
-//import SeriesScreen from "./screens/"
 
 const Tab = createBottomTabNavigator()
 
@@ -77,18 +74,6 @@ export default function Tabs() {
                       ),
                 }} 
             />*/}
-            {/*
-            <Tab.Screen 
-                name="Livescore" 
-                component={Livescore}
-                options={{
-                    tabBarLabel: "Livescore",
-                    tabBarIcon: ({ color, size }) => (
-                        <AntDesign name="notification" size={24} color={color} />
-                      ),
-                }} 
-            />
-            */}
             <Tab.Screen 
                 name="Videos" 
                 component={Videos}
