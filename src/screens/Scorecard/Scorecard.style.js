@@ -8,8 +8,6 @@ export const styles = StyleSheet.create({
       flexDirection:'column',
     },
     scrollView: {
-      //backgroundColor: 'pink',
-      //marginHorizontal: 20,
     },
     text: {
       fontSize: 42,
