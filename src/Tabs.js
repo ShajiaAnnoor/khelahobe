@@ -1,8 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//import { AntDesign } from "@expo/vector-icons";
-//import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-//import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Icon } from '@rneui/themed';
 
 import Home from "./screens/Home";
 //import Details from "./screens/ScoreDetails";
@@ -14,7 +12,6 @@ import RankingScreen from "./screens/Ranking/RankingScreen";
 import BlogList from "./screens/Blog/BlogList";
 import Videos from "./screens/Videos/VideoList/index";
 //import SeriesScreen from "./screens/"
-import { Icon } from '@rneui/themed';
 
 const Tab = createBottomTabNavigator()
 
@@ -31,31 +28,6 @@ export default function Tabs() {
                 headerStyle: { backgroundColor: 'tomato' },
             }}
         >
-
-            {/*
-            <Tab.Screen 
-                name="ScorecardScreen" 
-                component={ScorecardScreen} 
-                options={{
-                    tabBarLabel: "ScorecardScreen",
-                    tabBarIcon: ({ color, size }) => (
-                        <Icon
-                            name='g-translate'
-                            color='#00aced' 
-                        />                      ),
-                }}
-            />
-            */}
-          {/* <Tab.Screen 
-                name="MatchDetails" 
-                component={MatchDetails} 
-                options={{
-                    tabBarLabel: "MatchDetails",
-                    tabBarIcon: ({ color, size }) => (
-                        <AntDesign name="notification" size={24} color={color} />
-                      ),
-                }}
-            />*/}
             <Tab.Screen 
                 name="Home" 
                 component={Home} 
@@ -145,12 +117,6 @@ export default function Tabs() {
                         />                      ),
                 }} 
             />
-            {/*
-            <Tab.Screen 
-                name="Highlights" 
-                component={BlogScreen} 
-            />
-            */}
         </Tab.Navigator>
     )
 }
