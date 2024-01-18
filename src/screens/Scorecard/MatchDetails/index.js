@@ -37,11 +37,10 @@ export default function App({
     {
       Name: "সিরিজ",
       Value:series,
-     
     },
     {
-        Name:"স্টেডিয়াম",
-        Value:stadium,
+      Name:"স্টেডিয়াম",
+      Value:stadium,
     },
     {
         Name:"টস",
@@ -127,25 +126,21 @@ export default function App({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop:15,
     margin:2,
-    padding:10,
-    
+    padding:10,    
   },
+  
   tableHeader: {
     backgroundColor:'green',
-    //borderTopEndRadius: 5,
-   // borderTopStartRadius: 5,
-    
     flexWrap:'nowrap',
     height:"10%",
     width:"100%",
-   paddingTop:10,
-   paddingBottom:10,
-   paddingLeft:2,
+    paddingTop:10,
+    paddingBottom:10,
+    paddingLeft:2,
     flex:3,
   },
 
@@ -163,7 +158,6 @@ const styles = StyleSheet.create({
   },
 
    rowItemName: {
-    //flexDirection:'row',
     alignItems:"center",
     height:35,
     margin:2,
