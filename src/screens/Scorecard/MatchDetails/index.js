@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import _ from "lodash"
 import uuid from 'react-native-uuid';
 
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
     margin:2,
     padding:10,    
   },
-  
+
   tableHeader: {
     backgroundColor:'green',
     flexWrap:'nowrap',
