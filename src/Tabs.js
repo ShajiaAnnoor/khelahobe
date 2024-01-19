@@ -85,7 +85,8 @@ export default function Tabs() {
                             color={color}
                             size={30}
                             type="material"
-                        />                      ),
+                        />                      
+                    ),
                 }}  
             />
             <Tab.Screen 
@@ -99,7 +100,8 @@ export default function Tabs() {
                             color={color}
                             size={30}
                             type="material"
-                        />                      ),
+                        />                      
+                    ),
                 }} 
             />
         </Tab.Navigator>
