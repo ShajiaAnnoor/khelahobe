@@ -22,7 +22,7 @@ export default function App({
 	over,
 }) {
   
-  const [ columns, setColumns ] = useState([
+  const [ columns ] = [
     "ব্যাটার",
     "বিস্তারিত​",
     "রান",
@@ -30,30 +30,30 @@ export default function App({
     "চার",
     "ছক্কা",
     "স্ট্রাইক রেট",
-  ]);
+  ];
 
   const tableHeader = () => (
     <View style={styles.tableHeader}>
         <View style={{...styles.columnRowName,}}>
-            <Text style={{...styles.columnRowNameText}}>ব্যাটার</Text>
+            <Text style={{...styles.columnRowNameText}}>{columns[0]}</Text>
         </View>
         <View style={{...styles.columnRowDetail}}>
-            <Text style={styles.columnRowDetailText}>বিস্তারিত​ বিস্তারিত বিস্তারিত</Text>
+            <Text style={styles.columnRowDetailText}>{columns[1]}​</Text>
         </View>
         <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>রান</Text>
+            <Text style={styles.columnRowNumberItemsText}>{columns[2]}</Text>
         </View>
         <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>বল</Text>
+            <Text style={styles.columnRowNumberItemsText}>{columns[3]}</Text>
         </View>
         <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>চার</Text>
+            <Text style={styles.columnRowNumberItemsText}>{columns[4]}</Text>
         </View>
         <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>ছক্কা</Text>
+            <Text style={styles.columnRowNumberItemsText}>{columns[5]}</Text>
         </View>
         <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>স্ট্রাইক রেট</Text>
+            <Text style={styles.columnRowNumberItemsText}>{columns[6]}</Text>
         </View>
     </View>
   )
