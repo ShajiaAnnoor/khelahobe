@@ -39,7 +39,7 @@ export default function App() {
 			<FlatList 
 				data={highlights}
 				style={{width:"100%",flex:1,flexDirection:'column'}}
-				keyExtractor={(item, index) => index+""}
+				keyExtractor={(index) => index+""}
 				renderItem={({item})=> {
 					return (
 						<View>      
@@ -60,13 +60,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	container: {
-	flex: 1,
-	alignItems: 'center',
-	justifyContent: 'center',
-	paddingTop:15,
-	margin:2,
-	padding:10,
-},
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		paddingTop:15,
+		margin:2,
+		padding:10,
+	},
 
 	headline: {
 		fontSize:20,
