@@ -161,14 +161,15 @@ const columns  = [
 							fow.map(
 							(
 								f, index
-							) => {
+							) => 
+							{
 								let invalidOver = (f.over === 'None' && true) || false;
 								let name = ""
-								name = (index > 0 && !invalidOver && `,(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+//								name = (index > 0 && !invalidOver && `,(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
 								if( index == 0 ) {
 									name = (!invalidOver && `(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
 								} else {
-									name = (!invalidOver && `(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+									name = (!invalidOver && `, (${f.name}, ${dfs(f.over)} ওভার)`) || `, (${f.name})`;
 								}
 								return (
 								<Text
@@ -180,7 +181,7 @@ const columns  = [
 								)
 							}
 							)
-							}
+						}
 					</View>
 				</View> 
 
