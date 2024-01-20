@@ -1,24 +1,22 @@
 import React, { 
-  useEffect, 
-  Fragment,
- } from "react";
+	useEffect, 
+	Fragment,
+} from "react";
 import { 
-  useSelector, 
-  useDispatch,
+	useSelector, 
+	useDispatch,
 } from "react-redux";
 import { 
-  Pressable, 
-  Text, 
-  View,
+	Pressable, 
+	Text, 
+	View,
 } from "react-native";
-import 
-    { useNavigation
-} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import { 
-  getMatch, 
-  getShortScore, 
-  getTeamsScore,
+	getMatch, 
+	getShortScore, 
+	getTeamsScore,
 } from "../../../../redux/reducers";
 import { fetchMatchWithInnings } from "../../../../redux/complex-actions/scoreboard";
 import { dfs } from "../../../API/utils";
@@ -29,7 +27,7 @@ const LiveScoreInfo = ({
     slug, flag
 }) => {
 	
-    const data = useSelector(
+    const match = useSelector(
 		state => getMatch(state, slug) || ''
 	);
 
@@ -52,9 +50,9 @@ const LiveScoreInfo = ({
 				fetchMatchWithInnings(slug)
 			);
 			if (flag === 0 || (
-				data.matchState
+				match.matchState
 				&&
-				data.matchState === 'POST'
+				match.matchState === 'POST'
 			)) return;
 			const interval = setInterval(
 				() => dispatch(
@@ -66,25 +64,25 @@ const LiveScoreInfo = ({
 			return () => clearInterval(interval);
 		},
 		[
-//			data.matchState
+//			match.matchState
 		]
 	);
 
     useEffect(
       () => {
         if (
-          flag === 0
+          flag === 0 //TO-DO: What is the purpose of this app? 
           ||
           (
-              data.matchStatus
+              match.matchStatus
               &&
-              data.matchStatus === 'স্টাম্পস'
+              match.matchStatus === 'স্টাম্পস'
           )
           ||
           (
-              data.matchStatus
+              match.matchStatus
               &&
-              data.matchStatus === 'সরাসরি কাভারেজ নেই'
+              match.matchStatus === 'সরাসরি কাভারেজ নেই'
           )
         ) {
             const interval = setInterval(
@@ -100,12 +98,12 @@ const LiveScoreInfo = ({
         }
       },
       [
-//          data.matchState,
-//          data.matchStatus,
+//          match.matchState,
+//          match.matchStatus,
       ]
     );
 	
-	if (!data || isEmpty(data)) {
+	if (!match || isEmpty(match)) {
 		return (<Fragment></Fragment>);
 	}
 
@@ -117,11 +115,11 @@ const LiveScoreInfo = ({
 		test4 = 110;
 
 	if (
-		data.matchType === 'T20'
+		match.matchType === 'T20'
 		||
-		data.matchType === 'ODI'
+		match.matchType === 'ODI'
 		||
-		data.matchType === 'HUNDRED_BALL'
+		match.matchType === 'HUNDRED_BALL'
 	) {
 		if (
 			teamscore[0]
@@ -138,7 +136,7 @@ const LiveScoreInfo = ({
 	}
 
 	if (
-		data.matchType === 'TEST' //only test
+		match.matchType === 'TEST' //only test
 	) {
 		if (!teamscore) { //when no teamscore is there
 			team1 = shortScoreCard.teams[0].toLowerCase();
@@ -177,9 +175,9 @@ const LiveScoreInfo = ({
 	}
 
 	const l = `${shortScoreCard.remainingball} বলে ${shortScoreCard.remainingrun} রান দরকার`;
-	const st = getTime(data.start_time, data.days);
+	const st = getTime(match.start_time, match.days);
 
-	if (!data) return '';
+	if (!match) return '';
 	
 	let over = teamscore[0] && teamscore[0].over || ''
 	let out = teamscore[0] && teamscore[0].out || ''
@@ -200,7 +198,7 @@ const LiveScoreInfo = ({
         	<View style={styles.itemContainer}>
           		<View style={styles.dateAndStatusContainer}>        
 					<Text style={styles.statusText}> 
-						{data.matchStatus} 
+						{match.matchStatus} 
 					</Text>
 
 					<Text style={styles.dateTimeText} >  
@@ -208,7 +206,7 @@ const LiveScoreInfo = ({
 					</Text>
             
 					<Text style={styles.dateTimeText} >  
-						`${data.series}, ${data.stadium}`
+						`${match.series}, ${match.stadium}`
 					</Text>
           		</View>
 
@@ -217,7 +215,7 @@ const LiveScoreInfo = ({
 						ম্যাচ সেরা খেলোয়াড়
 					</Text>
 					<Text style={styles.manOfTheMatchNameText} > 
-						{data.manOfTheMatch.name} 
+						{match.manOfTheMatch.name} 
 					</Text>
 				</View>
         	</View> 
@@ -232,7 +230,7 @@ const LiveScoreInfo = ({
 
 	            <View style={styles.scoreContainer}>
     	        	<Text style={styles.scoreTextStyle}> 
-						{(data.matchType !== "TEST" && teamscore[0] && teamscore[0].total) ||''}
+						{(match.matchType !== "TEST" && teamscore[0] && teamscore[0].total) ||''}
 						{
 							(
 								(over !== "০")
@@ -244,7 +242,7 @@ const LiveScoreInfo = ({
 								null							
 							)
 						}
-						{(data.matchType === "TEST" && teamscore[test1] && teamscore[test1].total) || ''}
+						{(match.matchType === "TEST" && teamscore[test1] && teamscore[test1].total) || ''}
 						{
 							(
 								((teamscore[test1] && dfs(teamscore[test1].over) !== "০")
@@ -258,7 +256,7 @@ const LiveScoreInfo = ({
 								)
 							)
 						}
-						{(data.matchType === "TEST" && teamscore[test3] && "এবং " + teamscore[test3].total) || ''}
+						{(match.matchType === "TEST" && teamscore[test3] && "এবং " + teamscore[test3].total) || ''}
 						{
 							(
 								((teamscore[test3] && dfs(teamscore[test3].over) !== "০")
@@ -285,7 +283,7 @@ const LiveScoreInfo = ({
                
             	<View style={styles.scoreContainer}>
             		<Text style={styles.scoreTextStyle}> 
-						{(data.matchType !== "TEST" && teamscore[1] && teamscore[1].total) ||''}
+						{(match.matchType !== "TEST" && teamscore[1] && teamscore[1].total) ||''}
 						{
 							(
 								(over1 !== "০")
@@ -297,7 +295,7 @@ const LiveScoreInfo = ({
 									null              
 							)
 						}
-						{(data.matchType === "TEST" && teamscore[test2] && teamscore[test2].total) || ''}
+						{(match.matchType === "TEST" && teamscore[test2] && teamscore[test2].total) || ''}
 						{
 							(
 								((teamscore[test2] && dfs(teamscore[test2].over) !== "০")
@@ -311,7 +309,7 @@ const LiveScoreInfo = ({
 								)
 						)
 						}
-						{(data.matchType === "TEST" && teamscore[test4] && "এবং " + teamscore[test4].total) || ''}
+						{(match.matchType === "TEST" && teamscore[test4] && "এবং " + teamscore[test4].total) || ''}
 						{
 							(
 								((teamscore[test4] && dfs(teamscore[test4].over) !== "০")
@@ -335,13 +333,13 @@ const LiveScoreInfo = ({
           >
             {
               (
-                data.result 
-                  ? data.result : (
+                match.result 
+                  ? match.result : (
                   (
-                    teamscore.length === 0 && data.scoreboards === ''
+                    teamscore.length === 0 && match.scoreboards === ''
                   ) 
                     ? 
-                    data.toss 
+                    match.toss 
                     : 
                     l
                   )
