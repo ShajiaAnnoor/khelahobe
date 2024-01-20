@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { 
 	FlatList, 
-	StyleSheet, 
 	Text, 
 	View, 
 } from 'react-native';
@@ -33,38 +32,38 @@ const columns  = [
 
   	const tableHeader = () => (
 		<View style={styles.tableHeader}>
-			<View style={{...styles.columnRowName,}}>
-				<Text style={{...styles.columnRowNameText}}>
+			<View style={styles.columnRowName}>
+				<Text style={{...styles.columnRowNameText,color:'white'}}>
 					{columns[0]}
 				</Text>
 			</View>
 			<View style={{...styles.columnRowDetail}}>
-				<Text style={styles.columnRowDetailText}>
+				<Text style={{...styles.columnRowDetailText,color:'white'}}>
 					{columns[1]}
 				​</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={styles.columnRowNumberItemsText}>
+				<Text style={{...styles.columnRowNumberItemsText,color:'white'}}>
 					{columns[2]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={styles.columnRowNumberItemsText}>
+				<Text style={{...styles.columnRowNumberItemsText,color:'white'}}>
 					{columns[3]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={styles.columnRowNumberItemsText}>
+				<Text style={{...styles.columnRowNumberItemsText,color:'white'}}>
 					{columns[4]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={styles.columnRowNumberItemsText}>
+				<Text style={{...styles.columnRowNumberItemsText,color:'white'}}>
 					{columns[5]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={styles.columnRowNumberItemsText}>
+				<Text style={{...styles.columnRowNumberItemsText,color:'white'}}>
 					{columns[6]}
 				</Text>
 			</View>
@@ -165,7 +164,6 @@ const columns  = [
 							{
 								let invalidOver = (f.over === 'None' && true) || false;
 								let name = ""
-//								name = (index > 0 && !invalidOver && `,(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
 								if( index == 0 ) {
 									name = (!invalidOver && `(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
 								} else {
