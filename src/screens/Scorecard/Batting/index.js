@@ -8,6 +8,7 @@ import {
 import _ from "lodash";
 import uuid from 'react-native-uuid';
 
+import { styles } from "./style";
 import { dfs } from '../../../API/utils';
 
 export default function App({
@@ -20,7 +21,7 @@ export default function App({
 	over,
 }) {
   
-const [ columns ] = [
+const columns  = [
     "ব্যাটার",
     "বিস্তারিত​",
     "রান",
@@ -121,38 +122,17 @@ const [ columns ] = [
 			/>
 
 			<View style={styles.inningsContainer}>
-				<View style={styles.fallOfWicketRowView}>
-					 <View style={styles.fallOfWicketTitle}>
-    					<Text style={{...styles.fallOfWicketTitleText, fontWeight:"bold"}}>উইকেটের পতন:</Text>
- 					</View>
- 
-					<View style={styles.fallOfWicketValue}>
-						{
-							fow
-							&&
-							fow.map(
-							(
-								f, index
-							) => {
-								let invalidOver = (f.over === 'None' && true) || false;
-								let name = ""
-								name = (index > 0 && !invalidOver && `,(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
-								if( index == 0 ) {
-								name = (!invalidOver && `(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
-								} else {
-								name = (!invalidOver && `,(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
-								}
-								return (
-								<Text
-									style={styles.fallOfWicketValueText}
-									key={uuid.v4()}
-								>
-								{index > 0 ? ',' : ''}{f.wicket}-{dfs(f.run)} {name}
-								</Text>
-								)
-							}
-							)
-							}
+
+				<View style={{...styles.eachTableRowView, backgroundColor:'#FFFF',}}>
+					<View style={styles.titleForRun}>
+    					<Text style={{...styles.titleForRunText, fontWeight:"bold"}}>
+							মোট রান
+						</Text>
+					</View>
+					<View style={styles.valueForRun}>
+						<Text style={styles.valueForRunText}>
+							{total}{out === '১০' ? ' অল আউট' : `/${out}`} ({over} ওভার)
+						</Text>
 					</View>
 				</View>
 
@@ -169,16 +149,38 @@ const [ columns ] = [
   					</View>
 				</View>
 
-				<View style={{...styles.eachTableRowView, backgroundColor:'#FFFF',}}>
-					<View style={styles.titleForRun}>
-    					<Text style={{...styles.titleForRunText, fontWeight:"bold"}}>
-							মোট রান
-						</Text>
-					</View>
-					<View style={styles.valueForRun}>
-						<Text style={styles.valueForRunText}>
-							{total}{out === '১০' ? ' অল আউট' : `/${out}`} ({over} ওভার)
-						</Text>
+				<View style={styles.fallOfWicketRowView}>
+					<View style={styles.fallOfWicketTitle}>
+    					<Text style={{...styles.fallOfWicketTitleText, fontWeight:"bold"}}>উইকেটের পতন:</Text>
+ 					</View>
+ 
+					<View style={styles.fallOfWicketValue}>
+						{
+							fow
+							&&
+							fow.map(
+							(
+								f, index
+							) => {
+								let invalidOver = (f.over === 'None' && true) || false;
+								let name = ""
+								name = (index > 0 && !invalidOver && `,(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+								if( index == 0 ) {
+									name = (!invalidOver && `(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+								} else {
+									name = (!invalidOver && `(${f.name}, ${dfs(f.over)} ওভার)`) || `(${f.name})`;
+								}
+								return (
+								<Text
+									style={styles.fallOfWicketValueText}
+									key={uuid.v4()}
+								>
+								{index > 0 ? '' : ''}{f.wicket}-{dfs(f.run)} {name}
+								</Text>
+								)
+							}
+							)
+							}
 					</View>
 				</View> 
 
@@ -212,265 +214,3 @@ const [ columns ] = [
   	);
 }
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		flexDirection:"column",
-	},
-
-	tableHeader: {
-		flexDirection: "row",
-		justifyContent: "center",
-		alignItems: "center",
-		backgroundColor: "green",
-		borderTopEndRadius: 5,
-		borderTopStartRadius: 5,
-		flex:1,
-		flexWrap:'wrap',
-		height:"10%",
-		width:"100%",
-	},
-
-	columnRowNameText: {
-		fontWeight: 'bold',
-		textAlign:"left",
-		fontSize:10,
-		justifyContent:'center',
-		flexWrap:'wrap',        
-	},
-
-	columnRowName: {
-		alignItems:"center",
-		marginLeft:8,
-		padding:2,
-		justifyContent:'space-evenly',
-		flexWrap:"wrap", 
-		flex:8,
-	},
-
-	columnRowDetailText: {
-		fontWeight: 'bold',
-		textAlign:"left",
-		fontSize:10,
-		flexWrap:'wrap',
-		padding:2,
-	},
-
-	columnRowDetail: {
-		padding:2,
-		justifyContent:'flex-start',
-		alignItems:'flex-start',
-		flex:6,
-	},
-
-	columnRowNumberItems: {
-		height:35,
-		padding:2,
-		justifyContent:'center',
-		alignItems:"center",
-		flex:3,
-	},
-
-	columnRowNumberItemsText: {
-		fontWeight: 'bold',
-		textAlign:'center',
-		fontSize:10,  
-		flexWrap:'wrap',
-		padding:4,
-		flex:2,
-	},
-
-	eachTableRowView:{
-		flexDirection: "row",
-		justifyContent: "center",
-		alignItems: "center",
-		flex:1,
-		flexWrap:'wrap',
-		width:"100%",
-	},
-
-	inningsContainer: {
-		flex:2,
-		position:'relative',
-		flexDirection:'column',
-		alignItems: 'center',
-		justifyContent:'center',
-		margin:2,
-		padding:4,
-		width:'100%',
-		flexGrow:0,
-		flexBasis:"35%",
-	},
-
-	fallOfWicketRowView:{
-		flexDirection:'column',
-		padding:2,
-		margin:2,
-		justifyContent:'space-evenly',
-		backgroundColor:'#FFFF',
-		width:"100%",
-	},
-
-	fallOfWicketValue:{
-		backgroundColor:'#FFFF',
-		height:"90%",
-		margin:2,
-		padding:2,
-		flexDirection:"row",
-		justifyContent:'flex-start',
-		flexWrap:"wrap", 
-		flex:9,
-	},
-
-	fallOfWicketValueText:{
-		fontWeight: 'bold',
-		textAlign:"left",
-		fontSize:10,
-		backgroundColor:'white',
-		justifyContent:'center',
-		alignContent:'center',
-		flexWrap:'nowrap',
-		padding:1,
-		margin:1,
-		alignItems:"center",
-	},
-
-	fallOfWicketTitle: {
-		backgroundColor:'green',
-		height:'10%',
-		margin:1,
-		padding:1,
-		flexWrap:"nowrap", 
-		flex:3,
-	},
-
-	fallOfWicketTitleText: {
-		fontWeight: 'bold',
-		textAlign:"left",
-		fontSize:10,
-		backgroundColor:'white',
-		justifyContent:'center',
-		alignContent:'center',
-		flexWrap:'wrap',  
-		margin:1,
-		padding:1,      
-	},
-
-	valueForExtra:{
-		height:35,
-		margin:2,
-		padding:2,
-		justifyContent:'flex-start',
-		flexWrap:"nowrap", 
-		flex:8,
-	},
-
-	valueForExtraText:{
-		height:"100%",
-		fontWeight: 'bold',
-		textAlign:"right",
-		fontSize:10,
-		justifyContent:'center',
-		flexWrap:'wrap',
-		padding:4,
-		margin:2,
-		alignItems:"center",
-	},
-
-	titleForExtra: {
-		height:35,
-		margin:2,
-		padding:2,
-		justifyContent:'space-between',
-		flexWrap:"wrap", 
-		flex:2,
-	},
-
-	titleForExtraText: {
-		fontWeight: 'bold',
-		textAlign:"left",
-		fontSize:10,
-		justifyContent:'center',
-		flexWrap:'wrap',  
-		padding:4,      
-	},
-
-	valueForRun:{
-		height:35,
-		margin:2,
-		padding:2,
-		justifyContent:'flex-start',
-		flexWrap:"nowrap", 
-		flex:8,
-	},
-
-	valueForRunText:{
-		height:"100%",
-		fontWeight: 'bold',
-		textAlign:"right",
-		fontSize:10,
-		justifyContent:'center',
-		flexWrap:'wrap',
-		padding:4,
-		margin:2,
-		alignItems:"center",
-	},
-
-	titleForRun: {
-		height:35,
-		margin:2,
-		padding:2,
-		justifyContent:'space-between',
-		flexWrap:"wrap", 
-		flex:2,
-	},
-
-	titleForRunText: {
-		width:"98%",
-		height:"100%",
-		fontWeight: 'bold',
-		textAlign:"left",
-		fontSize:10,
-		justifyContent:'center',
-		flexWrap:'wrap',  
-		margin:2,
-		padding:4,      
-	},
-
-	yetToBatTitle:{
-		padding:1,
-		justifyContent:'space-between',
-		flexWrap:"wrap", 
-		flex:5,
-	},
-
-	yetToBatTitleText:{
-		width:"98%",
-		fontWeight: 'bold',
-		textAlign:"right",
-		fontSize:10,
-		justifyContent:'center',
-		flexWrap:'wrap',  
-	},
-
-	yetToBatValue: {
-		justifyContent:'flex-start',
-		flexWrap:"nowrap", 
-		flex:8,
-	},
-
-	yetToBatValueText: {
-		height:"100%",
-		fontWeight: 'bold',
-		textAlign:"left",
-		fontSize:10,
-		justifyContent:'center',
-		flexWrap:'wrap',
-		padding:4,
-		margin:2,
-		alignItems:"center",      
-	}, 
-
-});
