@@ -11,6 +11,7 @@ import {
 import uuid from 'react-native-uuid';
 import _ from "lodash";
 
+import { styles } from './style';
 import { dfs } from '../../../API/utils';
 
 export default function App({
