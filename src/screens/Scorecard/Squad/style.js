@@ -1,0 +1,91 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		paddingTop:15,
+		margin:2,
+		padding:2,
+		flexDirection:'row',
+	},
+
+	tableHeader: {
+		backgroundColor:'green',
+		borderTopEndRadius: 5,
+		borderTopStartRadius: 5,
+
+		flexWrap:'nowrap',
+		height:"10%",
+		width:"100%",
+		paddingTop:10,
+		paddingBottom:10,
+		paddingLeft:2,
+		flex:3,
+	},
+
+	tableHeaderText:{
+		color: "white",
+		fontWeight:"bold",
+		textAlign:'center',
+	},
+
+	tableRow: {
+		flexDirection: "row",
+		height: 40,
+		alignItems:"center",
+		flexWrap:"wrap",
+	},
+
+	team1PlayerNames: {
+		width:'100%',
+		alignItems:"flex-end",
+		height:35,
+		marginRight:2,
+		paddingRight:5,
+		margin:1,
+		padding:1,
+		flexWrap:"nowrap", 
+		flex:2,
+	},
+
+	team1PlayerNamesText: {
+		fontWeight: 'bold',
+		textAlign:"right",
+		fontSize:8,
+		flexWrap:'nowrap', 
+		padding:2,
+		margin:2,
+	},
+
+	team2PlayerNames: {
+		width:'100%',
+		alignItems:"flex-start",
+		paddingLeft:5,
+		marginLeft:2,
+		height:35,
+		margin:1,
+		padding:1,
+		flexWrap:'nowrap',
+		flex:2,
+	},
+
+	team2PlayerNamesText: {
+		fontWeight: 'bold',
+		textAlign:"left",
+		fontSize:8,
+		padding:2,
+		margin:2,
+		flexWrap:'nowrap',   
+	},
+
+	eachTableRowView: {
+		flex:2,
+		flexDirection:'row',
+		justifyContent:'center',
+		flexWrap:'nowrap',
+		height:"10%",
+		width:"100%",
+	},
+});
