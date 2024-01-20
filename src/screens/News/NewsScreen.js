@@ -5,7 +5,7 @@ import { SafeAreaView, View } from 'react-native';
 
 import { styles } from "./News.style";
 
-const NewsScreenComponent = ({ navigation }) => {
+const NewsScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
