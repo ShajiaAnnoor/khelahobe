@@ -28,9 +28,6 @@ export default function App({
 		"ইকোনমি",
 	])
   
-	const [ direction, setDirection ] = useState(null)
-	const [ selectedColumn, setSelectedColumn ] = useState(null)
-
 	const tableHeader = () => (
 		<View style={styles.tableHeader}>  
 			<View style={{...styles.columnRowName}}>
