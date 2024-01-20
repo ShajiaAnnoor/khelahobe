@@ -49,28 +49,26 @@ columnRowText: {
     flex:1,
 },
 
-columnRowName: {
-    alignItems:"center",
-    height:35,
-    margin:2,
-    padding:2,
-    justifyContent:'space-evenly', 
-    flexWrap:"nowrap", 
-    flex:3,
-},
-
 columnRowNameText: {
     fontWeight: 'bold',
     textAlign:"left",
-    fontSize:8,
+    fontSize:10,
     justifyContent:'center',
-    flexWrap:'wrap',
+    flexWrap:'wrap',        
+},
+
+columnRowName: {
+    alignItems:"center",
+    marginLeft:8,
+    padding:2,
+    justifyContent:'center',
+    flexWrap:"wrap", 
+    flex:5,
 },
 
 columnRowNumberItems: {
     height:35,
-    margin:3,
-    padding:4,
+    padding:2,
     justifyContent:'center',
     alignItems:"center",
     flex:3,
@@ -79,7 +77,7 @@ columnRowNumberItems: {
 columnRowNumberItemsText: {
     fontWeight: 'bold',
     textAlign:'center',
-    fontSize:8,  
+    fontSize:10,  
     flexWrap:'wrap',
     padding:4,
     flex:2,
