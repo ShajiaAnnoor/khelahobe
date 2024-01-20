@@ -1,5 +1,4 @@
 import React, {
-	Fragment,
 	useEffect,
 } from 'react';
 import {
@@ -85,9 +84,7 @@ const Live = () => {
 	);
 	
     return (
-		<Fragment>
-			<ShortscoreList livescores={livescores.slice(0,12)}/>		
-		</Fragment>
+		<ShortscoreList livescores={livescores.slice(0,12)}/>		
     );
 }
 
