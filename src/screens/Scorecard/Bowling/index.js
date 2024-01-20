@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { 
-  useState, 
+	useState, 
 } from 'react';
 import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  FlatList, 
+	FlatList, 
+	StyleSheet, 
+	Text, 
+	View, 
 } from 'react-native';
 import uuid from 'react-native-uuid';
 import _ from "lodash";
