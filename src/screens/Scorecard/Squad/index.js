@@ -36,7 +36,9 @@ export default function App({teams}) {
 						return (
 						<View style={{...styles.eachTableRowView, backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC"}}>
 							<View style={styles.team1PlayerNames}>
-								<Text numberOfLines={1} style={{...styles.team1PlayerNamesText, fontWeight:"bold",}}>{item}</Text>
+								<Text numberOfLines={1} style={{...styles.team1PlayerNamesText, fontWeight:"bold"}}>
+									{item}
+								</Text>
 							</View>
 						</View>
 						)
