@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image 
+	FlatList,
+	SafeAreaView,
+	StatusBar,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
+	Image 
 } from 'react-native';
 
 import {
@@ -19,19 +19,22 @@ import { fetchBlogs } from '../../../redux/complex-actions/blog';
 import { getBlogs } from '../../../redux/reducers';
  
 const Item = ({item, onPress, backgroundColor, textColor}) => {
-  const body = JSON.parse(item.content);
+	const body = JSON.parse(item.content);
 
-  return (
-    <TouchableOpacity>
-      <View style={styles.ItemContainer}>
-        <Image style={styles.image} source={{ uri:item.images[0] }}/>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.paragraph}>{body.blocks[1].text}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+	return (
+		<TouchableOpacity>
+			<View style={styles.ItemContainer}>
+				<Image style={styles.image} source={{ uri:item.images[0] }}/>
+				<Text style={styles.title}>
+					{item.title}
+				</Text>
+				<Text style={styles.paragraph}>
+					{body.blocks[1].text}
+				</Text>
+			</View>
+		</TouchableOpacity>
+	);
 };
-
 
 const App = () => {
 
