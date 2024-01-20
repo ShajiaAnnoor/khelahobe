@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { 
   useSelector, 
 } from 'react-redux';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import Batting from "./Batting";
 import Bowling from "./Bowling";
 import MatchDetails from "./MatchDetails";
@@ -57,7 +57,7 @@ const ScorecardComponent = ({ route }) => {
                   batting={innings.batting} 
                   didnotbat={innings.didnotbat} 
                   extras={innings.extras} 
-                  total={innings.total} 
+                  total={innings.inningstotal} 
                   fow={innings.fow}
                   out={innings.out}
                   over={dfs(innings.over)}
