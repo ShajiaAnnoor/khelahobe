@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  FlatList, 
+	FlatList, 
+	StyleSheet, 
+	Text, 
+	View, 
 } from 'react-native';
 import _ from "lodash";
 import uuid from 'react-native-uuid';
+
 import { dfs } from '../../../API/utils';
 
 export default function App({
@@ -19,7 +20,7 @@ export default function App({
 	over,
 }) {
   
-  const [ columns ] = [
+const [ columns ] = [
     "ব্যাটার",
     "বিস্তারিত​",
     "রান",
@@ -27,32 +28,46 @@ export default function App({
     "চার",
     "ছক্কা",
     "স্ট্রাইক রেট",
-  ];
+];
 
-  const tableHeader = () => (
-    <View style={styles.tableHeader}>
-        <View style={{...styles.columnRowName,}}>
-            <Text style={{...styles.columnRowNameText}}>{columns[0]}</Text>
-        </View>
-        <View style={{...styles.columnRowDetail}}>
-            <Text style={styles.columnRowDetailText}>{columns[1]}​</Text>
-        </View>
-        <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>{columns[2]}</Text>
-        </View>
-        <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>{columns[3]}</Text>
-        </View>
-        <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>{columns[4]}</Text>
-        </View>
-        <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>{columns[5]}</Text>
-        </View>
-        <View style={styles.columnRowNumberItems}>
-            <Text style={styles.columnRowNumberItemsText}>{columns[6]}</Text>
-        </View>
-    </View>
+  	const tableHeader = () => (
+		<View style={styles.tableHeader}>
+			<View style={{...styles.columnRowName,}}>
+				<Text style={{...styles.columnRowNameText}}>
+					{columns[0]}
+				</Text>
+			</View>
+			<View style={{...styles.columnRowDetail}}>
+				<Text style={styles.columnRowDetailText}>
+					{columns[1]}
+				​</Text>
+			</View>
+			<View style={styles.columnRowNumberItems}>
+				<Text style={styles.columnRowNumberItemsText}>
+					{columns[2]}
+				</Text>
+			</View>
+			<View style={styles.columnRowNumberItems}>
+				<Text style={styles.columnRowNumberItemsText}>
+					{columns[3]}
+				</Text>
+			</View>
+			<View style={styles.columnRowNumberItems}>
+				<Text style={styles.columnRowNumberItemsText}>
+					{columns[4]}
+				</Text>
+			</View>
+			<View style={styles.columnRowNumberItems}>
+				<Text style={styles.columnRowNumberItemsText}>
+					{columns[5]}
+				</Text>
+			</View>
+			<View style={styles.columnRowNumberItems}>
+				<Text style={styles.columnRowNumberItemsText}>
+					{columns[6]}
+				</Text>
+			</View>
+		</View>
   )
 
 	return (
@@ -66,39 +81,39 @@ export default function App({
 					return (
 						<View style={{...styles.eachTableRowView, backgroundColor: index % 2 == 1 ? "#F0FBFC" : "white"}}>
 							<View style={styles.columnRowName}>
-							<Text style={{...styles.columnRowNameText, fontWeight:"bold"}}>
-								{item.name}
-							</Text>
+								<Text style={{...styles.columnRowNameText, fontWeight:"bold"}}>
+									{item.name}
+								</Text>
 							</View>
 							<View style={styles.columnRowDetail}>
-							<Text style={styles.columnRowDetailText}>
-								{(item.notout && 'নট আউট') || item.wicketText || 'আউট'}
-							</Text>
+								<Text style={styles.columnRowDetailText}>
+									{(item.notout && 'নট আউট') || item.wicketText || 'আউট'}
+								</Text>
 							</View>
 							<View style={styles.columnRowNumberItems}>
-							<Text style={styles.columnRowNumberItemsText}>
-								{item.runs}
-							</Text>
+								<Text style={styles.columnRowNumberItemsText}>
+									{item.runs}
+								</Text>
 							</View>
 							<View style={styles.columnRowNumberItems}>
-							<Text style={styles.columnRowNumberItemsText}>
-								{item.balls}
-							</Text>
+								<Text style={styles.columnRowNumberItemsText}>
+									{item.balls}
+								</Text>
 							</View>
 							<View style={styles.columnRowNumberItems}>
-							<Text style={styles.columnRowNumberItemsText}>
-								{item.fours}
-							</Text>
+								<Text style={styles.columnRowNumberItemsText}>
+									{item.fours}
+								</Text>
 							</View>
 							<View style={styles.columnRowNumberItems}>
-							<Text style={styles.columnRowNumberItemsText}>
-								{item.sixes}
-							</Text>
+								<Text style={styles.columnRowNumberItemsText}>
+									{item.sixes}
+								</Text>
 							</View>
 							<View style={styles.columnRowNumberItems}>
-							<Text style={styles.columnRowNumberItemsText}>
-								{item.sr === '-১' ? '-' : `${item.sr}`}
-							</Text>
+								<Text style={styles.columnRowNumberItemsText}>
+									{item.sr === '-১' ? '-' : `${item.sr}`}
+								</Text>
 							</View>
 						</View>
 					)
@@ -143,16 +158,22 @@ export default function App({
 
 				<View style={{...styles.eachTableRowView, backgroundColor:'#FFFF'}}>
 					<View style={styles.titleForExtra}>
-						<Text style={{...styles.titleForExtraText, fontWeight:"bold"}}>অতিরিক্ত</Text>
+						<Text style={{...styles.titleForExtraText, fontWeight:"bold"}}>
+							অতিরিক্ত
+						</Text>
 					</View>
 					<View style={styles.valueForExtra}>
-    					<Text style={styles.valueForExtraText}>{extras}</Text>
+    					<Text style={styles.valueForExtraText}>
+							{extras}
+						</Text>
   					</View>
 				</View>
 
 				<View style={{...styles.eachTableRowView, backgroundColor:'#FFFF',}}>
 					<View style={styles.titleForRun}>
-    					<Text style={{...styles.titleForRunText, fontWeight:"bold"}}>মোট রান</Text>
+    					<Text style={{...styles.titleForRunText, fontWeight:"bold"}}>
+							মোট রান
+						</Text>
 					</View>
 					<View style={styles.valueForRun}>
 						<Text style={styles.valueForRunText}>
