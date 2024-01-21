@@ -30,15 +30,21 @@ export default function App({teams}) {
 		(teams[0] && teams[1]&&
 			<View style={styles.container}>
 				<FlatList 
-					data={teams[0]}
+					data={teams[0].players}
 					style={{flexDirection:'column',flex:2, width:"50%"}}
 					keyExtractor={() => uuid.v4()}
 					ListHeaderComponent={tableHeader(teams[0].name, "right",0,5)}
 					renderItem={({item, index})=> {
 						return (
-						<View style={{...styles.eachTableRowView, backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC"}}>
+						<View style={{
+							...styles.eachTableRowView, 
+							backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC",
+						}}>
 							<View style={styles.team1PlayerNames}>
-								<Text numberOfLines={1} style={{...styles.team1PlayerNamesText, fontWeight:"bold"}}>
+								<Text numberOfLines={1} style={{
+									...styles.team1PlayerNamesText, 
+									fontWeight:"bold"
+								}}>
 									{item}
 								</Text>
 							</View>
@@ -48,16 +54,22 @@ export default function App({teams}) {
 				/>
 
 				<FlatList 
-					data={teams[1]}
-					style={{flexDirection:'column',flex:3,width:"50%"}}
+					data={teams[1].players}
+					style={{flexDirection:'column',flex:2,width:"50%"}}
 					keyExtractor={() => uuid.v4()}
 					ListHeaderComponent={tableHeader(teams[1].name, "left",5,0)}
-					//stickyHeaderIndices={[0]}
 					renderItem={({item, index})=> {
 						return (
-						<View style={{...styles.eachTableRowView, backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC"}}>
+						<View style={{
+							...styles.eachTableRowView, 
+							backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC",
+						}}>
 							<View style={styles.team2PlayerNames}>
-								<Text numberOfLines={1} style={{...styles.team2PlayerNamesText, fontWeight:"bold",}}>
+								<Text numberOfLines={1} style={{
+									...styles.team2PlayerNamesText, 
+									fontWeight:"bold"
+									}}
+								>
 									{item}
 								</Text>
 							</View>
