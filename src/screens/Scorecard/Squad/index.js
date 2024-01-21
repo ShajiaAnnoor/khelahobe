@@ -14,7 +14,6 @@ export default function App({teams}) {
 				<Text style={
 					{
 						...styles.tableHeaderText,
-						color:'white',
 						textAlign:alignDir,
 						paddingLeft:paddingL,
 						paddingRight:paddingR,
@@ -31,49 +30,43 @@ export default function App({teams}) {
 			<View style={styles.container}>
 				<FlatList 
 					data={teams[0].players}
-					style={{flexDirection:'column',flex:2, width:"50%"}}
+					style={{flexDirection:'column'}}
 					keyExtractor={() => uuid.v4()}
 					ListHeaderComponent={tableHeader(teams[0].name, "right",0,5)}
 					renderItem={({item, index})=> {
 						return (
-						<View style={{
-							...styles.eachTableRowView, 
-							backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC",
-						}}>
-							<View style={styles.team1PlayerNames}>
-								<Text numberOfLines={1} style={{
-									...styles.team1PlayerNamesText, 
-									fontWeight:"bold"
-								}}>
+							<View style={{
+								...styles.team1PlayerNames,
+								backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC",
+							}}>
+								<Text numberOfLines={1} style={
+									styles.team1PlayerNamesText
+								}>
 									{item}
 								</Text>
 							</View>
-						</View>
 						)
 					}}
 				/>
 
 				<FlatList 
 					data={teams[1].players}
-					style={{flexDirection:'column',flex:2,width:"50%"}}
+					style={{flexDirection:'column'}}
 					keyExtractor={() => uuid.v4()}
 					ListHeaderComponent={tableHeader(teams[1].name, "left",5,0)}
 					renderItem={({item, index})=> {
 						return (
-						<View style={{
-							...styles.eachTableRowView, 
-							backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC",
-						}}>
-							<View style={styles.team2PlayerNames}>
-								<Text numberOfLines={1} style={{
-									...styles.team2PlayerNamesText, 
-									fontWeight:"bold"
-									}}
-								>
+							<View style={{
+								...styles.team2PlayerNames,
+								backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC",
+							}}
+							>
+								<Text numberOfLines={1} style={
+										styles.team2PlayerNamesText 
+								}>
 									{item}
 								</Text>
 							</View>
-						</View>
 						)
 					}}
 				/>
