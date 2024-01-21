@@ -11,30 +11,31 @@ export const styles = StyleSheet.create({
 	tableHeader: {
 		flexDirection: "row",
 		justifyContent: "center",
-		alignItems: "center",
+		alignItems: "flex-start",
 		backgroundColor: "green",
-		borderTopEndRadius: 5,
-		borderTopStartRadius: 5,
+		//borderTopEndRadius: 5,
+		//borderTopStartRadius: 5,
 		flex:1,
 		flexWrap:'wrap',
-		height:"10%",
-		width:"100%",
+		//height:"10%",
+		//width:"100%",
 	},
 
 	columnRowNameText: {
 		fontWeight: 'bold',
 		textAlign:"left",
 		fontSize:10,
-		justifyContent:'center',
+		//justifyContent:'center',
 		flexWrap:'wrap',        
 	},
 
 	columnRowName: {
-		alignItems:"center",
+		alignItems:'center',
 		marginLeft:8,
 		padding:2,
-		justifyContent:'space-evenly',
+		justifyContent:'center',
 		flexWrap:"wrap", 
+		backgroundColor:'gray',
 		flex:8,
 	},
 
@@ -55,7 +56,7 @@ export const styles = StyleSheet.create({
 
 	columnRowNumberItems: {
 		height:35,
-		padding:2,
+		//padding:2,
 		justifyContent:'center',
 		alignItems:"center",
 		flex:3,
@@ -66,8 +67,20 @@ export const styles = StyleSheet.create({
 		textAlign:'center',
 		fontSize:10,  
 		flexWrap:'wrap',
-		padding:4,
+		//padding:2,
 		flex:2,
+	},
+
+	strikeRate:{
+		height:35,
+		padding:2,
+		justifyContent:'center',
+		alignItems:"center",
+		flex:4,
+	},
+
+	strikeRateText:{
+
 	},
 
 	eachTableRowView:{
