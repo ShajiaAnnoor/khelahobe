@@ -62,7 +62,7 @@ const columns  = [
 					{columns[5]}
 				</Text>
 			</View>
-			<View style={styles.columnRowNumberItems}>
+			<View style={styles.strikeRate}>
 				<Text style={{...styles.columnRowNumberItemsText,color:'white'}}>
 					{columns[6]}
 				</Text>
@@ -110,7 +110,7 @@ const columns  = [
 									{item.sixes}
 								</Text>
 							</View>
-							<View style={styles.columnRowNumberItems}>
+							<View style={styles.strikeRate}>
 								<Text style={styles.columnRowNumberItemsText}>
 									{item.sr === '-১' ? '-' : `${item.sr}`}
 								</Text>
