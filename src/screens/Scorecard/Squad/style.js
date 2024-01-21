@@ -5,9 +5,9 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingTop:15,
-		margin:2,
-		padding:2,
+		paddingTop:10,
+	//	margin:2,
+	//	padding:2,
 		flexDirection:'row',
 	},
 
