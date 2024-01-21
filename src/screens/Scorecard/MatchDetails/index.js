@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { Fragment } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import _ from "lodash"
 import uuid from 'react-native-uuid';
@@ -21,27 +21,15 @@ export default function App({
 	tvUmpires,
 	umpires,
 }) {
-	const [ columns, setColumns ] = useState([
-		"বোলার",	
-		"ওভার",	
-		"মেইডেন",	
-		"রান",	
-		"উইকেট",	
-		"ওয়াইড",	
-		"নোবল",	
-		"ইকোনমি",
-	])
   
-	const [ direction, setDirection ] = useState(null)
-	const [ selectedColumn, setSelectedColumn ] = useState(null)
-	const [ details, setDetails ] = useState([
+	const details = [
 		{
-		Name: "সিরিজ",
-		Value:series,
+			Name: "সিরিজ",
+			Value:series,
 		},
 		{
-		Name:"স্টেডিয়াম",
-		Value:stadium,
+			Name:"স্টেডিয়াম",
+			Value:stadium,
 		},
 		{
 			Name:"টস",
@@ -87,11 +75,13 @@ export default function App({
 			Name:"টিভি আম্পায়ার",
 			Value:tvUmpires,
 		},
-  	])
+  	];
 
 	const tableHeader = () => (
 		<View style={styles.tableHeader}>             
-				<Text style={{...styles.tableHeaderText,color:'white',}}>ম্যাচ বিবরণ</Text>
+				<Text style={{...styles.tableHeaderText,color:'white',}}>
+					ম্যাচ বিবরণ
+				</Text>
 		</View>
 	)
 
@@ -100,19 +90,26 @@ export default function App({
 			<FlatList 
 				data={details}
 				style={{width:"100%",flex:1,flexDirection:'column'}}
-				keyExtractor={(item, index) => uuid.v4()}
+				keyExtractor={() => uuid.v4()}
 				ListHeaderComponent={tableHeader}
 				renderItem={({item, index})=> {
 					return (
-						<View style={{...styles.eachTableRowView, backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC"}}>
+						<View style={{
+							...styles.eachTableRowView, 
+							backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC"
+						}}>
 							<View style={styles.rowItemName}>
-								<Text style={{...styles.rowItemNameText, fontWeight:"bold",}}>
+								<Text style={
+									styles.rowItemNameText 
+				
+								}>
 									{item.Name}
 								</Text>
 							</View>
 							<View style={styles.rowItemValue}>
 								<Text style={styles.rowItemValueText}>
-									{item.Value}
+									{item.Name == "আম্পায়ার" && <Fragment>{item.Value[0]}<Text>{"\n"}</Text>{item.Value[1]}</Fragment>}
+									{item.Name != "আম্পায়ার" && item.Value}
 								</Text>
 							</View>						
 						</View>
