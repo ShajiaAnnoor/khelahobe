@@ -5,9 +5,9 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		paddingTop:15,
-		margin:2,
-		padding:10,    
+		//paddingTop:15,
+		//margin:2,
+		paddingTop:10,    
 	},
 
 	tableHeader: {
@@ -39,11 +39,11 @@ export const styles = StyleSheet.create({
 		flexDirection:'row',
 //		height:35,
 		//margin:2,
-		padding:4,
+		//padding:4,
 		justifyContent:'center',
 		flexWrap:"nowrap", 
 		flex:3,
-		flexShrink:1,
+		//flexShrink:1,
 	},
 
 	rowItemNameText: {
@@ -64,11 +64,11 @@ export const styles = StyleSheet.create({
 		alignItems:"center",
 		//height:35,
 		//margin:2,
-		padding:2,
+		//padding:2,
 		justifyContent:'center',
 		flexWrap:"nowrap", 
 		flex:7,
-		flexShrink:1,
+		//flexShrink:1,
 	},
 
 	rowItemValueText: {
@@ -86,6 +86,7 @@ export const styles = StyleSheet.create({
 	eachTableRowView: {
 		flex:2,
 		flexDirection:'row',
+		padding:8,
 		//justifyContent:'center',
 		//alignItems:'center',
 		//flexWrap:'wrap',
