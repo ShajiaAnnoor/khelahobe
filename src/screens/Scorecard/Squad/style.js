@@ -42,7 +42,6 @@ export const styles = StyleSheet.create({
 		width:'100vw',
 		alignItems:"flex-end",
 		justifyContent:'center',
-		//height:35,
 		//marginRight:2,
 		//paddingRight:5,
 		//margin:1,
@@ -80,14 +79,5 @@ export const styles = StyleSheet.create({
 		//padding:4,
 		//margin:2,
 		flexWrap:'nowrap',   
-	},
-
-	eachTableRowView: {
-		flex:2,
-		flexDirection:'row',
-		justifyContent:'center',
-		flexWrap:'nowrap',
-		height:"10%",
-		width:"100%",
 	},
 });
