@@ -194,6 +194,7 @@ export const getMatch = (state, slug) => state.match[slug] && state.match[slug].
     result: state.match[slug].result || '',
     scoreboards: state.match[slug].scoreboards || '',
     series: state.match[slug].series || '',
+    teams: state.match[slug].teams && state.match[slug].teams.map(t => t.name) || [],
 });
 
 export const getMatchDetails = (state, slug) => ({
