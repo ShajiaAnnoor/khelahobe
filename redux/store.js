@@ -12,12 +12,12 @@ import rootReducer from './reducers'; // the value from combineReducers
 const middleware = [promise, apiMiddleware, thunk];
 
 const persistConfig = {
-  key: 'root',
-  storage: AsyncStorage,
+	key: 'root',
+	storage: AsyncStorage,
 };
 
 if (__DEV__) {
-  middleware.push(createLogger());
+	middleware.push(createLogger());
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
