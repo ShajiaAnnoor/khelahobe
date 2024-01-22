@@ -1,12 +1,12 @@
 import {
-    combineReducers
+	combineReducers
 } from 'redux';
 import pointstable, * as fromPointStable from './PointsTable';
 import teamList, * as fromTeamList from './TeamList';
 
 export default combineReducers({
-    teamList,
-    pointstable,
+	teamList,
+	pointstable,
 });
 
 export const getBPLTeamList = state => fromTeamList.getTeamList(state.teamList);
