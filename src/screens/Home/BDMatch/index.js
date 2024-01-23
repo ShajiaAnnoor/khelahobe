@@ -1,11 +1,11 @@
 import React, { 
-    useEffect,
+	useEffect,
 } from "react";
 import { View } from "react-native";
 
 const BDMatch = ({
-    slug, 
-    flag
+	slug, 
+	flag
 }) => {
 
 	useEffect(
@@ -15,10 +15,10 @@ const BDMatch = ({
 		]
 	);
 
-    return (
-        <View>
-        </View>
-    )
+	return (
+		<View>
+		</View>
+	)
 }
 
 export default BDMatch
