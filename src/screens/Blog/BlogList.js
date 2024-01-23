@@ -38,86 +38,86 @@ const Item = ({item, onPress, backgroundColor, textColor}) => {
 
 const App = () => {
 
-  const dispatch = useDispatch();
-    useEffect(
-      () => {
-              dispatch(
-                  fetchBlogs(0, 5)
-              );
-          
-        },
-    [
-        dispatch,
-    ]
-)
+	const dispatch = useDispatch();
+	
+	useEffect(
+		() => {
+				dispatch(
+					fetchBlogs(0, 5)
+				);
+			
+		},
+	[]
+//		dispatch,
+	
+	)
 
-const blogs = useSelector(
-  state => getBlogs(state)
-)
-  ||
-  [];
-  const [selectedId, setSelectedId] = useState();
+	const blogs = useSelector(
+		state => getBlogs(state)
+	) || [];
 
-  const renderItem = ({item}) => {
-    const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
-    const color = item.id === selectedId ? 'white' : 'black';
+	const [selectedId, setSelectedId] = useState();
 
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        backgroundColor={backgroundColor}
-        textColor={color}
-      />
-    );
-  };
+	const renderItem = ({item}) => {
+		const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
+		const color = item.id === selectedId ? 'white' : 'black';
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={blogs}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-       // extraData={selectedId}
-      />
-    </SafeAreaView>
-  );
+		return (
+			<Item
+			item={item}
+			onPress={() => setSelectedId(item.id)}
+			backgroundColor={backgroundColor}
+			textColor={color}
+			/>
+		);
+	};
+
+	return (
+		<SafeAreaView style={styles.container}>
+			<FlatList
+			data={blogs}
+			renderItem={renderItem}
+			keyExtractor={item => item.id}
+			// extraData={selectedId}
+			/>
+		</SafeAreaView>
+	);
 };
 
 const styles = StyleSheet.create({
   
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-    paddingBottom:20,
-    padding:10
-  },
+	container: {
+		flex: 1,
+		marginTop: StatusBar.currentHeight || 0,
+		paddingBottom:20,
+		padding:10
+	},
 
-  ItemContainer: {
-    padding:15,
-  },
+	ItemContainer: {
+		padding:15,
+	},
 
-  image: {
-    width:'100%',
-    height:200,
-    borderRadius:25,
-  },
+	image: {
+		width:'100%',
+		height:200,
+		borderRadius:25,
+	},
 
-  title: {
-    fontSize:20,
-    fontWeight:'bold',
-    flexDirection:'row',
-    paddingTop:10,
-    justifyContent:'flex-start',
-    fontFamily: "'Roboto Slab', serif",
-  },
+	title: {
+		fontSize:20,
+		fontWeight:'bold',
+		flexDirection:'row',
+		paddingTop:10,
+		justifyContent:'flex-start',
+		fontFamily: "'Roboto Slab', serif",
+	},
 
-  paragraph: {
-    paddingTop:10,
-    fontSize:15,
-    fontWeight:'normal',
-    fontFamily: "'Roboto Slab', serif",
-  },
+	paragraph: {
+		paddingTop:10,
+		fontSize:15,
+		fontWeight:'normal',
+		fontFamily: "'Roboto Slab', serif",
+	},
 });
 
 export default App;
