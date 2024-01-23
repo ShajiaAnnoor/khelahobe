@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
 		fontWeight: 'bold',
 		textAlign:"left",
 		fontSize:10,
-		//justifyContent:'center',
 		flexWrap:'wrap',        
 	},
 
