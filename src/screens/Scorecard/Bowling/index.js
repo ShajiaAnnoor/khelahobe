@@ -4,7 +4,6 @@ import React, {
 } from 'react';
 import { 
 	FlatList, 
-	StyleSheet, 
 	Text, 
 	View, 
 } from 'react-native';
@@ -18,7 +17,7 @@ export default function App({
 	bowling,
 }) {
 
-	const [ columns, setColumns ] = useState([
+	const columns = [
 		"বোলার",	
 		"ওভার",	
 		"মেইডেন",	
@@ -27,48 +26,72 @@ export default function App({
 		"ওয়াইড",	
 		"নোবল",	
 		"ইকোনমি",
-	])
+	]
   
 	const tableHeader = () => (
 		<View style={styles.tableHeader}>  
 			<View style={{...styles.columnRowName}}>
-				<Text style={{...styles.columnRowNameText,color:'white',}}>
-					বোলার
+				<Text style={{
+					...styles.columnRowNameText,
+					color:'white',
+				}}>
+					{columns[0]}
 				</Text>
 			</View>
 			<View style={{...styles.columnRowNumberItems}}>
-				<Text style={{...styles.columnRowNumberItemsText,color:'white',}}>
-					ওভার
+				<Text style={{
+					...styles.columnRowNumberItemsText,
+					color:'white',
+				}}>
+					{columns[1]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={{...styles.columnRowNumberItemsText,color:'white',}}>
-					মেইডেন
+				<Text style={{
+					...styles.columnRowNumberItemsText,
+					color:'white',
+				}}>
+					{columns[2]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={{...styles.columnRowNumberItemsText,color:'white',}}>
-					রান
+				<Text style={{
+					...styles.columnRowNumberItemsText,
+					color:'white',
+				}}>
+					{columns[3]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={{...styles.columnRowNumberItemsText,color:'white',}}>
-					উইকেট
+				<Text style={{
+					...styles.columnRowNumberItemsText,
+					color:'white',
+				}}>
+					{columns[4]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={{...styles.columnRowNumberItemsText,color:'white',}}>
-					ওয়াইড
+				<Text style={{
+					...styles.columnRowNumberItemsText,
+					color:'white',
+				}}>
+					{columns[5]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={{...styles.columnRowNumberItemsText,color:'white',}}>
-					নোবল
+				<Text style={{
+					...styles.columnRowNumberItemsText,
+					color:'white',
+				}}>
+					{columns[6]}
 				</Text>
 			</View>
 			<View style={styles.columnRowNumberItems}>
-				<Text style={{...styles.columnRowNumberItemsText,color:'white',}}>
-					ইকোনমি
+				<Text style={{
+					...styles.columnRowNumberItemsText,
+					color:'white',
+				}}>
+					{columns[7]}
 				</Text>
 			</View>
 		</View>
@@ -78,14 +101,25 @@ export default function App({
 		<View style={styles.container}>
 			<FlatList 
 				data={bowling}
-				style={{width:"100%",height:"100%",flex:1,flexDirection:'column'}}
+				style={{
+					width:"100%",
+					height:"100%",
+					flex:1,
+					flexDirection:'column',
+				}}
 				keyExtractor={() => uuid.v4()}
 				ListHeaderComponent={tableHeader}
 				renderItem={({item, index})=> {
 					return (
-						<View style={{...styles.eachTableRowView, backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC"}}>
+						<View style={{
+							...styles.eachTableRowView, 
+							backgroundColor: index % 2 == 1 ? "white" : "#F0FBFC",
+						}}>
 							<View style={styles.columnRowName}>
-								<Text numberOfLines={0} style={{...styles.columnRowNameText, fontWeight:"bold"}}>
+								<Text numberOfLines={0} style={{
+									...styles.columnRowNameText, 
+									fontWeight:"bold",
+								}}>
 									{item.name}
 								</Text>
 							</View>
@@ -110,19 +144,19 @@ export default function App({
 
 						<View style={styles.columnRowNumberItems}>
 							<Text style={styles.columnRowNumberItemsText}>
-							{item.wickets}
+								{item.wickets}
 							</Text>
 						</View>
 
 						<View style={styles.columnRowNumberItems}>
 							<Text style={styles.columnRowNumberItemsText}>
-							{item.wides}
+								{item.wides}
 							</Text>
 						</View>
 
 						<View style={styles.columnRowNumberItems}>
 							<Text style={styles.columnRowNumberItemsText}>
-							{item.noballs}
+								{item.noballs}
 							</Text>
 						</View>
 
