@@ -7,10 +7,10 @@ import {
 } from 'react-redux';
 
 import { 
-    getUpcoming, 
+	getUpcoming, 
 } from '../../../redux/reducers';
 import { 
-    fetchUpcoming, 
+	fetchUpcoming, 
 } from '../../../redux/complex-actions/livescore';
 import ShortscoreList from "./ShortscoreList";
 
@@ -19,19 +19,19 @@ const Upcoming = () => {
 		state => getUpcoming(state)
 	) || [];
 
-    useEffect(
-        () => {
-            dispatch(
-                fetchUpcoming()
-            );
-        },[]
-    );
+	useEffect(
+		() => {
+			dispatch(
+				fetchUpcoming()
+			);
+		},[]
+	);
 
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    return (
+	return (
 		<ShortscoreList livescores={upcoming}/>
-    );
+	);
 }
 
 export default Upcoming;
