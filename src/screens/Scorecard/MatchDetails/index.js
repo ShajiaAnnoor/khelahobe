@@ -108,7 +108,10 @@ export default function App({
 							</View>
 							<View style={styles.rowItemValue}>
 								<Text style={styles.rowItemValueText}>
-									{item.Name == "আম্পায়ার" && <Fragment>{item.Value[0]}<Text>{"\n"}</Text>{item.Value[1]}</Fragment>}
+									{item.Name == "আম্পায়ার" && 
+										<Fragment>
+											{item.Value[0]}<Text>{"\n"}</Text>{item.Value[1]}
+										</Fragment>}
 									{item.Name != "আম্পায়ার" && item.Value}
 								</Text>
 							</View>						
