@@ -1,48 +1,46 @@
 import React, { 
-    Fragment 
+	Fragment 
 } from 'react';
 import { 
-    NavigationContainer 
+	NavigationContainer 
 } from '@react-navigation/native';
 import { 
-    Image,
-    Text,
-    View,
+	Image,
+	Text,
+	View,
 } from 'react-native';
 //import messaging from '@react-native-firebase/messaging';
 import PropTypes from 'prop-types';
-import 
-    { createNativeStackNavigator 
-} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { withStyles } from '@ui-kitten/components';
 
 import AllTabs from "./Tabs";
 import ScorecardScreen from "./screens/Scorecard/ScorecardScreen";
-import NewsScreen from "./screens/News/NewsScreen";
 import BlogList from "./screens/Blog/BlogList";
 import BlogPage from "./screens/Blog/BlogPage/index";
+//import NewsScreen from "./screens/News/NewsScreen";
 
 const Stack = createNativeStackNavigator();
 
 //messaging().setBackgroundMessageHandler(async (remoteMessage) => {});
 function LogoTitle() {
-    return (
-      <Image
-        style={{ width: 50, height: 50 }}
-        source={require('./khelahobe.png')}
-      />
-    );
-  }
+	return (
+		<Image
+			style={{ width: 50, height: 50 }}
+			source={require('./khelahobe.png')}
+		/>
+	);
+}
 
 const propTypes = {
-    isLoggedIn: PropTypes.bool,
-    eva: PropTypes.shape({
-        style: PropTypes.object,
-    }).isRequired,
+	isLoggedIn: PropTypes.bool,
+	eva: PropTypes.shape({
+		style: PropTypes.object,
+	}).isRequired,
 };
 
 const defaultProps = {
-    isLoggedIn: false,
+	isLoggedIn: false,
 };
 
 const App = ({ eva: { style } }) => {
@@ -134,15 +132,14 @@ const App = ({ eva: { style } }) => {
                     </Fragment>
                 )}
             </Stack.Navigator>
-        </NavigationContainer>
-         
+        </NavigationContainer>         
     );
 };
 
 const styles = (theme) => ({
-    container: {
-        flex: 1,
-    },
+	container: {
+		flex: 1,
+	},
 });
 
 App.propTypes = propTypes;
