@@ -5,21 +5,22 @@ import YoutubePlayer from "react-native-youtube-iframe";
 export default function Player() {  
   const [playing, setPlaying] = useState(false);
 
-  const onStateChange = useCallback((state) => {    
-    if (state === "ended") {      
-      setPlaying(false);      
-      Alert.alert("video has finished playing!");    
-    }  
-  }, []);
+	const onStateChange = useCallback((state) => {    
+		if (state === "ended") {      
+			setPlaying(false);      
+			Alert.alert("video has finished playing!");    
+		}  
+		}, []
+	);
 
-  return (    
-    <View>      
-      <YoutubePlayer        
-        height={300}        
-        play={playing}        
-        videoId={"2qdtkUmedUw"}        
-        onChangeState={onStateChange}      
-      />      
-    </View>  
-  );
+	return (    
+		<View>      
+			<YoutubePlayer        
+			height={300}        
+			play={playing}        
+			videoId={"2qdtkUmedUw"}        
+			onChangeState={onStateChange}      
+			/>      
+		</View>  
+	);
 }
