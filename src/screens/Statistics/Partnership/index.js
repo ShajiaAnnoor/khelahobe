@@ -1,114 +1,142 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Dimensions } from 'react-native';
-import { VictoryChart, VictoryBoxPlot, VictoryAxis, VictoryTheme } from 'victory-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack, VictoryLabel } from 'victory-native';
+import Svg from 'react-native-svg';
 
-const screenWidth = Dimensions.get('window').width;
+const PartnershipChart= () => {
+  const partnerships = [
+    { batters: 'A & B', player1: 'Babim', runs1: 30, player2: 'Sakib', runs2: 20 },
+    { batters: 'B & C', player1: 'Babimna', runs1: 40, player2: 'Shanto', runs2: 30 },
+    { batters: 'C & D', player1: 'MotuBabim', runs1: 20, player2: 'taskin', runs2: 10 },
+    { batters: 'D & E', player1: 'Jopujopubabim', runs1: 30, player2: 'Rishad', runs2: 30 },
+    // Add more partnerships as needed
+  ];
 
-const data = [
-  {
-    partnership: 'P1',
-    batter1Runs: 30,
-    batter2Runs: 20,
-    batter1Name: 'Batter 1A',
-    batter2Name: 'Batter 1B',
-  },
-  {
-    partnership: 'P2',
-    batter1Runs: 10,
-    batter2Runs: 40,
-    batter1Name: 'Batter 2A',
-    batter2Name: 'Batter 2B',
-  },
-  {
-    partnership: 'P3',
-    batter1Runs: 50,
-    batter2Runs: 25,
-    batter1Name: 'Batter 3A',
-    batter2Name: 'Batter 3B',
-  },
-  {
-    partnership: 'P4',
-    batter1Runs: 35,
-    batter2Runs: 15,
-    batter1Name: 'Batter 4A',
-    batter2Name: 'Batter 4B',
-  },
-];
+  const formattedData = partnerships.map(p => ({
+    //batters: p.batters,
+    runs1: p.runs1,
+    runs2: p.runs2,
+    player1Name: p.player1,
+    player2Name: p.player2,
+  }));
 
-const formattedData = data.map((d) => ({
-  partnership: d.partnership,
-  x: `${d.batter1Name} & ${d.batter2Name}`,
-  y: [0, d.batter1Runs, d.batter1Runs + d.batter2Runs, d.batter1Runs + d.batter2Runs],
-}));
-
-const PartnershipChart = () => {
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.header}>Run Partnerships</Text>
+    <View contentContainerStyle={styles.container}>
+      <Svg width={300} height={400} >
       <VictoryChart
-        width={screenWidth - 32}
-        height={200}
-        domainPadding={{ x: [10, 10], y: 20 }}
-        theme={VictoryTheme.material}
+      //alignment={'middle'}
+      //justifyContent={{}}
+      //domainPadding={{ x: [100, 100] }}
+        //theme={VictoryTheme.material}
+        //domainPadding={20}
+        //height={400}
+          //width={320}
+          //padding={{ top: 5, bottom: 5, left: 5, right: 5 }}
       >
+        
+        
         <VictoryAxis
-          dependentAxis
-          style={{
-            axis: { stroke: 'transparent' },
-            ticks: { stroke: 'transparent' },
-            tickLabels: { fontSize: 12, padding: 5 },
+           style={{
+            axis: { stroke: "none" },
+            ticks: { stroke: "none" },
+            tickLabels: { fill: "none" },
           }}
         />
-        <VictoryBoxPlot
+
+<VictoryAxis
+           style={{
+            axis: { stroke: "none" },
+            ticks: { stroke: "none" },
+            tickLabels: { fill: "none" },
+          }}
+        />
+
+
+
+        <VictoryStack  colorScale={['#4CAF50', '#FF5722']}>
+         
+          <VictoryBar
           horizontal
-          data={formattedData}
-          x="x"
-          y="y"
-          style={{
-            min: { stroke: '#1f77b4' },
-            max: { stroke: '#ff7f0e' },
-            q1: { fill: '#1f77b4' },
-            q3: { fill: '#ff7f0e' },
-            median: { stroke: 'white', strokeWidth: 2 },
-          }}
-          whiskerWidth={20}
-          boxWidth={20}
-        />
+         // marginLeft={'auto'}
+         
+          alignment={'middle'}
+          barWidth={10}
+            data={formattedData}
+            x="batters"
+            y="runs1"
+            labels={({ datum }) => `${datum.runs1}`}
+            labelComponent={<VictoryLabel dy={-10} />}
+            style={{
+              data: { width: 10},
+              labels: { fontSize: 12, fill: '#000' }
+            }}
+          />
+         
+
+          <VictoryBar
+          //horizontal
+          barWidth={10}
+         // marginRight={6}
+          alignment={'middle'}
+            data={formattedData}
+            x="batters"
+            y="runs2"
+            labels={({ datum }) => `${datum.runs2}`}
+            labelComponent={<VictoryLabel dy={-10} />}
+            
+            style={{
+              data: { width: 20 },
+              labels: { fontSize: 12, fill: '#000',padding:5}
+              
+            }}
+          />
+          
+        </VictoryStack>
+       
+        {formattedData.map((datum, index) => (
+          <VictoryLabel
+          
+            key={index}
+            text={datum.player1Name}
+            x={40}
+            y={(index + 1) * 60}
+            textAnchor="end"
+            style={{ fontSize: 12, fill: '#000' }}
+          />
+        ))}
+        {formattedData.map((datum, index) => (
+          <VictoryLabel
+            key={index}
+            text={datum.player2Name}
+            x={340}
+            y={(index + 1) * 60}
+            //dx={290}
+            textAnchor="end"
+            style={{ fontSize: 12, fill: '#000' }}
+          />
+        ))}
       </VictoryChart>
-      {data.map((item, index) => (
-        <View key={index} style={styles.legendItem}>
-          <Text style={styles.legendText}>{item.partnership}</Text>
-          <Text style={[styles.legendText, { color: '#1f77b4' }]}>
-            {item.batter1Name}: {item.batter1Runs}
-          </Text>
-          <Text style={[styles.legendText, { color: '#ff7f0e' }]}>
-            {item.batter2Name}: {item.batter2Runs}
-          </Text>
-        </View>
-      ))}
-    </ScrollView>
+      </Svg>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    //padding: 16,
+    //marginInline:'0 auto',
+    backgroundColor: '#F5FCFF',
   },
-  header: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-  legendItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 4,
-  },
-  legendText: {
-    fontSize: 14,
-  },
+
+  middle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
 
 export default PartnershipChart;
+
