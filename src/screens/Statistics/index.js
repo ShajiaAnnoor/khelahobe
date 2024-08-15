@@ -8,6 +8,7 @@ import PieChartOfRun from './PieChartOfRun/index';
 import Test from './Test/index';
 import Example from "./ExampleVictory";
 import BarChartOfOvervsRun from './BarChartOfOvervsRun';
+import PartnershipChart from './Partnership/index';
 // Sample data for runs scored per over
 const runRateData = [
   { over: 1, runs: 4 },
@@ -33,6 +34,7 @@ const Statistics = () => {
     <PieChartOfRun/>
 {/*      <Example />*/}
         <BarChartOfOvervsRun />
+        <PartnershipChart/>
       </View>
     </ScrollView>
   );
