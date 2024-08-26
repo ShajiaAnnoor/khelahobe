@@ -1,4 +1,4 @@
-import React from 'react';
+{/*import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack, VictoryLabel } from 'victory-native';
 import Svg from 'react-native-svg';
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    //padding: 16,
+    padding: 6,
     //marginInline:'0 auto',
     backgroundColor: '#F5FCFF',
   },
@@ -138,5 +138,107 @@ const styles = StyleSheet.create({
   }
 });
 
-export default PartnershipChart;
+export default PartnershipChart;*/}
 
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text, View, Dimensions } from 'react-native';
+
+const partnerships = [
+  { player1: 'Babim444',player2:'Sakib', runs1: 30, runs2: 20, totalRuns:50, ball1:20, ball2:12, totalBall:32 },
+  { player1: 'Babim',player2:'Taskin', runs1: 40, runs2: 10, totalRuns:50, ball1:25, ball2:20, totalBall:45  },
+  { player1: 'Motu',player2:'Babim', runs1: 25, runs2: 35, totalRuns:60, ball1:20, ball2:42, totalBall:62  },
+  { player1: 'Babim',player2:'Sakib', runs1: 50, runs2: 50, totalRuns:100, ball1:50, ball2:32, totalBall:82  },
+
+];
+
+const maxRuns = Math.max(
+  ...partnerships.map(partnership => partnership.runs1 + partnership.runs2)
+);
+
+const App = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Cricket Partnership Runs</Text>
+      {partnerships.map((partnership, index) => (
+        <View key={index} style={styles.partnershipContainer}>
+        <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+          <Text style={styles.partnershipText}>{partnership.player1}</Text>
+          <Text style={[styles.partnershipText, {}]}>{partnership.totalRuns}({partnership.totalBall})</Text>
+           <Text style={styles.partnershipText}>{partnership.player2}</Text>
+
+          </View>
+          
+          <View style={styles.runsTextContainer}>
+          <View>
+            {/*<Text style={styles.runsText}>Babim</Text>*/}
+            <Text style={styles.runsText}>{partnership.runs1}({partnership.ball1})</Text>
+             {/*<Text style={styles.runsText}>{partnership.runs1}</Text>*/}
+            </View> 
+            <View style={styles.progressBarWrapper}>
+            <View style={[styles.progressBar, { flex: (partnership.runs1 / maxRuns), backgroundColor: '#4caf50',display:'flex', justifyContent:'flex-end' }]} />
+            <View style={[styles.progressBar, { flex: (partnership.runs2 / maxRuns), backgroundColor: '#2196f3',display:'flex',justifyContent:'flex-start' }]} />
+          </View>
+             <View> 
+             {/*<Text style={styles.runsText}>Sakib</Text>*/}
+            <Text style={styles.runsText}>{partnership.runs1}({partnership.ball1})</Text>
+            {/*<Text style={styles.runsText}>{partnership.runs2}</Text>*/}
+             </View> 
+          </View>
+        </View>
+      ))}
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    //paddingHorizontal: 20,
+  },
+  title: {
+    fontSize: 24,
+    textAlign: 'center',
+    marginVertical: 10,
+  },
+  partnershipContainer: {
+    width: '100%',
+    marginVertical: 10,
+    flexDirection:''
+
+  },
+  partnershipText: {
+    fontSize: 12,
+    marginBottom: 5,
+    textAlign:'center',
+  },
+  progressBarWrapper: {
+    flexDirection: 'row',
+    margin:'0 auto',
+    height: 10,
+    width:'60%',
+    justifyContent:'center',
+    alignItems:'center',
+    marginBottom: 5,
+    backgroundColor: '',
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
+  progressBar: {
+    height: '90%',
+    width:"90%",
+  },
+  runsTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  runsText: {
+    width: 50,
+    textAlign: 'center',
+    fontSize:12,
+
+  },
+});
+
+export default App;
