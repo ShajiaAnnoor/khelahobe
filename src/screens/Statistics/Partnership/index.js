@@ -144,8 +144,8 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Dimensions } from 'react-native';
 
 const partnerships = [
-  { player1: 'Babim444',player2:'Sakib', runs1: 30, runs2: 20, totalRuns:50, ball1:20, ball2:12, totalBall:32 },
-  { player1: 'Babim',player2:'Taskin', runs1: 40, runs2: 10, totalRuns:50, ball1:25, ball2:20, totalBall:45  },
+  { player1: 'Babim Al Hasan',player2:'Sakib Al Hasan', runs1: 30, runs2: 20, totalRuns:50, ball1:20, ball2:12, totalBall:32 },
+  { player1: 'Babim Kumar Das',player2:'Taskin Ahmed', runs1: 40, runs2: 10, totalRuns:50, ball1:25, ball2:20, totalBall:45  },
   { player1: 'Motu',player2:'Babim', runs1: 25, runs2: 35, totalRuns:60, ball1:20, ball2:42, totalBall:62  },
   { player1: 'Babim',player2:'Sakib', runs1: 50, runs2: 50, totalRuns:100, ball1:50, ball2:32, totalBall:82  },
 
@@ -158,29 +158,29 @@ const maxRuns = Math.max(
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Cricket Partnership Runs</Text>
+      {/*<Text style={styles.title}>Cricket Partnership Runs</Text>*/}
       {partnerships.map((partnership, index) => (
         <View key={index} style={styles.partnershipContainer}>
-        <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
-          <Text style={styles.partnershipText}>{partnership.player1}</Text>
-          <Text style={[styles.partnershipText, {}]}>{partnership.totalRuns}({partnership.totalBall})</Text>
-           <Text style={styles.partnershipText}>{partnership.player2}</Text>
+        <View style={{display:'grid',flexDirection:'row'}}>
+          <Text style={styles.partnershipTextLeft}>{partnership.player1}</Text>
+          <Text style={styles.totalRunsByBallsText}>{partnership.totalRuns}({partnership.totalBall})</Text>
+           <Text style={styles.partnershipTextRight}>{partnership.player2}</Text>
 
           </View>
           
           <View style={styles.runsTextContainer}>
           <View>
             {/*<Text style={styles.runsText}>Babim</Text>*/}
-            <Text style={styles.runsText}>{partnership.runs1}({partnership.ball1})</Text>
+            <Text style={styles.runs1Text}>{partnership.runs1}({partnership.ball1})</Text>
              {/*<Text style={styles.runsText}>{partnership.runs1}</Text>*/}
             </View> 
             <View style={styles.progressBarWrapper}>
-            <View style={[styles.progressBar, { flex: (partnership.runs1 / maxRuns), backgroundColor: '#4caf50',display:'flex', justifyContent:'flex-end' }]} />
-            <View style={[styles.progressBar, { flex: (partnership.runs2 / maxRuns), backgroundColor: '#2196f3',display:'flex',justifyContent:'flex-start' }]} />
-          </View>
+              <View style={[styles.progressBar, { flex: (partnership.runs1 / maxRuns), backgroundColor: '#4caf50',display:'flex', justifyContent:'flex-end' }]} />
+              <View style={[styles.progressBar, { flex: (partnership.runs2 / maxRuns), backgroundColor: '#2196f3',display:'flex',justifyContent:'flex-start' }]} />
+            </View>
              <View> 
              {/*<Text style={styles.runsText}>Sakib</Text>*/}
-            <Text style={styles.runsText}>{partnership.runs1}({partnership.ball1})</Text>
+            <Text style={styles.runs2Text}>{partnership.runs2}({partnership.ball2})</Text>
             {/*<Text style={styles.runsText}>{partnership.runs2}</Text>*/}
              </View> 
           </View>
@@ -205,14 +205,34 @@ const styles = StyleSheet.create({
   partnershipContainer: {
     width: '100%',
     marginVertical: 10,
-    flexDirection:''
+   // flexDirection:'column',
+    //justifyContent:'space-between',
 
   },
-  partnershipText: {
+  partnershipTextLeft: {
     fontSize: 12,
     marginBottom: 5,
-    textAlign:'center',
+    textAlign:'left',
+    backgroundColor:'gray',
+     marginRight:'2rem',
   },
+  partnershipTextRight: {
+    fontSize: 12,
+    marginBottom: 5,
+    textAlign:'right',
+    backgroundColor:'gray',
+     marginLeft:'2rem',
+  },
+
+  totalRunsByBallsText: {
+    fontSize: 12,
+    marginBottom: 5,
+   // textAlign:'right',
+    backgroundColor:'pink',
+    marginLeft:'auto',
+    marginRight:'auto',
+  },
+
   progressBarWrapper: {
     flexDirection: 'row',
     margin:'0 auto',
@@ -233,9 +253,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  runsText: {
+  runs1Text: {
     width: 50,
-    textAlign: 'center',
+    textAlign: 'left',
+    fontSize:12,
+
+  },
+  runs2Text: {
+    width: 50,
+    textAlign: 'right',
     fontSize:12,
 
   },
