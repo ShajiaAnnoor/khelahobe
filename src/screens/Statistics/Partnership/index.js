@@ -161,7 +161,7 @@ const App = () => {
       {/*<Text style={styles.title}>Cricket Partnership Runs</Text>*/}
       {partnerships.map((partnership, index) => (
         <View key={index} style={styles.partnershipContainer}>
-        <View style={{display:'grid',flexDirection:'row'}}>
+        <View style={{display:'flex',flexDirection:'row'}}>
           <Text style={styles.partnershipTextLeft}>{partnership.player1}</Text>
           <Text style={styles.totalRunsByBallsText}>{partnership.totalRuns}({partnership.totalBall})</Text>
            <Text style={styles.partnershipTextRight}>{partnership.player2}</Text>
