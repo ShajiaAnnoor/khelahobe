@@ -351,7 +351,7 @@ const LiveScoreInfo = ({
         <View style={{paddingLeft:1,padding:2,flex:2}}>
 			<Pressable 
 				style ={styles.buttonMatchDetails}
-				onPress={()=>navigation.navigate('ScorecardScreen',{slug:slug})}
+				onPress={()=>navigation.navigate('MatchDetails',{slug:slug})}
 			>
 				<Text style={styles.buttonTextStyle}>
 					ম্যাচ বিস্তারিত
