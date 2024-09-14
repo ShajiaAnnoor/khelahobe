@@ -216,3 +216,17 @@ export const getTeamsScore = (state, slug) => fromScoreboard.getTeamsScore(state
 export const getInningsIds = (state, slug) => fromScoreboard.getInningsIds(state.scoreboard, slug);
 
 export const getUpcoming = state => fromLiveScores.getUpcoming(state.livescore);
+
+export const getFinished = state => fromLiveScores.getFinished(state.livescore);
+
+export const getBowlingInnings = (state, slug) => fromScoreboard.getBowlingInnings(state.scoreboard, slug);
+
+export const getBowlingInningsBar = (state, slug) => fromScoreboard.getBowlingInningsBar(state.scoreboard, slug);
+
+export const getRunRate1 = (state, slug) => fromScoreboard.getRunRate1(state.scoreboard, slug);
+
+export const getWorms1 = (state, slug) => fromScoreboard.getWorms1(state.scoreboard, slug);
+
+export const getBattingInnings = (state, slug) => fromScoreboard.getBattingInnings(state.scoreboard, slug);
+
+export const getBowlerRunsGiven = (state, slug) => fromScoreboard.getBowlerRunsGiven(state.scoreboard, slug);
