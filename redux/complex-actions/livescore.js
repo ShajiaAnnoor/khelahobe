@@ -25,6 +25,18 @@ export const fetchBDMatch = () => ({
     },
 });
 
+export const fetchFinished = () => ({
+    RSAA: {
+        types: [
+            actions.REQUEST_FETCH_FINISHED,
+            actions.SUCCESS_FETCH_FINISHED,
+            actions.FAILURE_FETCH_FINISHED,
+        ],
+        method: endPoints.FETCH_FINISHED,
+        race: () => false,
+    },
+});
+
 export const fetchLiveScoresTest = () => ({
     RSAA: {
         types: [
