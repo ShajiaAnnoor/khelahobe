@@ -175,6 +175,17 @@ export const getCurrentPlayerByInnings = (state, slug, id) => ({
 		}))) || [],
 });
 
+export const getTeamNamesFromMatch = (state, slug) => {
+    let team1 = state.match[slug] && state.match[slug].teams[0].name;
+    let team2 = state.match[slug] && state.match[slug].teams[1].name;
+    let teams = [
+        team1,
+        team2
+    ];
+
+    return teams;
+}
+
 export const getCurrentPlayersByMatch = (state, slug) =>
 	state.match[slug] && state.match[slug].scoreboards &&
 	state.match[slug].scoreboards.map(i => getCurrentPlayerByInnings(state, slug, i));
@@ -439,3 +450,333 @@ export const getWorms = (state, slug) => {
 	};
 };
 
+export const getWorms1 = (state, slug) => {
+    const [first, last] = getEndOfOvers(state, slug);
+    const [team1, team2] = getTeamNames(state, slug);
+
+    if (!Array.isArray(first) && !Array.isArray(last)) return [];
+
+    let runsPerOver = [];
+
+    if (!Array.isArray(first)) {
+        for (let i = 0; i <= last.length; i++) {
+            if (!i) {
+                runsPerOver.push({
+                    over: dfs(i),
+                    run1: 0,
+                    run2: 0,
+                    wicket1: 0,
+                    wicket2: 0,
+                });
+            }
+            else {
+                runsPerOver.push({
+                    over: dfs(i),
+                    run1: 0,
+                    run2: last[i - 1].totalrun || 0,
+                    wicket1: 0,
+                    wicket2: last[i - 1].wickets || 0,
+                });
+            }
+
+        }
+        return {
+            team1,
+            team2,
+            runsPerOver,
+        };
+    }
+
+    if (!Array.isArray(last)) {
+        for (let i = 0; i <= first.length; i++) {
+            if (!i) {
+                runsPerOver.push({
+                    over: dfs(i),
+                    run1: 0,
+                    run2: 0,
+                    wicket1: 0,
+                    wicket2: 0,
+                });
+            }
+            else {
+                runsPerOver.push({
+                    over: dfs(i),
+                    run1: first[i - 1].totalrun || 0,
+                    run2: 0,
+                    wicket1: first[i - 1].wickets || 0,
+                    wicket2: 0,
+                });
+            }
+        }
+        return {
+            team1,
+            team2,
+            runsPerOver,
+        };
+    }
+
+    for (let i = 0; i <= Math.max(first.length, last.length); i++) {
+        if (!i) {
+            runsPerOver.push({
+                over: dfs(i),
+                run1: 0,
+                run2: 0,
+                wicket1: 0,
+                wicket2: 0,
+            });
+        }
+        else {
+            runsPerOver.push({
+                over: dfs(i),
+                run1: (first[i - 1] && first[i - 1].totalrun) || null,
+                run2: (last[i - 1] && last[i - 1].totalrun) || null,
+                wicket1: (first[i - 1] && first[i - 1].wickets) || 0,
+                wicket2: (last[i - 1] && last[i - 1].wickets) || 0,
+            });
+        }
+
+    }
+
+    return {
+        team1,
+        team2,
+        runsPerOver,
+    };
+};
+
+export const getBattingInnings = (state, slug) => {
+    const inningsIds = getInningsIds(state, slug);
+    if (!Array.isArray(inningsIds)) {
+        return [];
+    }
+
+    return inningsIds.map(i => {
+        const data = getInnings(state, i);
+        const l = (data && data.extras && data.extras.split(' ')) || null;
+        let batting = [];
+        if (data && l !== null) {
+            for (let i = 0; i <= data.batting.length; i++) {
+                if (i === data.batting.length) {
+                    batting.push({
+                        name: 'অতিরিক্ত',
+                        value: parseInt(l[0]),
+                        balls: 0
+                    });
+                }
+                else if (parseInt(data.batting[i].runs)) {
+                    batting.push({
+                        name: data.batting[i].name,
+                        value: parseInt(data.batting[i].runs),
+                        balls: parseInt(data.batting[i].balls)
+                    });
+                }
+
+            }
+        }
+
+        return {
+            inningsName: data.name || '',
+            batting: batting || [],
+        }
+    }).filter(i => i.inningsName !== '');
+};
+
+export const getBowlingInnings = (state, slug) => {
+    const inningsIds = getInningsIds(state, slug);
+    if (!Array.isArray(inningsIds)) {
+        return [];
+    }
+    const [team1, team2] = getTeamNamesFromMatch(state, slug);
+
+    return inningsIds.map(i => {
+        const data = getInnings(state, i);
+        let bowling = [];
+        let outs = 0;
+        const out = data.out;
+        if (data && data.bowling) {
+            for (let i = 0; i <= data.bowling.length; i++) {
+                if (i === data.bowling.length) {
+                    if (out !== outs) {
+                        bowling.push({
+                            x: 'অন্যান্য',
+							y:3
+                            //y: parseInt(data.out) - parseInt(outs),
+                        });
+                        outs++;
+                    }
+                    bowling.push({
+                        x: 'নটআউট',
+//						y:2
+                        y: parseInt(11) - parseInt(outs),
+                    });
+                }
+                else if (parseInt(data.bowling[i].wickets) !== 0) {
+                    outs += parseInt(data.bowling[i].wickets);
+                    bowling.push({
+                        //name: data.bowling[i].name,
+						x: data.bowling[i].name,
+						y: 2,
+//                        y: parseInt(data.bowling[i].wickets)
+                    });
+                }
+            }
+        }
+        return {
+            inningsName: (data.name === team1 ? team2 : team1) || '',
+            bowling: bowling || [],
+        }
+    }).filter(i => i.inningsName !== '');
+};
+
+export const getRunRate1 = (state, slug) => {
+    const [first, last] = getEndOfOvers(state, slug);
+    const [team1, team2] = getTeamNames(state, slug);
+
+    if (!Array.isArray(first) && !Array.isArray(last)) return [];
+
+    let runsPerOver = [];
+
+    if (!Array.isArray(first)) {
+        for (let i = 0; i <= last.length; i++) {
+            if (!i) {
+                runsPerOver.push({
+                    over: dfs(i),
+                    run1: 0,
+                    run2: 0,
+                    wicket1: 0,
+                    wicket2: 0,
+                });
+            }
+            else {
+                runsPerOver.push({
+                    over: dfs(i),
+                    run1: 0,
+                    run2: last[i - 1].runrate || 0,
+                    wicket1: 0,
+                    wicket2: last[i - 1].wickets || 0,
+                });
+            }
+
+        }
+        return {
+            team1,
+            team2,
+            runsPerOver,
+        };
+    }
+
+    if (!Array.isArray(last)) {
+        for (let i = 0; i <= first.length; i++) {
+            if (!i) {
+                runsPerOver.push({
+                    over: dfs(i),
+                    run1: 0,
+                    run2: 0,
+                    wicket1: 0,
+                    wicket2: 0,
+                });
+            }
+            else {
+                runsPerOver.push({
+                    over: dfs(i),
+                    run1: first[i - 1].runrate || 0,
+                    run2: 0,
+                    wicket1: first[i - 1].wickets || 0,
+                    wicket2: 0,
+                });
+            }
+        }
+        return {
+            team1,
+            team2,
+            runsPerOver,
+        };
+    }
+
+    for (let i = 0; i <= Math.max(first.length, last.length); i++) {
+        if (!i) {
+            runsPerOver.push({
+                over: dfs(i),
+                run1: 0,
+                run2: 0,
+                wicket1: 0,
+                wicket2: 0,
+            });
+        }
+        else {
+            runsPerOver.push({
+                over: dfs(i),
+                run1: (first[i - 1] && first[i - 1].runrate) || null,
+                run2: (last[i - 1] && last[i - 1].runrate) || null,
+                wicket1: (first[i - 1] && first[i - 1].wickets) || 0,
+                wicket2: (last[i - 1] && last[i - 1].wickets) || 0,
+            });
+        }
+
+    }
+
+    return {
+        team1,
+        team2,
+        runsPerOver,
+    };
+};
+
+export const getBowlerRunsGiven = (state, slug) => {
+    const inningsIds = getInningsIds(state, slug);
+    if (!Array.isArray(inningsIds)) {
+        return [];
+    }
+    const [team1, team2] = getTeamNamesFromMatch(state, slug);
+
+    return inningsIds.map(i => {
+        const data = getInnings(state, i);
+        let bowling = [];
+
+        if (data && data.bowling) {
+            for (let i = 0; i < data.bowling.length; i++) {
+                bowling.push({
+                    name: data.bowling[i].name,
+                    value: parseInt(data.bowling[i].runs)
+                });
+            }
+        }
+        return {
+            inningsName: (data.name === team1 ? team2 : team1) || '',
+            bowling: bowling || [],
+        }
+    }).filter(i => i.inningsName !== '');
+};
+
+export const getBowlingInningsBar = (state, slug) => {
+    const inningsIds = getInningsIds(state, slug);
+    if (!Array.isArray(inningsIds)) {
+        return [];
+    }
+    const [team1, team2] = getTeamNamesFromMatch(state, slug);
+
+    return inningsIds.map(i => {
+        const data = getInnings(state, i);
+        let bowling = [];
+        if (data && data.bowling) {
+            for (let i = 0; i <= data.bowling.length; i++) {
+                if (i === data.bowling.length) {
+
+                }
+                else {
+                    bowling.push({
+                        name: data.bowling[i].name,
+                        wicket: parseInt(data.bowling[i].wickets),
+                        over: parseInt(data.bowling[i].over),
+                        run: parseInt(data.bowling[i].runs),
+                        dots: parseInt(data.bowling[i].dots),
+                    });
+                }
+            }
+        }
+        return {
+            inningsName: (data.name === team1 ? team2 : team1) || '',
+            bowling: bowling || [],
+        }
+    }).filter(i => i.inningsName !== '');
+};
