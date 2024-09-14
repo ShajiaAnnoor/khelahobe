@@ -19,6 +19,15 @@ const upcoming = (state = [], action) => {
 	}
 };
 
+const finished = (state = [], action) => {
+    switch (action.type) {
+        case actions.SUCCESS_FETCH_FINISHED:
+            return action.response.data;
+        default:
+            return state;
+    }
+};
+
 const bdMatch = (state = [], action) => {
 	switch (action.type) {
 		case actions.SUCCESS_FETCH_BD_MATCH:
@@ -74,6 +83,7 @@ export default combineReducers({
 	liveScores,
 	bdMatch,
 	upcoming,
+	finished,
 	liveScoresTest,
 	liveScoresRecentFinished,
 	isFetchingLivescores,
@@ -108,3 +118,5 @@ export const getLiveScoresRecentFinished = state => state.liveScoresRecentFinish
 export const getBDMatch = state => state.bdMatch || '';
 
 export const getUpcoming = state => state.upcoming || [];
+
+export const getFinished = state => state.finished || [];
