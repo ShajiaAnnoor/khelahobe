@@ -18,6 +18,7 @@ import AllTabs from "./Tabs";
 import ScorecardScreen from "./screens/Scorecard/ScorecardScreen";
 import BlogList from "./screens/Blog/BlogList";
 import BlogPage from "./screens/Blog/BlogPage/index";
+import MatchDetails from './screens/Details/index';
 //import NewsScreen from "./screens/News/NewsScreen";
 
 const Stack = createNativeStackNavigator();
@@ -88,6 +89,10 @@ const App = ({ eva: { style } }) => {
                         <Stack.Screen 
                             name="ScorecardScreen" 
                             component={ScorecardScreen} 
+                        />
+                        <Stack.Screen 
+                            name="MatchDetails" 
+                            component={MatchDetails} 
                         />
                         <Stack.Screen 
                             name="BlogList" 
