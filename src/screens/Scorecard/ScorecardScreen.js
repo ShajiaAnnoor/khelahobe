@@ -15,10 +15,11 @@ import { getMatchDetails } from '../../../redux/reducers';
 import { getMatch} from '../../../redux/reducers';
 import { dfs } from '../../API/utils';
 
-const ScorecardComponent = ({ route }) => {
+const ScorecardComponent = ({ route, slug }) => {
 
-	const {slug} = route.params;
+	//const {slug} = route.params;
 
+	console.log("slug is coming? _-->", slug)
 	const inningses = dfs(useSelector(
 		state => getInningsEs(state, slug)
 	));
