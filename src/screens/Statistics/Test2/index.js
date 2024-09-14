@@ -1,75 +1,99 @@
-  import React from 'react';
-  import { View, StyleSheet,Text } from 'react-native';
-  import { VictoryPie, LineSegment } from 'victory-native';
-  import { VictoryBar, VictoryChart, VictoryAxis,VictoryTheme,VictoryLine, VictoryLabel, VictoryGroup } from 'victory-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis, VictoryLegend, VictoryScatter } from 'victory-native';
 
-  const App = () => {
-    // Sample data for the pie chart
-    const data = [
-      { x: 'Sakib Al Hasan', y: 35 },
-      { x: 'Tarif Ezaz', y: 40 },
-      { x: 'Mushfiqur Rahim', y: 125 },
-      { x: 'Mahmudullah Riad', y: 105 },
-      { x: 'Nazmul Hossain Shanto', y: 95 },
-      { x: 'Tamim Iqbal', y: 50 },
-      { x: 'Taskin Ahmed', y: 50 },
-      { x: 'Mustafizur Rahman', y: 5 },
-      { x: 'Rubel Hossain', y: 50 },
-      { x: 'Mashrafi Bin Mortaza', y: 50 },
-      { x: 'Ebadot Hossain', y: 50 },
-      
+const RunVsOversChart = () => {
+  // Sample data for Team A and Team B
+  const teamAData = [
+    { overs: 1, runs: 5 },
+    { overs: 2, runs: 10 },
+    { overs: 3, runs: 15 },
+    { overs: 4, runs: 20 },
+    { overs: 5, runs: 25 },
+    // Add more data points for Team A as needed
+  ];
 
-    ];
+  const teamBData = [
+    { overs: 1, runs: 7 },
+    { overs: 2, runs: 14 },
+    { overs: 3, runs: 22 },
+    { overs: 4, runs: 18 },
+    { overs: 5, runs: 30 },
+    // Add more data points for Team B as needed
+  ];
 
-   
-
-    return (
-      <View style={styles.container}>
-        <VictoryPie
-          radius={70}
-          data={data}
-          
-          labelPosition = {"centroid"}
-          labelPlacement={({ index }) => index
-    ? "parallel"
-    : "vertical"
-  }
-        labelIndicator={<LineSegment style = {{stroke:"black", strokeDasharray:1,fill: "none",}}/>}
-        labelIndicatorInnerOffset={5}
-        labelIndicatorOuterOffset={10}
-        
-          //labels={({ datum }) => `${datum.x}(${datum.y} runs)`}
-          labelComponent={<VictoryLabel angle={0} textAnchor="middle"/>}
-          //labelPosition={"centroid"}
-
-          
-          colorScale={["#ff9999", "#66b3ff", "#99ff99"]}
+  return (
+    <View style={styles.container}>
+      <VictoryChart theme={VictoryTheme.material}>
+        <VictoryAxis
+          tickFormat={(x) => `Over ${x}`}
+          label="Overs"
           style={{
-            labels: {
-              
-              fontSize: 10,
-              //fill: '#000',
-            },
+            axisLabel: { padding: 30 },
+            tickLabels: { angle: -45, textAnchor: 'end' }
           }}
-         
-          
-         
         />
-      </View>
-    );
-  };
+        <VictoryAxis
+          dependentAxis
+          tickFormat={(y) => `${y} Runs`}
+          label="Runs"
+          style={{
+            axisLabel: { padding: 40 },
+          }}
+        />
+        <VictoryLine
+          data={teamAData}
+          x="overs"
+          y="runs"
+          interpolation="natural" // Apply Bezier curve
+          style={{
+            data: { stroke: "#c43a31", strokeWidth: 2 },
+            parent: { border: "1px solid #ccc" }
+          }}
+          labels={({ datum }) => datum.runs}
+        />
+        <VictoryLine
+          data={teamBData}
+          x="overs"
+          y="runs"
+          interpolation="natural" // Apply Bezier curve
+          style={{
+            data: { stroke: "#4a90e2", strokeWidth: 2 },
+            parent: { border: "1px solid #ccc" }
+          }}
+          labels={({ datum }) => datum.runs}
+        />
+         <VictoryScatter
+          data={teamAData}
+          x="over"
+          y="runs"
+          size={5}
+          style={{
+            data: { fill: "#c43a31" }
+          }}
+        />
+        <VictoryLegend
+          x={125}
+          y={30}
+          orientation="horizontal"
+          gutter={20}
+          data={[
+            { name: "Team A", symbol: { fill: "#c43a31" } },
+            { name: "Team B", symbol: { fill: "#4a90e2" } }
+          ]}
+        />
+      </VictoryChart>
+    </View>
+  );
+};
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      //backgroundColor: 'gray',
-      
-    },
-  });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+});
 
-  export default App;
-
-
-
+export default RunVsOversChart;
