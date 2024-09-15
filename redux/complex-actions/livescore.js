@@ -76,3 +76,15 @@ export const fetchUpcoming = () => ({
         race: () => false,
     },
 });
+
+export const fetchLive = () => ({
+    RSAA: {
+        types: [
+            actions.REQUEST_FETCH_LIVE,
+            actions.SUCCESS_FETCH_LIVE,
+            actions.FAILURE_FETCH_LIVE,
+        ],
+        method: endPoints.FETCH_LIVE,
+        race: () => false,
+    },
+});
