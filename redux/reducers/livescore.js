@@ -10,6 +10,15 @@ const liveScores = (state = [], action) => {
 	}
 };
 
+const live = (state = [], action) => {
+    switch (action.type) {
+        case actions.SUCCESS_FETCH_LIVE:
+            return action.response.data;
+        default:
+            return state;
+    }
+};
+
 const upcoming = (state = [], action) => {
 	switch (action.type) {
 		case actions.SUCCESS_FETCH_UPCOMING:
@@ -61,6 +70,8 @@ const isFetchingLivescores = (state = false, action) => {
 		case actions.REQUEST_FETCH_BD_MATCH:
 		case actions.REQUEST_FETCH_LIVESCORES_TEST:
 		case actions.REQUEST_FETCH_UPCOMING:
+		case actions.REQUEST_FETCH_LIVE:
+		case actions.REQUEST_FETCH_FINISHED:
 		case actions.REQUEST_FETCH_LIVESCORES_RECENT_FINISHED:
 			return true;
 		case actions.SUCCESS_FETCH_LIVESCORES:
@@ -69,6 +80,8 @@ const isFetchingLivescores = (state = false, action) => {
 		case actions.SUCCESS_FETCH_LIVESCORES_RECENT_FINISHED:
 		case actions.FAILURE_FETCH_LIVESCORES:
 		case actions.SUCCESS_FETCH_UPCOMING:
+		case actions.SUCCESS_FETCH_LIVE:			
+		case actions.FAILURE_FETCH_LIVE:
 		case actions.FAILURE_FETCH_BD_MATCH:
 		case actions.FAILURE_FETCH_LIVESCORES_TEST:
 		case actions.FAILURE_FETCH_LIVESCORES_RECENT_FINISHED:
@@ -82,6 +95,7 @@ const isFetchingLivescores = (state = false, action) => {
 export default combineReducers({
 	liveScores,
 	bdMatch,
+	live,
 	upcoming,
 	finished,
 	liveScoresTest,
@@ -116,6 +130,8 @@ export const getLiveScoresHome = state => {
 export const getLiveScoresRecentFinished = state => state.liveScoresRecentFinished || [];
 
 export const getBDMatch = state => state.bdMatch || '';
+
+export const getLive = state => state.live || [];
 
 export const getUpcoming = state => state.upcoming || [];
 
