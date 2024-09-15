@@ -219,6 +219,8 @@ export const getUpcoming = state => fromLiveScores.getUpcoming(state.livescore);
 
 export const getFinished = state => fromLiveScores.getFinished(state.livescore);
 
+export const getLive = state => fromLiveScores.getLive(state.livescore);
+
 export const getBowlingInnings = (state, slug) => fromScoreboard.getBowlingInnings(state.scoreboard, slug);
 
 export const getBowlingInningsBar = (state, slug) => fromScoreboard.getBowlingInningsBar(state.scoreboard, slug);
