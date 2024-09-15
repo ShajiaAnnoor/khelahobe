@@ -598,25 +598,25 @@ export const getBowlingInnings = (state, slug) => {
                 if (i === data.bowling.length) {
                     if (out !== outs) {
                         bowling.push({
-                            x: 'অন্যান্য',
-							y:3
+                            name: 'অন্যান্য',
+							value:3
                             //y: parseInt(data.out) - parseInt(outs),
                         });
                         outs++;
                     }
                     bowling.push({
-                        x: 'নটআউট',
+                        name: 'নটআউট',
 //						y:2
-                        y: parseInt(11) - parseInt(outs),
+                        value: parseInt(11) - parseInt(outs),
                     });
                 }
                 else if (parseInt(data.bowling[i].wickets) !== 0) {
                     outs += parseInt(data.bowling[i].wickets);
                     bowling.push({
                         //name: data.bowling[i].name,
-						x: data.bowling[i].name,
-						y: 2,
-//                        y: parseInt(data.bowling[i].wickets)
+						name: data.bowling[i].name,
+						//value: 2,
+                        value: parseInt(data.bowling[i].wickets)
                     });
                 }
             }
