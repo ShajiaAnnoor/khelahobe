@@ -13,7 +13,24 @@ export const dfs = obj => {
 	return obj;
 };
 
+export const englishDFS = obj => {
+	if (obj === null || obj === undefined) return obj;
+	if (typeof obj === 'string') return englishTranslate(obj);
+	if (typeof obj === 'number') return englishTranslate((Math.round(obj * 100) / 100).toString(10));
+	if (Array.isArray(obj)) return obj.map(e => englishDFS(e));
+	if (typeof obj === 'object') return Object.getOwnPropertyNames(obj).map(
+		k => exceptions.indexOf(k) === -1 ? [k, englishDFS(obj[k])] : [k, obj[k]]
+	).reduce(
+		(prev, cur) => {
+			prev[cur[0]] = cur[1];
+			return prev;
+		}, {});
+	return obj;
+};
+
 export const translate = s => [...s].map(c => numberMapping.hasOwnProperty(c) ? numberMapping[c] : c).join('');
+
+export const englishTranslate = s => [...s].map(c => banglaNumberMapping.hasOwnProperty(c) ? banglaNumberMapping[c] : c).join('');
 
 export const processMatch = ({
 	days,
@@ -260,6 +277,19 @@ const numberMapping = {
 	"7": "\u09ed",
 	"8": "\u09ee",
 	"9": "\u09ef",
+};
+
+const banglaNumberMapping = {
+	"\u09e6" : "0",
+	"\u09e7" : "1",
+	"\u09e8" : "2",
+	"\u09e9" : "3",
+	"\u09ea" : "4",
+	"\u09eb" : "5",
+	"\u09ec" : "6",
+	"\u09ed" : "7",
+	"\u09ee" : "8",
+	"\u09ef" : "9",
 };
 
 const exceptions = [
