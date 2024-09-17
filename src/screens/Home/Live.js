@@ -7,16 +7,16 @@ import {
 } from 'react-redux';
 
 import { 
-    getLiveScoresHome, 
-    getLiveScoresRecentFinished,
-    getBDMatch,
+//    getLiveScoresHome, 
+//    getLiveScoresRecentFinished,
+//    getBDMatch,
 	getLive,
 } from '../../../redux/reducers';
 import { 
-    fetchLiveScores, 
-    fetchLiveScoresTest, 
-	fetchBDMatch,
-	fetchLiveScoresRecentFinished,
+//    fetchLiveScores, 
+//    fetchLiveScoresTest, 
+//	fetchBDMatch,
+//	fetchLiveScoresRecentFinished,
 	fetchLive,
 } from '../../../redux/complex-actions/livescore';
 import ShortscoreList from "./ShortscoreList";
