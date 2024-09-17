@@ -5,6 +5,9 @@ import {
 import {
     actions
 } from '../action-types/liveScoreboard';
+import { dfs, englishDFS } from '../../src/API/utils';
+
+//to-do: give the basic structure for initial state as default value of state.
 
 const endOfOver = (state = {}, action) => {
 	switch (action.type) {
@@ -225,6 +228,7 @@ export const getMatchDetails = (state, slug) => ({
 	umpires: (state.match[slug] && state.match[slug].umpires) || '',
 });
 
+//get-extras should be separate selector
 export const getInnings = (state, slug) => (state.innings && state.innings[slug] && state.innings[slug].extras && {
     ...state.innings[slug],
     extras: `${state.innings[slug].extras.total}  (বাই: ${state.innings[slug].extras.b}, লেগ বাই: ${state.innings[slug].extras.lb}, ওয়াইড: ${state.innings[slug].extras.w}, নো বল: ${state.innings[slug].extras.nb})`,
@@ -587,42 +591,53 @@ export const getBowlingInnings = (state, slug) => {
         return [];
     }
     const [team1, team2] = getTeamNamesFromMatch(state, slug);
-
+	const numberMapping = {
+		"\u09e6" : 0,
+		"\u09e7" : 1,
+		"\u09e8" : 2,
+		"\u09e9" : 3,
+		"\u09ea" : 4,
+		"\u09eb" : 5,
+		"\u09ec" : 6,
+		"\u09ed" : 7,
+		"\u09ee" : 8,
+		"\u09ef" : 9,
+	};
     return inningsIds.map(i => {
-        const data = getInnings(state, i);
+        const innings = dfs(getInnings(state, i));
         let bowling = [];
         let outs = 0;
-        const out = data.out;
-        if (data && data.bowling) {
-            for (let i = 0; i <= data.bowling.length; i++) {
-                if (i === data.bowling.length) {
+        const out = numberMapping[innings.out];
+        if (innings && innings.bowling) {
+            for (let i = 0; i <= innings.bowling.length; i++) {
+                if (i === innings.bowling.length) {
                     if (out !== outs) {
                         bowling.push({
-                            name: 'অন্যান্য',
-							value:3
-                            //y: parseInt(data.out) - parseInt(outs),
+                            x: 'অন্যান্য',
+							//y:3
+                            y: parseInt(numberMapping[innings.out]) - parseInt(outs),
                         });
                         outs++;
                     }
                     bowling.push({
-                        name: 'নটআউট',
+                        x: 'নটআউট',
 //						y:2
-                        value: parseInt(11) - parseInt(outs),
+                        y: parseInt(11) - parseInt(outs),
                     });
                 }
-                else if (parseInt(data.bowling[i].wickets) !== 0) {
-                    outs += parseInt(data.bowling[i].wickets);
+                else if (parseInt(numberMapping[innings.bowling[i].wickets]) !== 0) {
+                    outs += parseInt(numberMapping[innings.bowling[i].wickets]);
                     bowling.push({
                         //name: data.bowling[i].name,
-						name: data.bowling[i].name,
+						x: innings.bowling[i].name,
 						//value: 2,
-                        value: parseInt(data.bowling[i].wickets)
+                        y: parseInt(numberMapping[innings.bowling[i].wickets])
                     });
                 }
             }
         }
         return {
-            inningsName: (data.name === team1 ? team2 : team1) || '',
+            inningsName: (innings.name === team1 ? team2 : team1) || '',
             bowling: bowling || [],
         }
     }).filter(i => i.inningsName !== '');
@@ -754,9 +769,9 @@ export const getBowlingInningsBar = (state, slug) => {
         return [];
     }
     const [team1, team2] = getTeamNamesFromMatch(state, slug);
-
+	
     return inningsIds.map(i => {
-        const data = getInnings(state, i);
+        const data = englishDFS(getInnings(state, i));
         let bowling = [];
         if (data && data.bowling) {
             for (let i = 0; i <= data.bowling.length; i++) {
@@ -770,6 +785,8 @@ export const getBowlingInningsBar = (state, slug) => {
                         over: parseInt(data.bowling[i].over),
                         run: parseInt(data.bowling[i].runs),
                         dots: parseInt(data.bowling[i].dots),
+						x: data.bowling[i].name,
+						y: parseInt(data.bowling[i].runs),
                     });
                 }
             }
