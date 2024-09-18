@@ -253,7 +253,7 @@ export const getPartnerShipStats = (state, slug) => {
 	}
 
 	return inningsIds.map(i => {
-		const data = getInnings(state, i);
+		const data = englishDFS(getInnings(state, i));
 
 		return {
 			inningsName: data.name || '',
