@@ -16,8 +16,8 @@ const BowlingInningsOfteam1 = ({data}) => {
   ];
 */
 
- console.log(data.bowling);
- 
+// console.log(data.bowling);
+// console.log(data.inningsName);
   return (
     <View style={styles.container}>
       <VictoryPie
@@ -32,7 +32,7 @@ const BowlingInningsOfteam1 = ({data}) => {
         labelIndicatorInnerOffset={5}
         labelIndicatorOuterOffset={10}
         
-        labels={({ datum }) => `${datum.x}(${datum.y} wickets)`}
+        labels={({ datum }) => `${datum.x}(${datum.y} wickets)`} // x is name, y is wickets
         labelComponent={<VictoryLabel angle={0} textAnchor="middle"/>}
         //labelPosition={"centroid"}
         colorScale={["#ff9999", "#66b3ff", "#99ff99"]}
