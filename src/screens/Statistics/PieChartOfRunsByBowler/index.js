@@ -4,14 +4,19 @@ import { VictoryPie, LineSegment } from 'victory-native';
 import { VictoryBar, VictoryChart, VictoryAxis,VictoryTheme,VictoryLine, VictoryLabel, VictoryGroup } from 'victory-native';
 import BowlingInningsOfteam1 from './BowlingInningsOfTeam1';
 import BowlingInningsOfteam2 from './BowlingInningsOfTeam2';
-const PieChartOfRunsByBowler = () => {
+const PieChartOfRunsByBowler = ({data}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.headline}>বোলারের দেয়া রানের পাই চার্ট</Text>
-      <Text style={styles.subHeadline}>ওয়েস্ট ইন্ডিজ বোলিং ইনিংস</Text>
-      <BowlingInningsOfteam1/>
-      <Text style={styles.subHeadline}>দক্ষিণ আফ্রিকা বোলিং ইনিংস</Text>
-      <BowlingInningsOfteam2/>
+      {data[0] && <>
+        <Text style={styles.subHeadline}>{data[0].inningsName} বোলিং ইনিংস</Text>
+        <BowlingInningsOfteam1 data={data[0]}/>
+      </>}
+      {data[1] && <>
+        <Text style={styles.subHeadline}>{data[1].inningsName} বোলিং ইনিংস</Text>
+        <BowlingInningsOfteam2 data={data[1]}/>
+      </>
+      }
     </View>
   );
 };

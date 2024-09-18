@@ -3,8 +3,9 @@ import { View, StyleSheet,Text } from 'react-native';
 import { VictoryPie, LineSegment } from 'victory-native';
 import { VictoryBar, VictoryChart, VictoryAxis,VictoryTheme,VictoryLine, VictoryLabel, VictoryGroup } from 'victory-native';
 
-const BowlingInningsOfteam1 = () => {
+const BowlingInningsOfteam1 = ({data}) => {
   // Sample data for the pie chart
+  /*
   const data = [
     { x: 'Sakib Al Hasan', y: 1 },
     { x: 'Tarif Ezaz', y: 1 },
@@ -15,12 +16,14 @@ const BowlingInningsOfteam1 = () => {
     { x: 'Ebadot Hossain', y: 2 },
     
   ];
+  */
 
+  console.log(data);
   return (
     <View style={styles.container}>
       <VictoryPie
         radius={70}
-        data={data}
+        data={data.bowling}
         labelPosition = {"centroid"}
         labelPlacement={({ index }) => index
             ? "parallel"
@@ -30,7 +33,7 @@ const BowlingInningsOfteam1 = () => {
         labelIndicatorInnerOffset={5}
         labelIndicatorOuterOffset={10}
         
-        labels={({ datum }) => `${datum.x}(${datum.y} wicketss)`}
+        labels={({ datum }) => `${datum.name}(${datum.run} রান)`}
         labelComponent={<VictoryLabel angle={0} textAnchor="middle"/>}
         //labelPosition={"centroid"}
         colorScale={["#ff9999", "#66b3ff", "#99ff99"]}
