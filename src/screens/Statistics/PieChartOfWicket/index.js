@@ -3,7 +3,7 @@ import { View, StyleSheet,Text } from 'react-native';
 import { VictoryPie, LineSegment } from 'victory-native';
 import { VictoryBar, VictoryChart, VictoryAxis,VictoryTheme,VictoryLine, VictoryLabel, VictoryGroup } from 'victory-native';
 import BowlingInningsOfteam1 from './BowlingInningsOfTeam1';
-import BowlingInningsOfteam2 from './BowlingInningsOfTeam2';
+//import BowlingInningsOfteam2 from './BowlingInningsOfTeam2';
 
 const PieChartOfWicket = ({data}) => {
   //{data[0].inningsName}
@@ -16,7 +16,17 @@ const PieChartOfWicket = ({data}) => {
       </>}
       {data[1] && <>
         <Text style={styles.subHeadline}>{data[1].inningsName} বোলিং ইনিংস</Text>
-        <BowlingInningsOfteam2 data={data[1]}/>
+        <BowlingInningsOfteam1 data={data[1]}/>
+        </>
+      }
+      {data[2] && <>
+        <Text style={styles.subHeadline}>{data[2].inningsName} বোলিং ইনিংস</Text>
+        <BowlingInningsOfteam1 data={data[2]}/>
+        </>
+      }
+      {data[3] && <>
+        <Text style={styles.subHeadline}>{data[3].inningsName} বোলিং ইনিংস</Text>
+        <BowlingInningsOfteam1 data={data[3]}/>
         </>
       }
     </View>
