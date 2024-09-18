@@ -70,7 +70,7 @@ const Statistics = ({slug}) => {
     <PieChartOfRun/>
 {/*      <Example />*/}
         <BarChartOfOvervsRun />
-        <PartnershipChart/>
+        <PartnershipChart data={partnerships}/>
         <Pie/>
         <PieChartOfWicket data={bowlerPie}/>
         <PieChartOfRunsByBowler data={bowlerBar}/>
