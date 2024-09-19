@@ -555,7 +555,7 @@ export const getBattingInnings = (state, slug) => {
     }
 
     return inningsIds.map(i => {
-        const data = getInnings(state, i);
+        const data = englishDFS(getInnings(state, i));
         const l = (data && data.extras && data.extras.split(' ')) || null;
         let batting = [];
         if (data && l !== null) {
@@ -563,14 +563,18 @@ export const getBattingInnings = (state, slug) => {
                 if (i === data.batting.length) {
                     batting.push({
                         name: 'অতিরিক্ত',
+						x: 'অতিরিক্ত',
                         value: parseInt(l[0]),
+						y: parseInt(l[0]),
                         balls: 0
                     });
                 }
                 else if (parseInt(data.batting[i].runs)) {
                     batting.push({
                         name: data.batting[i].name,
+						x: data.batting[i].name,
                         value: parseInt(data.batting[i].runs),
+						y: parseInt(data.batting[i].runs),
                         balls: parseInt(data.batting[i].balls)
                     });
                 }
