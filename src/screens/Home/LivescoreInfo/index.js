@@ -43,13 +43,17 @@ const LiveScoreInfo = ({
 	const isEmpty = obj => !Object.keys(obj).reduce((prev, cur) => prev || obj.hasOwnProperty(cur), false);
 
   //TO-DO: Want to check why innings data is being fetched here. 
-  
+	const first_innings = 0 ; 
+	const second_innings = 1 ; 
+	const third_innings = 2 ;
+	const fourth_innings = 3 ;
+
 	useEffect(
 		() => {
 			dispatch(
 				fetchMatchWithInnings(slug)
 			);
-			if (flag === 0 || (
+			if (flag === 0 || ( //what does flag = 0 indicate?
 				match.matchState
 				&&
 				match.matchState === 'POST'
@@ -58,7 +62,7 @@ const LiveScoreInfo = ({
 				() => dispatch(
 					fetchMatchWithInnings(slug)
 				),
-				1000000
+				100000 //wait for 100 seconds to see the match update
 			);
 
 			return () => clearInterval(interval);
@@ -71,7 +75,7 @@ const LiveScoreInfo = ({
     useEffect(
       () => {
         if (
-          flag === 0 //TO-DO: What is the purpose of this app? 
+          flag === 0 //TO-DO: What is the purpose of this flag? 
           ||
           (
               match.matchStatus
@@ -88,7 +92,7 @@ const LiveScoreInfo = ({
             const interval = setInterval(
               () => {
                   dispatch(
-                      fetchMatchWithInningses(slug)
+                      fetchMatchWithInnings(slug)
                   );
               },
               6000000
@@ -163,8 +167,9 @@ const LiveScoreInfo = ({
 			&&
 			teamscore.length > 2 //when at least 3 teamscores are there we can always get the 4th one
 			&&
-			teamscore[0].team.toLowerCase() === teamscore[2].team.toLowerCase()
+			teamscore[first_innings].team.toLowerCase() === teamscore[third_innings].team.toLowerCase()
 		) {
+			// some sort of indexing 
 			test3 = 2;
 			test4 = 3;
 		}
@@ -174,22 +179,38 @@ const LiveScoreInfo = ({
 		}
 	}
 
+//	console.log("JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ");
+	console.log(match.matchType);
+//	console.log("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+
 	const l = `${shortScoreCard.remainingball} বলে ${shortScoreCard.remainingrun} রান দরকার`;
 	const st = getTime(match.start_time, match.days);
 
 	if (!match) return '';
 	
-	let over = teamscore[0] && teamscore[0].over || ''
-	let out = teamscore[0] && teamscore[0].out || ''
+	let over_first_innings = teamscore[first_innings] && teamscore[first_innings].over || ''
+	let out_first_innings = teamscore[first_innings] && teamscore[first_innings].out || ''
 
-	if ( out !== '১০' ) { out = `/${out}`}
-	else { out = "" }
+	if ( out_first_innings !== '১০' ) { out_first_innings = `/${out_first_innings}`}
+	else { out_first_innings = "" }
 
-	let over1 = teamscore[1] && teamscore[1].over || '';
-	let out1 = teamscore[1] && teamscore[1].out || '';
+	let over_second_innings = teamscore[second_innings] && teamscore[second_innings].over || '';
+	let out_second_innings = teamscore[second_innings] && teamscore[second_innings].out || '';
 
-	if ( out1 !== '১০' ) { out1 = `/${out1}`}
-	else { out1 = "" };
+	if ( out_second_innings !== '১০' ) { out_second_innings = `/${out_second_innings}`}
+	else { out_second_innings = "" };
+
+	let over_third_innings = teamscore[third_innings] && teamscore[third_innings].over || '';
+	let out_third_innings = teamscore[third_innings] && teamscore[third_innings].out || '';
+
+	if ( out_third_innings !== '১০' ) { out_third_innings = `/${out_third_innings}`}
+	else { out_third_innings = "" };
+
+	let over_fourth_innings = teamscore[fourth_innings] && teamscore[fourth_innings].over || '';
+	let out_fourth_innings = teamscore[fourth_innings] && teamscore[fourth_innings].out || '';
+
+	if ( out_fourth_innings !== '১০' ) { out_fourth_innings = `/${out_fourth_innings}`}
+	else { out_fourth_innings = "" };
 
 	const navigation=useNavigation();
 
@@ -230,25 +251,27 @@ const LiveScoreInfo = ({
 
 	            <View style={styles.scoreContainer}>
     	        	<Text style={styles.scoreTextStyle}> 
-						{(match.matchType !== "TEST" && teamscore[0] && teamscore[0].total) ||''}
+						{( teamscore[first_innings] && teamscore[first_innings].total) ||''}
 						{
 							(
-								(over !== "০")
+								(over_first_innings !== "০")
 							?
 								(
-								`${out} (${over} ওভার)`
+								`${out_first_innings} (${over_first_innings} ওভার)`
+//									null
 								)
 								:
 								null							
 							)
 						}
-						{(match.matchType === "TEST" && teamscore[test1] && teamscore[test1].total) || ''}
+						{/*
+						{(match.matchType == "TEST" && teamscore[test1] && teamscore[test1].total) || ''}
 						{
 							(
 								((teamscore[test1] && dfs(teamscore[test1].over) !== "০")
 								?
 								(
-									`${(teamscore[test1] && teamscore[test1].out) || '০' } (${dfs(teamscore[test1].over)} ওভার)`
+									`${(out) || '০' } (${over} ওভার)`
 								)
 								:
 									null
@@ -256,13 +279,14 @@ const LiveScoreInfo = ({
 								)
 							)
 						}
-						{(match.matchType === "TEST" && teamscore[test3] && "এবং " + teamscore[test3].total) || ''}
+						*/}
+						{(teamscore[test3] && "এবং " + teamscore[test3].total) || ''}
 						{
 							(
 								((teamscore[test3] && dfs(teamscore[test3].over) !== "০")
 								?
 									(
-									`${(teamscore[test3] && teamscore[test3].out) || '০' } (${dfs(teamscore[test3].over)} ওভার)`
+									`${(out_second_innings) || '০' } (${(over_second_innings)} ওভার)`
 									)
 									:
 									null
@@ -283,25 +307,26 @@ const LiveScoreInfo = ({
                
             	<View style={styles.scoreContainer}>
             		<Text style={styles.scoreTextStyle}> 
-						{(match.matchType !== "TEST" && teamscore[1] && teamscore[1].total) ||''}
+						{(teamscore[1] && teamscore[1].total) ||''}
 						{
 							(
-								(over1 !== "০")
+								(over_second_innings !== "০")
 								?
 								(
-									`${out1} (${over1} ওভার)`
+									`${out_second_innings} (${over_second_innings} ওভার)`
 								)
 								:
 									null              
 							)
 						}
-						{(match.matchType === "TEST" && teamscore[test2] && teamscore[test2].total) || ''}
+						{/*
+						{( teamscore[test2] && teamscore[test2].total) || ''}
 						{
 							(
 								((teamscore[test2] && dfs(teamscore[test2].over) !== "০")
 								?
 								(
-									`${(teamscore[test2] && teamscore[test2].out) || '০' } (${dfs(teamscore[test2].over)} ওভার)`
+									`${(out1) || '০' } (${(over1)} ওভার)`
 								)
 								:
 									null
@@ -309,13 +334,14 @@ const LiveScoreInfo = ({
 								)
 						)
 						}
-						{(match.matchType === "TEST" && teamscore[test4] && "এবং " + teamscore[test4].total) || ''}
+						*/}
+						{( teamscore[test4] && "এবং " + teamscore[test4].total) || ''}
 						{
 							(
 								((teamscore[test4] && dfs(teamscore[test4].over) !== "০")
 								?
 									(
-									`${(teamscore[test4] && teamscore[test4].out) || '০' } (${dfs(teamscore[test4].over)} ওভার)`
+									`${(out_fourth_innings) || '০' } (${(over_fourth_innings)} ওভার)`
 									)
 									:
 									null
