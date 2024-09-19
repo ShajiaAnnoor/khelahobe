@@ -47,6 +47,7 @@ const defaultProps = {
 const App = ({ eva: { style } }) => {
 
     const isLoggedIn = true ; 
+
     return (
         <NavigationContainer >
             <Stack.Navigator
@@ -83,7 +84,6 @@ const App = ({ eva: { style } }) => {
                                         </Text> 
                                     </View>
                                 ),
-                                
                             }}
                         />
                         <Stack.Screen 
