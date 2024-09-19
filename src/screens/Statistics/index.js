@@ -69,14 +69,14 @@ const Statistics = ({slug}) => {
           {/*<Test/>*/}
     {/*<PieChartOfRun/>*/}
 {/*      <Example />*/}
-        <BarChartOfOvervsRun />
+{/*        <BarChartOfOvervsRun /> */}
         <PartnershipChart data={partnerships}/>
-        <Pie/>
+{/*}        <Pie/> */}
         <PieChartOfWicket data={bowlerPie}/>
         <PieChartOfRunsByBowler data={bowlerBar}/>
         <PieChartOfRunsByBatters data={battingInnings}/>
         {/*<Te/>*/}
-        <RunsVsOversChart/>
+{/*        <RunsVsOversChart data={worms}/> */}
       </View>
     </ScrollView>
   );
