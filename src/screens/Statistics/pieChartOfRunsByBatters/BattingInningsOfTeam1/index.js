@@ -4,8 +4,11 @@ import { VictoryPie, LineSegment } from 'victory-native';
 import { VictoryBar, VictoryChart, VictoryAxis,VictoryTheme,VictoryLine, VictoryLabel, VictoryGroup } from 'victory-native';
 
 
-const BattingInningsOfTeam1 = () => {
+const BattingInningsOfTeam1 = ({data}) => {
+  
+  console.log(data);
   // Sample data for the pie chart
+  /*
   const data = [
     { x: 'Sakib Al Hasan', y: 35 },
     { x: 'Tarif Ezaz', y: 40 },
@@ -19,14 +22,12 @@ const BattingInningsOfTeam1 = () => {
     { x: 'Mashrafi Bin Mortaza', y: 50 },
     { x: 'Ebadot Hossain', y: 50 },
   ];
-
- 
-
+  */
   return (
     <View style={styles.container}>
       <VictoryPie
         radius={70}
-        data={data}
+        data={data.batting}
         
         labelPosition = {"centroid"}
         labelPlacement={({ index }) => index
@@ -37,7 +38,7 @@ const BattingInningsOfTeam1 = () => {
       labelIndicatorInnerOffset={5}
       labelIndicatorOuterOffset={10}
       
-        //labels={({ datum }) => `${datum.x}(${datum.y} runs)`}
+        labels={({ datum }) => `${datum.x}(${datum.y} runs)`}
         labelComponent={<VictoryLabel angle={0} textAnchor="middle"/>}
         //labelPosition={"centroid"}
 
@@ -49,10 +50,7 @@ const BattingInningsOfTeam1 = () => {
             fontSize: 10,
             //fill: '#000',
           },
-        }}
-       
-        
-       
+        }}   
       />
     </View>
   );

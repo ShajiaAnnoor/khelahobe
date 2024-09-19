@@ -1,18 +1,31 @@
 import React from 'react';
 import { View, StyleSheet,Text } from 'react-native';
-import { VictoryPie, LineSegment } from 'victory-native';
-import { VictoryBar, VictoryChart, VictoryAxis,VictoryTheme,VictoryLine, VictoryLabel, VictoryGroup } from 'victory-native';
 import BattingInningsOfTeam1 from './BattingInningsOfTeam1';
-import BattingInningsOfTeam2 from './BattingInningsOfTeam2';
 
-const PieChartOfRunsByBatters = () => {
+const PieChartOfRunsByBatters = ({data}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.headline}>রানের পাই চার্ট</Text>
-      <Text style={styles.subHeadline}>পাকিস্তান ব্যাটিং ইনিংস</Text>
-      <BattingInningsOfTeam1/>
-      <Text style={styles.subHeadline}>বাংলাদেশ ব্যাটিং ইনিংস</Text>
-      <BattingInningsOfTeam2/>
+      {data[0] && <>   
+        <Text style={styles.subHeadline}>{data[0].inningsName} ব্যাটিং ইনিংস</Text>
+        <BattingInningsOfTeam1 data={data[0]}/>
+      </>
+      }
+      {data[1] && <>   
+        <Text style={styles.subHeadline}>{data[1].inningsName} ব্যাটিং ইনিংস</Text>
+        <BattingInningsOfTeam1 data={data[1]}/>
+      </>
+      }
+      {data[2] && <>   
+        <Text style={styles.subHeadline}>{data[2].inningsName} ব্যাটিং ইনিংস</Text>
+        <BattingInningsOfTeam1 data={data[2]}/>
+      </>
+      }
+      {data[3] && <>   
+        <Text style={styles.subHeadline}>{data[3].inningsName} ব্যাটিং ইনিংস</Text>
+        <BattingInningsOfTeam1 data={data[3]}/>
+      </>
+      }
     </View>
   );
 };
