@@ -2,7 +2,10 @@ import React from 'react';
 import { View } from 'react-native';
 import { VictoryChart, VictoryLine, VictoryScatter, VictoryLegend, VictoryTheme } from 'victory-native';
 
-const RunComparisonChart = ( ) => {
+const RunComparisonChart = ( 
+  {data}
+) => {
+  console.log(data);
   const dataA = [
     { over: 1, runs: 6 },
     { over: 2, runs: 2 },
