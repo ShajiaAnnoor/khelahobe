@@ -19,7 +19,8 @@ const ScorecardComponent = ({ route, slug }) => {
 
 	//const {slug} = route.params;
 
-	console.log("slug is coming? _-->", slug)
+//	console.log("slug is coming? _-->", slug)
+
 	const inningses = dfs(useSelector(
 		state => getInningsEs(state, slug)
 	));
