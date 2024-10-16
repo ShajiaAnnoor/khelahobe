@@ -6,6 +6,7 @@ export default apiUrls = {
 		FETCH_LIVESCORES: backendUrl + 'api/recentrunning/limitedmatch',
 	FETCH_LIVESCORES_TEST: backendUrl + 'api/recentrunning/testmatch',
 	FETCH_UPCOMING: backendUrl + 'api/matchlive/upcoming',
+	FETCH_FINISHED: backendUrl + 'api/matchlive/finished',
 	FETCH_LIVESCORES_RECENT_FINISHED: (skip, limit) => backendUrl + `api/recentended/${skip}/${limit}`,
 
 	FETCH_TEAM_RANKING: (sex, type) => backendUrl + `api/teamrank/${sex}/${type}`,
@@ -15,6 +16,14 @@ export default apiUrls = {
 	FETCH_MATCH: slug => backendUrl + `api/matchslug/${slug}`,
 	FETCH_END_OF_OVER: slug => backendUrl + `api/endover/${slug}`,
 	FETCH_BD_MATCH: backendUrl + 'api/bdmatch',
+	FETCH_LOCAL_MATCHES: backendUrl + 'api/localmatch/home',
+	FETCH_LIVE: backendUrl + 'api/matchlive/live',
+
+	FETCH_INNINGS: slug => backendUrl + `api/scoreboard/${slug}`,
+	FETCH_MATCH: slug => backendUrl + `api/matchslug/${slug}`,
+	FETCH_MATCH_WITH_INNINGS: slug => backendUrl + `api/matchone/${slug}`,
+	FETCH_END_OF_OVER: slug => backendUrl + `api/endover/${slug}`,
+	FETCH_INTERNATIONAL_MATCHES: backendUrl + 'api/internationalmatch/home',
 
 	LOGIN: backendUrl + `api/token`,
 	REGISTER: backendUrl + 'api/user',

@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
 		padding:2,
 		justifyContent:'center',
 		flexWrap:"wrap", 
-		backgroundColor:'gray',
+//		backgroundColor:'gray',
 		flex:8,
 	},
 

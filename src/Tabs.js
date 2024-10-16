@@ -9,6 +9,7 @@ import Home from "./screens/Home";
 //import RankingScreen from "./screens/Ranking/RankingScreen";
 import BlogList from "./screens/Blog/BlogList";
 import Videos from "./screens/Videos/VideoList/index";
+import Statistics from "./screens/Statistics/index";
 
 const Tab = createBottomTabNavigator()
 
@@ -104,6 +105,22 @@ export default function Tabs() {
 					),
 				}} 
 			/>
+
+			<Tab.Screen 
+				name="Statistics" 
+				component={Statistics}
+				options={{
+					tabBarLabel: "Statistics",
+					tabBarIcon: ({ color, size }) => (
+						<Icon 
+							name="auto-stories" 
+							color={color}
+							size={30}
+							type="material"
+						/>                      
+					),
+				}} 
+			/>	
 		</Tab.Navigator>
 	)
 }
