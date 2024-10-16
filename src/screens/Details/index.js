@@ -8,6 +8,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 //const UpcomingScore = lazy(() => import('./Upcoming.js'));
 import ScoreCard from '../Scorecard/ScorecardScreen.js';
 import Statistics from '../Statistics/index.js';
+import Commentary from '../Commentary/index.js';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -59,6 +60,11 @@ export default function MyTabs({route}) {
                 
 //				component={Statistics} 
 				options={{ tabBarLabel: "পরিসংখ্যান" }} 
+			/>
+			<Tab.Screen 
+				name="Commentary" 
+				component={Commentary} 
+				options={{ tabBarLabel: "ধারাভাষ্য " }} 
 			/>
 			
 		</Tab.Navigator> 

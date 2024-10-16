@@ -55,9 +55,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     //backgroundColor: 'teal',
-    borderColor:'#000',
+    borderColor:'#d3d3d3',
     borderBottomWidth:1,
-    
     height:250,
   },
 });

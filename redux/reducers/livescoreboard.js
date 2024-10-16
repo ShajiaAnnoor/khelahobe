@@ -466,7 +466,7 @@ export const getWorms1 = (state, slug) => {
         for (let i = 0; i <= last.length; i++) {
             if (!i) {
                 runsPerOver.push({
-                    over: dfs(i),
+                    over: englishDFS(i),
                     run1: 0,
                     run2: 0,
                     wicket1: 0,
@@ -475,7 +475,7 @@ export const getWorms1 = (state, slug) => {
             }
             else {
                 runsPerOver.push({
-                    over: dfs(i),
+                    over: englishDFS(i),
                     run1: 0,
                     run2: last[i - 1].totalrun || 0,
                     wicket1: 0,
@@ -495,7 +495,7 @@ export const getWorms1 = (state, slug) => {
         for (let i = 0; i <= first.length; i++) {
             if (!i) {
                 runsPerOver.push({
-                    over: dfs(i),
+                    over: englishDFS(i),
                     run1: 0,
                     run2: 0,
                     wicket1: 0,
@@ -504,7 +504,7 @@ export const getWorms1 = (state, slug) => {
             }
             else {
                 runsPerOver.push({
-                    over: dfs(i),
+                    over: englishDFS(i),
                     run1: first[i - 1].totalrun || 0,
                     run2: 0,
                     wicket1: first[i - 1].wickets || 0,
@@ -522,7 +522,7 @@ export const getWorms1 = (state, slug) => {
     for (let i = 0; i <= Math.max(first.length, last.length); i++) {
         if (!i) {
             runsPerOver.push({
-                over: dfs(i),
+                over: englishDFS(i),
                 run1: 0,
                 run2: 0,
                 wicket1: 0,
@@ -531,7 +531,7 @@ export const getWorms1 = (state, slug) => {
         }
         else {
             runsPerOver.push({
-                over: dfs(i),
+                over: englishDFS(i),
                 run1: (first[i - 1] && first[i - 1].totalrun) || null,
                 run2: (last[i - 1] && last[i - 1].totalrun) || null,
                 wicket1: (first[i - 1] && first[i - 1].wickets) || 0,

@@ -32,8 +32,12 @@ const PieChartOfRunsByBowler = ({data}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderColor:'teal',
+    borderColor:'#d3d3d3',
     borderTopWidth:1,
+    //borderRadius:25,
+    backgroundColor:'#FFFF',
+    marginBottom:10,
+    
     //borderBottomWidth:6,
     //flexDirection:"row",
     //justifyContent: 'center',

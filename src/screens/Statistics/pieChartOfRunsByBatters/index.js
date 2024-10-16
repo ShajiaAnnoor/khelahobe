@@ -3,27 +3,32 @@ import { View, StyleSheet,Text } from 'react-native';
 import BattingInningsOfTeam1 from './BattingInningsOfTeam1';
 
 const PieChartOfRunsByBatters = ({data}) => {
+  const first_innings = 0 ; 
+  const second_innings = 1 ; 
+  const third_innings = 2 ; 
+  const fourth_innings = 3 ; 
+
   return (
     <View style={styles.container}>
       <Text style={styles.headline}>রানের পাই চার্ট</Text>
-      {data[0] && <>   
-        <Text style={styles.subHeadline}>{data[0].inningsName} ব্যাটিং ইনিংস</Text>
-        <BattingInningsOfTeam1 data={data[0]}/>
+      {data[first_innings] && <>   
+        <Text style={styles.subHeadline}>{data[first_innings].inningsName} ব্যাটিং ইনিংস</Text>
+        <BattingInningsOfTeam1 data={data[first_innings]}/>
       </>
       }
-      {data[1] && <>   
-        <Text style={styles.subHeadline}>{data[1].inningsName} ব্যাটিং ইনিংস</Text>
-        <BattingInningsOfTeam1 data={data[1]}/>
+      {data[second_innings] && <>   
+        <Text style={styles.subHeadline}>{data[second_innings].inningsName} ব্যাটিং ইনিংস</Text>
+        <BattingInningsOfTeam1 data={data[second_innings]}/>
       </>
       }
-      {data[2] && <>   
-        <Text style={styles.subHeadline}>{data[2].inningsName} ব্যাটিং ইনিংস</Text>
-        <BattingInningsOfTeam1 data={data[2]}/>
+      {data[third_innings] && <>   
+        <Text style={styles.subHeadline}>{data[third_innings].inningsName} ব্যাটিং ইনিংস</Text>
+        <BattingInningsOfTeam1 data={data[third_innings]}/>
       </>
       }
-      {data[3] && <>   
-        <Text style={styles.subHeadline}>{data[3].inningsName} ব্যাটিং ইনিংস</Text>
-        <BattingInningsOfTeam1 data={data[3]}/>
+      {data[fourth_innings] && <>   
+        <Text style={styles.subHeadline}>{data[fourth_innings].inningsName} ব্যাটিং ইনিংস</Text>
+        <BattingInningsOfTeam1 data={data[fourth_innings]}/>
       </>
       }
     </View>
@@ -33,14 +38,10 @@ const PieChartOfRunsByBatters = ({data}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderColor:'teal',
+    borderColor:'#d3d3d3',
     borderTopWidth:1,
-    //borderBottomWidth:6,
-    //flexDirection:"row",
-    //justifyContent: 'center',
-    //alignItems: 'center',
-    //backgroundColor: 'gray',
-    //height:'10%'
+   // marginBottom:10
+    backgroundColor:'#FFFF'
   },
 
   headline: {
@@ -60,6 +61,3 @@ const styles = StyleSheet.create({
 });
 
 export default PieChartOfRunsByBatters;
-
-
-

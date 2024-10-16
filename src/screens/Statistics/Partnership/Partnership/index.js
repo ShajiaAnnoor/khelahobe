@@ -204,6 +204,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor:'#d3d3d3',
+    borderBottomWidth:1,
+    //width:'100dvh',
+    //backgroundColor:'gray',
     //paddingHorizontal: 20,
   },
   title: {
